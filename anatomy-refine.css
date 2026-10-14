@@ -1,0 +1,16 @@
+/* Anatomy refinement pass: keep the machine neutral; light only the moving subject. */
+#anatomyHero .ah-lit .ah-top,#anatomyHero .ah-lit.ah-top{fill:#3b4b55;stroke:#7e929d}
+#anatomyHero .ah-lit .ah-x,#anatomyHero .ah-lit.ah-x{fill:#26343d;stroke:#647985}
+#anatomyHero .ah-lit .ah-y,#anatomyHero .ah-lit.ah-y{fill:#1b2830;stroke:#536974}
+#anatomyHero .ah-lit .ah-line{stroke:#78909c}
+#anatomyHero .ah-subject-lit .ah-top,#anatomyHero .ah-subject-lit.ah-top{fill:#2b5d69;stroke:#90e6ff}
+#anatomyHero .ah-subject-lit .ah-x,#anatomyHero .ah-subject-lit.ah-x{fill:#1f4752;stroke:#70c9e4}
+#anatomyHero .ah-subject-lit .ah-y,#anatomyHero .ah-subject-lit.ah-y{fill:#193a44;stroke:#59aec8}
+#anatomyHero .ah-subject-lit .ah-line{stroke:#90e6ff}
+#anatomyHero .ah-subject-lit{filter:url(#softGlow)}
+#anatomyHero #ahProof.ah-lit .ah-top{fill:#283740;stroke:#627680}
+#anatomyHero #ahProof.ah-lit .ah-x{fill:#1d2931;stroke:#536771}
+#anatomyHero #ahProof.ah-lit .ah-y{fill:#151f26;stroke:#465b65}
+#anatomyHero #ahInterlocks.ah-lit .ah-top{fill:#34434e;stroke:#71828d}
+#anatomyHero #ahInterlocks.ah-lit .ah-x{fill:#202b34;stroke:#536570}
+#anatomyHero #ahInterlocks.ah-lit .ah-y{fill:#172129;stroke:#455760}
