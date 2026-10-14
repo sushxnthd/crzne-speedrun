@@ -1,6 +1,7 @@
 (()=>{
   const NS='http://www.w3.org/2000/svg';
   const $=(q)=>document.querySelector(q);
+  const $$=(q)=>[...document.querySelectorAll(q)];
   const C=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
   const I=(t,a,b)=>C((t-a)/(b-a));
   const O=t=>1-Math.pow(1-C(t),4);
@@ -13,8 +14,7 @@
     bg.setAttribute('x','255'); bg.setAttribute('y','897'); bg.setAttribute('width','1410'); bg.setAttribute('height','154'); bg.setAttribute('rx','24');
     sp.setAttribute('x','310'); sp.setAttribute('y','935');
     cap.setAttribute('x','310'); cap.setAttribute('y','970');
-    cap.style.fontSize='21.5px';
-    cap.style.fontWeight='530';
+    cap.style.fontSize='21.5px'; cap.style.fontWeight='530';
   }
 
   function wrapCaption(){
@@ -23,14 +23,11 @@
     if(!raw || cap.dataset.wrappedSource===raw)return;
     cap.dataset.wrappedSource=raw;
     while(cap.firstChild)cap.removeChild(cap.firstChild);
-    const words=raw.split(/\s+/);
-    const lines=[]; let line=[];
-    const test=svg('tspan',{x:'310',y:'970'});
-    cap.appendChild(test);
+    const words=raw.split(/\s+/); const lines=[]; let line=[];
+    const test=svg('tspan',{x:'310',y:'970'}); cap.appendChild(test);
     for(const word of words){
       test.textContent=[...line,word].join(' ');
-      const tooWide=test.getComputedTextLength()>1290;
-      if(tooWide && line.length){lines.push(line.join(' '));line=[word];test.textContent=word;} else line.push(word);
+      if(test.getComputedTextLength()>1290 && line.length){lines.push(line.join(' '));line=[word];test.textContent=word;}else line.push(word);
     }
     if(line.length)lines.push(line.join(' '));
     while(cap.firstChild)cap.removeChild(cap.firstChild);
@@ -42,7 +39,7 @@
   function setupWhy(){
     const why=$('#whyScene'); if(!why||$('#whyIsolation'))return;
     const scrim=svg('g',{id:'whyIsolation'});
-    scrim.appendChild(svg('rect',{x:'0',y:'0',width:'1920',height:'910',fill:'#05080c','fill-opacity':'.94'}));
+    scrim.appendChild(svg('rect',{x:'0',y:'0',width:'1920',height:'910',fill:'#05080c','fill-opacity':'1'}));
     scrim.appendChild(svg('circle',{cx:'960',cy:'458',r:'320',fill:'#90e6ff','fill-opacity':'.018'}));
     why.insertBefore(scrim,why.firstChild);
   }
@@ -52,31 +49,37 @@
   function animate(t){
     wrapCaption();
 
-    // Cleanly hand the frame from the failure result to the explanatory question.
-    if(t>=55.0&&t<57.2){
-      const out=1-O(I(t,55.0,56.25));
-      show($('#resultsScene'),out);
-      show($('#coverageSummary'),out);
-      show($('#threeSix'),out);
+    // Failure scene never reappears once the WHY transition starts.
+    if(t>=55.0){
+      const out=t<56.3?1-O(I(t,55.0,56.25)):0;
+      show($('#resultsScene'),out); show($('#coverageSummary'),out); show($('#threeSix'),out); show($('#resultLegend'),0);
       const rg=$('#resultGauges'); if(rg)rg.style.opacity=String(.06*out);
+      $$('.missCallout').forEach(e=>show(e,0));
     }
 
-    // Isolate WHY on a nearly empty field; hold it long enough to register.
+    // Isolated cognitive beat: only WHY + faint concentric instrument rings.
     if(t>=56.0&&t<60.2){
       const p=O(I(t,56.0,56.45))*(1-I(t,59.45,60.2));
-      show($('#whyScene'),p);
-      show($('#whyIsolation'),p);
+      show($('#whyScene'),p); show($('#whyIsolation'),p);
       const label=$('#whyScene .mega'); if(label){
         const scale=.96+.04*O(I(t,56.0,56.9));
         label.setAttribute('transform',`translate(${960*(1-scale)} ${490*(1-scale)}) scale(${scale})`);
       }
     }
 
-    // Let the closed proof apparatus emerge only after the WHY hold, avoiding overlap.
+    // Closed proof apparatus emerges after the question, without old result graphics behind it.
     if(t>=59.35&&t<61.5){
-      const p=O(I(t,59.35,60.25));
-      show($('#cutawayScene'),p);
+      const p=O(I(t,59.35,60.25)); show($('#cutawayScene'),p);
       const panel=$('#panel'); if(panel){panel.style.opacity='1';panel.setAttribute('transform','translate(0 0) rotate(0 750 305)');}
+    }
+
+    // During the more-shots beat, strip the proof to its essentials: two tracks, uncertainty, shot count.
+    if(t>=71.0&&t<79.5){
+      show($('#sampleLabel'),0); show($('#differentLabel'),0); show($('#zeroReadouts'),0); show($('#zeroGap'),0);
+      show($('#formulaPlate'),0); show($('#vanishReason'),0); show($('#proofScan'),0);
+      $$('.sampleLock').forEach(e=>show(e,0));
+      show($('#unmeasuredRegion'),.35);
+      const internals=$('#internals'); if(internals)internals.style.opacity='1';
     }
   }
 
