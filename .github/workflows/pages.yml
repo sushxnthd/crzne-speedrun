@@ -81,10 +81,8 @@ jobs:
             "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/t${TAG}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${TAG}.log 2>&1
           }
 
-          # Whole-film sweep every three seconds.
           for T in $(seq 0 3 90); do shot "$T"; done
 
-          # Every scene handoff sampled before / at / after the boundary.
           for T in \
             3.35 3.60 3.85 7.15 7.40 7.65 7.75 8.00 8.25 \
             16.75 17.00 17.25 18.75 19.00 19.25 \
@@ -95,7 +93,6 @@ jobs:
             79.45 79.70 79.95 80.05 80.30 80.55 83.05 83.30 83.55 \
             85.75 86.00 86.25 87.75 88.00 88.25 89.50; do shot "$T"; done
 
-          # Anatomy 4×-style inspection targets.
           for T in 12 20 34 40 52 66 74 80.3 86 89; do
             TAG="${T/./_}"
             "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/detail-${TAG}.png" "http://127.0.0.1:8000/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${TAG}.log 2>&1
@@ -105,7 +102,9 @@ jobs:
           PARTS=$(grep -o 'ah-part' _qa/dom.html | wc -l | tr -d ' ')
           echo "Anatomy rendered part groups: $PARTS"
           test "$PARTS" -ge 100
-          ! grep -q 'id="captionBox"' _qa/dom.html
+          grep -q 'id="captionBox"' _qa/dom.html
+          grep -q 'aria-hidden="true"' _qa/dom.html
+          grep -q 'display: none' _qa/dom.html
           kill "$SERVER_PID" || true
           rm -f _qa/dom.html
           ls -lh _qa | tail -30
