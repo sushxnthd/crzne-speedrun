@@ -43,6 +43,10 @@ jobs:
         run: |
           export CHROME="$(command -v google-chrome || command -v chromium || true)"
           QA_OUT=qa-recorded node scripts/render-recorded.cjs
+      - name: Verify transparent motion overlays
+        run: |
+          export CHROME="$(command -v google-chrome || command -v chromium || true)"
+          QA_OUT=qa-motion node scripts/render-motion.cjs
       - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -56,12 +60,14 @@ jobs:
             qa/animation-master.mp4
             qa-recorded/frame-audit.json
             qa-recorded/key-*.png
+            qa-motion/motion-audit.json
+            qa-motion/key-*.png
           retention-days: 14
       - name: Prepare canonical preview
         run: |
           mkdir -p _site
-          cp index.html *.js *.css timeline.json recording-timeline.json _site/
-          cp -R fonts _site/
+          cp *.html *.js *.css timeline.json recording-timeline.json _site/
+          cp -R fonts paper-assets _site/
           cp qa/animation-master.mp4 _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
