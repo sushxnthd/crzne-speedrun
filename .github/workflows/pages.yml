@@ -36,13 +36,39 @@ jobs:
       - name: Prepare animation preview
         shell: bash
         run: |
-          rm -rf _site
-          mkdir -p _site
+          rm -rf _site _qa
+          mkdir -p _site _qa
           cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js _site/
           # Keep the stable base build untouched; inject iterative animation layers only in the live preview.
           sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n</head>#' _site/index.html
           sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n</body>#' _site/index.html
           touch _site/.nojekyll
+
+      - name: Render QA keyframes
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --directory _site >/tmp/crzne-http.log 2>&1 &
+          SERVER_PID=$!
+          sleep 1
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            echo "No Chrome/Chromium binary on runner; skipping screenshots."
+            kill "$SERVER_PID" || true
+            exit 0
+          fi
+          for T in 12 24 34 40 52 58 66 74 84 89; do
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1200 --screenshot="_qa/t${T}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${T}.log 2>&1 || true
+          done
+          kill "$SERVER_PID" || true
+          ls -lh _qa || true
+
+      - name: Upload QA keyframes
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-keyframes
+          path: _qa/*.png
+          if-no-files-found: ignore
+          retention-days: 3
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
