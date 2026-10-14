@@ -32,16 +32,17 @@ jobs:
           node --check early-scenes.js
           node --check scientific-polish.js
           node --check timing-fixes.js
+          node --check transition-polish.js
 
       - name: Prepare animation preview
         shell: bash
         run: |
           rm -rf _site _qa
           mkdir -p _site _qa
-          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js _site/
+          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js _site/
           # Keep the stable base build untouched; inject iterative animation layers only in the live preview.
           sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n</head>#' _site/index.html
-          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n</body>#' _site/index.html
+          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n</body>#' _site/index.html
           touch _site/.nojekyll
 
       - name: Render QA keyframes
@@ -56,8 +57,9 @@ jobs:
             kill "$SERVER_PID" || true
             exit 0
           fi
-          for T in 12 24 34 40 52 58 66 74 84 89; do
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1200 --screenshot="_qa/t${T}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${T}.log 2>&1 || true
+          for T in 12 24 34 40 52 56.5 58 60 66 74 84 89; do
+            SAFE_T="${T/./_}"
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1200 --screenshot="_qa/t${SAFE_T}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${SAFE_T}.log 2>&1 || true
           done
           kill "$SERVER_PID" || true
           ls -lh _qa || true
