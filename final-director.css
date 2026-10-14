@@ -1,10 +1,10 @@
 /* Canonical 1920×1080 speaker-right master. No wall-clock CSS transitions. */
 #stage *{transition:none!important}
 #finalFilm text{fill:#30312e;font-variant-numeric:tabular-nums}
-#finalFilm .fd-kicker{font-size:19px;font-weight:730;letter-spacing:3px;fill:#77736b}
+#finalFilm .fd-kicker{font-size:19px;font-weight:730;letter-spacing:2.2px;fill:#6b6860}
 #finalFilm .fd-title{font-size:43px;font-weight:690;letter-spacing:-1px}
 #finalFilm .fd-label{font-size:25px;font-weight:620}
-#finalFilm .fd-small{font-size:20px;font-weight:560;fill:#77736b}
+#finalFilm .fd-small{font-size:22px;font-weight:560;fill:#6b6860}
 #finalFilm .fd-number{font-size:79px;font-weight:750;letter-spacing:-2px}
 #finalFilm .fd-accent{fill:#e8752b}
 #finalFilm .fd-line{fill:none;stroke:#77746d;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
@@ -30,3 +30,21 @@ body.safe-guide #safeZoneGuide{display:block}
 body.overlay.paper-backed #paperBacking{display:block!important}
 
 html:has(body.overlay){background:transparent!important}
+
+/* Mathematical notation uses the same embedded family as the illustration. */
+#finalFilm .fd-variable{font-style:italic}
+#finalFilm .fd-subscript{font-size:70%;baseline-shift:sub;font-style:normal;letter-spacing:0}
+#finalFilm .fd-subscript-variable{font-size:70%;baseline-shift:sub;font-style:italic;letter-spacing:0}
+#finalFilm .fd-superscript{font-size:67%;baseline-shift:super;letter-spacing:0}
+#finalFilm .fd-axis{font-size:24px;font-weight:560;letter-spacing:0}
+#finalFilm .fd-formula{font-size:32px;font-weight:520;letter-spacing:.1px}
+#finalFilm .fd-coefficient{font-size:48px;font-weight:570;letter-spacing:0}
+#finalFilm .fd-field-label{font-size:19px;font-weight:700;letter-spacing:1.8px;fill:#6b6860}
+#finalFilm .fd-field-value{font-size:27px;font-weight:640;letter-spacing:0}
+#finalFilm .fd-key-label{font-size:22px;font-weight:650;letter-spacing:.3px}
+
+#finalFilm #ahHandwheel>circle:first-child{stroke:#858078}
+
+#finalFilm .fd-formula{white-space:pre;font-kerning:normal}
+
+#finalFilm .fd-operator{font-family:"CRZNE Operators",sans-serif;font-style:normal}

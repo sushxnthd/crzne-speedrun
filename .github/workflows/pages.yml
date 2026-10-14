@@ -32,13 +32,13 @@ jobs:
           export CHROME="$(command -v google-chrome || command -v chromium || true)"
           if [ -z "$CHROME" ]; then npx playwright install --with-deps chromium; unset CHROME; fi
           QA_ALL_FRAMES=1 npm run qa
-      - name: Encode complete motion review
+      - name: Encode 1080p animation master
         run: |
           if ! command -v ffmpeg >/dev/null; then
             sudo apt-get update -qq
             sudo apt-get install -y ffmpeg
           fi
-          ffmpeg -v error -framerate 30 -i qa/frames/%04d.png -frames:v 2700 -c:v libx264 -crf 20 -pix_fmt yuv420p qa/motion-review.mp4
+          ffmpeg -v error -framerate 30 -i qa/frames/%04d.png -frames:v 2700 -c:v libx264 -crf 17 -pix_fmt yuv420p -movflags +faststart qa/animation-master.mp4
       - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -49,12 +49,14 @@ jobs:
             qa/key-*.png
             qa/detail-*.png
             qa/overlay-69.png
-            qa/motion-review.mp4
+            qa/animation-master.mp4
           retention-days: 14
       - name: Prepare canonical preview
         run: |
           mkdir -p _site
           cp index.html *.js *.css timeline.json _site/
+          cp -R fonts _site/
+          cp qa/animation-master.mp4 _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

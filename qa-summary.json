@@ -3,12 +3,13 @@
   "frames": 2700,
   "fps": 30,
   "duration": 90,
-  "maxRight": 1115.1083984375,
+  "maxRight": 1135.40625,
   "maxJump": {
     "value": 20.580622827223184,
     "id": "ahSelector",
     "frame": 1018
   },
+  "textCollisionPairs": 118963,
   "proof": {
     "sample1": 0,
     "sample3": 0,
@@ -16,77 +17,113 @@
   },
   "issues": [],
   "browserErrors": [],
+  "fontFaces": [
+    {
+      "family": "CRZNE Inter",
+      "style": "normal",
+      "status": "loaded"
+    },
+    {
+      "family": "CRZNE Inter",
+      "style": "normal",
+      "status": "loaded"
+    },
+    {
+      "family": "CRZNE Inter",
+      "style": "italic",
+      "status": "loaded"
+    },
+    {
+      "family": "CRZNE Inter",
+      "style": "italic",
+      "status": "loaded"
+    },
+    {
+      "family": "CRZNE Operators",
+      "style": "normal",
+      "status": "loaded"
+    },
+    {
+      "family": "CRZNE Operators",
+      "style": "normal",
+      "status": "loaded"
+    }
+  ],
   "seekChecks": 28,
   "maxSeekEdgePixels": 457,
+  "rasterResolution": [
+    1920,
+    1080
+  ],
   "rasterFrames": 2700,
   "transparentSpeakerPixels": 756000,
   "pixel_motion_review": {
     "frames_analyzed": 2700,
     "speaker_region_max_colour_delta": 2,
     "minimum_ink": {
-      "mean": 0.6379781420765027,
+      "mean": 0.6468199757134183,
       "frame": 120
     },
     "largest_adjacent_frame_changes": [
       {
-        "mean_channel_change": 2.3832156952034,
-        "frame": 1675,
-        "seconds": 55.833333333333336
-      },
-      {
-        "mean_channel_change": 2.365930479659988,
-        "frame": 1674,
-        "seconds": 55.8
-      },
-      {
-        "mean_channel_change": 2.364102661404574,
-        "frame": 1672,
-        "seconds": 55.733333333333334
-      },
-      {
-        "mean_channel_change": 2.330999544626594,
+        "mean_channel_change": 2.4063132463064156,
         "frame": 1673,
         "seconds": 55.766666666666666
       },
       {
-        "mean_channel_change": 2.20054771301356,
-        "frame": 1676,
-        "seconds": 55.86666666666667
+        "mean_channel_change": 2.363767455980571,
+        "frame": 1674,
+        "seconds": 55.8
       },
       {
-        "mean_channel_change": 2.1998773021655533,
-        "frame": 1671,
-        "seconds": 55.7
+        "mean_channel_change": 2.3414604837077513,
+        "frame": 1675,
+        "seconds": 55.833333333333336
       },
       {
-        "mean_channel_change": 2.0800634992916414,
+        "mean_channel_change": 2.286436197126088,
+        "frame": 1672,
+        "seconds": 55.733333333333334
+      },
+      {
+        "mean_channel_change": 2.171505009107468,
         "frame": 1677,
         "seconds": 55.9
       },
       {
-        "mean_channel_change": 1.886042805100182,
-        "frame": 1670,
-        "seconds": 55.666666666666664
+        "mean_channel_change": 2.1671852863792753,
+        "frame": 1671,
+        "seconds": 55.7
       },
       {
-        "mean_channel_change": 1.8499101902448898,
-        "frame": 2555,
-        "seconds": 85.16666666666667
+        "mean_channel_change": 2.147559957498482,
+        "frame": 1676,
+        "seconds": 55.86666666666667
       },
       {
-        "mean_channel_change": 1.8257121534102407,
+        "mean_channel_change": 2.0011384335154827,
         "frame": 2556,
         "seconds": 85.2
       },
       {
-        "mean_channel_change": 1.7802254098360655,
-        "frame": 2554,
-        "seconds": 85.13333333333334
-      },
-      {
-        "mean_channel_change": 1.7798838797814207,
+        "mean_channel_change": 1.987350738716859,
         "frame": 2557,
         "seconds": 85.23333333333333
+      },
+      {
+        "mean_channel_change": 1.9868321190042502,
+        "frame": 2555,
+        "seconds": 85.16666666666667
+      },
+      {
+        "mean_channel_change": 1.9255780712406396,
+        "frame": 2558,
+        "seconds": 85.26666666666667
+      },
+      {
+        "mean_channel_change": 1.9226813904068003,
+        "frame": 2554,
+        "seconds": 85.13333333333334
       }
     ]
   },
@@ -95,9 +132,12 @@
     "fps": 30,
     "frames": 2700,
     "resolution": [
-      960,
-      540
-    ]
+      1920,
+      1080
+    ],
+    "audio": false,
+    "crf": 17,
+    "progressive_streaming": true
   },
   "master_boundary_captures": 91,
   "source_sha256": {
@@ -115,15 +155,22 @@
     "early-scenes.js": "790ba9f2b27a1d3d16e39ff87dc6f591c40bb69eb82740ce1be22e1f97ecc21b",
     "enhancements.css": "14f3a16cde8c8d8cf01a6c80a98e8cde34f487b412acae066a07d7655d23f163",
     "enhancements.js": "bdf82e1520a1caef7c2146a10472c7e05ef31944e44d819d473d23c4288281b9",
-    "final-director.css": "59c40c74a7d72aadea532363252e820b02ba260d607981da6bed06a3142865ef",
-    "final-director.js": "323b6b92f7810ff13358e14ab4e89957a37b73579f4af61e37b76731ed1e4610",
-    "index.html": "5c3f789e049ae6d288be6579ff8e59704e20bcc86f866a0cbafd782738ab9fc8",
+    "final-director.css": "c9217fa1dc2ad8558ea278df09e93aba237e8a6c2340f83a0423e943a5e865f6",
+    "final-director.js": "1f9f3c59d1027caa96e58011887cf8e2ed2db9d29409d7cf70750a157cd1eee5",
+    "fonts/inter-greek-wght-italic.woff2": "29e273a42cac8240f37fbdd94c684f8a255e61c8076942d9b8f18a0e2c014991",
+    "fonts/inter-greek-wght-normal.woff2": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+    "fonts/inter-latin-wght-italic.woff2": "7291b5970da2237441273c03b424a504b70b18f09791473fab99687dcc314720",
+    "fonts/inter-latin-wght-normal.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "fonts/operators-bold.ttf": "5aecb918addd02f42170ce8714282c6a447f02cd78560c55c5a429b2c2ead86a",
+    "fonts/operators-normal.ttf": "b66ec220348b7deabae12745844daa4cb319032c02fe49da85e88294cc4be37b",
+    "index.html": "c3099be0afe8a280625f6f7c203d6c32eb88cb9c369262a4e3d0a9f410bba383",
     "scientific-polish.js": "d43d81c4307961fd32fb381a09d4296edba4e13d5b169d26781e1ba6b00484ce",
-    "scripts/qa.cjs": "35488356f1a0d94de91c12d42a6ff15a034bec7df8f909624317b3ec0b0b1556",
+    "scripts/qa.cjs": "e4be657a722ed471f062b248a42793280daf7b074d01bf1364242885f0079e36",
     "styles.css": "d9baff26cf7254858591162678eb2a7c72fe0548bee6a9bccb0ae90fc17a0ece",
     "timeline.json": "ce76edf1a7e3d2ea2acc1b305a018d7c2f8970f16c0b5c106f63bb291574e060",
     "timing-fixes.js": "e7d93fb38e68850063c79827ca41387afdd04864f4e86d19fbdd4b6cf29c6cad",
     "transition-polish.js": "5cbd9387ed3b865ef7aabc49de2cebab6b1523ad32d9fa85a3f5fe88769dcd5d",
-    "visual-audit.js": "38c17eb5702897d01c36ab4d3b126d4c83ed0bed09a7c89ea73c989be7918bf5"
+    "typography.css": "b9a758f9daf311af7be59cc7a2e96056822933cbe540acb1f08f09377f53e36e",
+    "visual-audit.js": "9d63aaf9d0c429be96f31ece56df6d8e353bef58a7ebeea1ff918e60993da9b2"
   }
 }

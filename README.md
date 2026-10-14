@@ -2,7 +2,7 @@
 
 **Separability does not certify zero-noise extrapolation: Factorial diagnostics in dynamic quantum circuits**
 
-[Open the animation](https://sushxnthd.github.io/crzne-speedrun/?present=1)
+[Open the animation](https://sushxnthd.github.io/crzne-speedrun/?present=1) · [Download the silent 1080p master](https://sushxnthd.github.io/crzne-speedrun/animation-master.mp4)
 
 1920×1080 · 30 fps · 90 seconds / 2700 frames. Aryan: 0–45 s; Sushanth: 45–90 s.
 
@@ -35,6 +35,8 @@ Useful beats: ZNE 12 s; G/L/M 22/26/30 s; factorial 34 s; interaction 39 s; posi
 - `visual-audit.js`, `scripts/qa.cjs` — every-frame browser audit and rendered-frame verification.
 - `QA_REPORT.md` — checks, fixes, and practical limits.
 
+Typography is bundled locally, with native SVG subscripts/superscripts and pinned Latin, Greek, and operator glyphs. See `fonts/README.md` for asset provenance.
+
 Earlier animation layers remain for provenance and instrument construction. The final director owns the visible composition and suppresses superseded views. All motion is a function of the timeline; wall-clock CSS transitions are disabled.
 
 ## Reproduce QA
@@ -46,7 +48,7 @@ npm run qa
 QA_ALL_FRAMES=1 npm run qa
 ```
 
-Set `CHROME=/path/to/chrome` to use an installed browser. `QA_URL` can override the default local-file preview. The full run audits all 2700 master frames at 1920×1080, checks reverse seeking, captures master/boundary frames with a speaker mask, and rasterizes every frame at 960×540 for motion review. GitHub Actions reruns the checks before deploying Pages and retains QA images, JSON, and a 90-second motion-review MP4 as the `final-animation-qa` artifact.
+Set `CHROME=/path/to/chrome` to use an installed browser. `QA_URL` can override the local preview served by the QA runner. The full run audits all 2700 master frames at 1920×1080, checks reverse seeking, captures master/boundary frames with a speaker mask, and rasterizes every frame at 1920×1080 for the full-resolution master. Set `QA_FRAME_WIDTH=960` for a smaller review export. GitHub Actions reruns the checks before deploying Pages and retains QA images, JSON, and a silent 90-second 1080p animation-master MP4 as the `final-animation-qa` artifact.
 
 ## Footage conform
 
