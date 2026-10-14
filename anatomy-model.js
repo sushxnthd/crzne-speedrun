@@ -41,12 +41,13 @@
     const s={t};
     s.visible=smooth(inv(t,3.6,5.0))*(1-smooth(inv(t,89.7,90))*.12);
 
-    // ZNE rail: nominal λ=1 -> amplified λ=3 -> inferred zero coordinate.
+    // ZNE rail: nominal λ=1 -> amplified λ=3 -> inferred zero coordinate -> calm return to nominal.
     if(t<9) s.zneX=-35;
     else if(t<13.2) s.zneX=lerp(-35,145,smooth(inv(t,9,13.2)));
     else if(t<16.2) s.zneX=lerp(145,-145,smooth(inv(t,13.2,16.2)));
+    else if(t<18.8) s.zneX=lerp(-145,-35,smooth(inv(t,16.2,18.8)));
     else s.zneX=-35;
-    s.znePhase=t<13.2?'sampling':t<16.2?'extrapolating':'rest';
+    s.znePhase=t<13.2?'sampling':t<16.2?'extrapolating':t<18.8?'returning':'rest';
 
     // Independent physical controls.
     s.g=smooth(inv(t,19.2,24.4));
@@ -68,7 +69,7 @@
     // Service panel and proof mechanism.
     s.screws=smooth(inv(t,59.8,61.0));
     s.panel=smooth(inv(t,60.8,63.0));
-    s.scan=smooth(inv(t,64.0,70.8)); // moves from λ=3 through λ=1 toward zero
+    s.scan=smooth(inv(t,64.0,70.8));
     s.camReveal=smooth(inv(t,62.5,65.0));
     s.zeroReveal=smooth(inv(t,67.4,70.5));
 
@@ -88,7 +89,7 @@
 
   function phaseOf(t){
     if(t<8) return 'research question';
-    if(t<17) return 'zero-noise extrapolation';
+    if(t<19) return 'zero-noise extrapolation';
     if(t<31.5) return 'independent noise controls';
     if(t<37) return '2³ factorial acquisition';
     if(t<45) return 'interaction diagnostic';
@@ -101,7 +102,11 @@
   function readoutOf(s){
     const t=s.t;
     if(t<8) return 'G · L · M independently controllable';
-    if(t<17) return s.znePhase==='extrapolating'?'sampled λ=1,3 · inferring λ=0':'deliberately scaling noise';
+    if(t<19){
+      if(s.znePhase==='extrapolating') return 'sampled λ=1,3 · inferring λ=0';
+      if(s.znePhase==='returning') return 'zero coordinate inferred · resetting rig';
+      return 'deliberately scaling noise';
+    }
     if(t<31.5) return `G ${1+2*s.g>2.5?'3×':'1×'} · L ${1+2*s.l>2.5?'3×':'1×'} · M ${1+2*s.m>2.5?'3':'1'}`;
     if(t<37) return `factorial condition ${s.factorial.index} / 8`;
     if(t<41.4) return 'bLM +0.0007 · 95% [−0.0033,+0.0049]';
