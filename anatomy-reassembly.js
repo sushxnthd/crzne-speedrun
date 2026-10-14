@@ -21,7 +21,6 @@
     const legend=$('#ahLegend');
 
     if(t>=77.2){
-      // Base layer supplies the fully-open pose every frame; fold that pose back to rest.
       if(panel){
         const [x,y]=parsePanelTransform(panel.getAttribute('transform'));
         panel.setAttribute('transform',`translate(${x*(1-close)} ${y*(1-close)})`);
@@ -31,18 +30,15 @@
         });
       }
       if(proof)proof.style.opacity=String(1-close);
-
-      // Interlock becomes the new active mechanism only once the service panel is nearly home.
       const inter=model.smooth(model.inv(t,79.7,81.0));
       if(interlocks)interlocks.style.opacity=String(inter);
       if(legend)legend.style.opacity=String(inter);
     }
 
-    // Give the three failed known-answer checks a restrained red mechanical signal, not a floating label.
     if(t>=49&&t<58){
       [2,3,4].forEach(i=>{
         const sh=$(`#ahShutter${i}`);
-        if(sh){sh.style.filter='url(#softGlow)';sh.style.opacity='1';}
+        if(sh){sh.style.filter='none';sh.style.opacity='1';}
       });
     }
   }
