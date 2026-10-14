@@ -9,7 +9,7 @@ The script is designed around the IRIS video priorities: communicate the innovat
 
 ## Aryan — 0:00–0:45
 
-I’m Aryan Kumar, and this is Sushanth Dasari.
+I’m Aryan Kumar, Grade [ARYAN GRADE], and this is Sushanth Dasari, Grade 12.
 
 We tested a dangerous assumption in quantum error mitigation.
 
