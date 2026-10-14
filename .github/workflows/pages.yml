@@ -1,133 +1,60 @@
-name: Deploy animation preview to GitHub Pages
-
+name: Verify every frame and deploy IRIS animation
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Validate animation scripts
-        shell: bash
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Validate all animation scripts
         run: |
-          node --check animation.js
-          node --check enhancements.js
-          node --check early-scenes.js
-          node --check scientific-polish.js
-          node --check timing-fixes.js
-          node --check transition-polish.js
-          node --check anatomy-model.js
-          node --check anatomy-hero.js
-          node --check anatomy-refine.js
-          node --check anatomy-reassembly.js
-          node --check anatomy-light.js
-          node --check anatomy-transitions.js
-          node --check visual-audit.js
-
-      - name: Prepare animation preview
-        shell: bash
+          for f in *.js scripts/*.cjs; do node --check "$f"; done
+      - name: Audit, reverse-seek check, and render all 2700 frames
         run: |
-          rm -rf _site _qa
-          mkdir -p _site _qa
-          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css anatomy-refine.js anatomy-refine.css anatomy-reassembly.js anatomy-light.css anatomy-light.js anatomy-transitions.js visual-audit.js _site/
-          sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n<link rel="stylesheet" href="anatomy-hero.css" />\n<link rel="stylesheet" href="anatomy-refine.css" />\n<link rel="stylesheet" href="anatomy-light.css" />\n</head>#' _site/index.html
-          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n<script src="anatomy-refine.js"></script>\n<script src="anatomy-reassembly.js"></script>\n<script src="anatomy-light.js"></script>\n<script src="anatomy-transitions.js"></script>\n<script src="visual-audit.js"></script>\n</body>#' _site/index.html
-          touch _site/.nojekyll
-
-      - name: Audit every rendered frame
-        shell: bash
+          export CHROME="$(command -v google-chrome || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then npx playwright install --with-deps chromium; unset CHROME; fi
+          QA_ALL_FRAMES=1 npm run qa
+      - name: Encode complete motion review
         run: |
-          python3 -m http.server 8000 --directory _site >/tmp/crzne-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          sleep 1
-          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
-          if [ -z "$CHROME" ]; then echo "No Chrome/Chromium binary available."; exit 1; fi
-          timeout 90s "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=12000 --dump-dom "http://127.0.0.1:8000/?audit=1&present=1" > _qa/audit.html 2>_qa/audit-browser.log
-          echo '--- FRAME AUDIT RESULT ---'
-          grep -A 160 'id="frameAudit"' _qa/audit.html | tail -170 || true
-          grep -q 'id="frameAudit"' _qa/audit.html
-          grep -q 'data-status="pass"' _qa/audit.html
-          grep -q 'data-frames="2700"' _qa/audit.html
-          echo "Full 2700-frame audit passed."
-
-      - name: Render film and transition QA
-        if: always()
-        shell: bash
-        run: |
-          python3 -m http.server 8001 --directory _site >/tmp/crzne-http-2.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          sleep 1
-          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
-          shot(){
-            T="$1"; TAG="${T/./_}"
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/t${TAG}.png" "http://127.0.0.1:8001/?t=${T}&present=1" >/tmp/chrome-${TAG}.log 2>&1 || true
-          }
-          for T in $(seq 0 3 90); do shot "$T"; done
-          for T in \
-            3.35 3.60 3.85 4.10 4.35 7.15 7.40 7.65 7.75 8.00 8.25 \
-            16.00 16.15 16.20 16.25 16.50 16.75 17.00 17.25 18.75 19.00 19.25 \
-            23.95 24.20 24.45 28.25 28.50 28.75 31.25 31.50 31.75 \
-            36.75 37.00 37.25 44.75 45.00 45.25 47.75 48.00 48.25 \
-            55.50 55.75 56.00 56.25 57.50 57.75 58.00 58.25 59.00 59.50 59.75 60.00 60.25 \
-            71.25 71.50 71.75 76.95 77.20 77.45 78.75 79.00 79.25 \
-            79.45 79.70 79.95 80.05 80.30 80.55 83.05 83.30 83.55 \
-            85.75 86.00 86.25 87.75 88.00 88.25 89.50; do shot "$T"; done
-          for T in 12 20 34 40 52 66 74 80.3 86 89; do
-            TAG="${T/./_}"
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/detail-${TAG}.png" "http://127.0.0.1:8001/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${TAG}.log 2>&1 || true
-          done
-          "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=900 --dump-dom "http://127.0.0.1:8001/?t=34&present=1" > _qa/dom.html 2>/tmp/chrome-dom.log || true
-          PARTS=$(grep -o 'ah-part' _qa/dom.html | wc -l | tr -d ' ')
-          echo "Anatomy rendered part groups: $PARTS"
-          test "$PARTS" -ge 100
-          grep -q 'id="captionBox"' _qa/dom.html
-          grep -q 'aria-hidden="true"' _qa/dom.html
-          grep -q 'display: none' _qa/dom.html
-          rm -f _qa/dom.html
-          ls -lh _qa | tail -30
-
-      - name: Upload QA renders
+          ffmpeg -v error -framerate 30 -i qa/frames/%04d.png -frames:v 2700 -c:v libx264 -crf 20 -pix_fmt yuv420p qa/motion-review.mp4
+      - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: qa-light-theme
+          name: final-animation-qa
           path: |
-            _qa/*.png
-            _qa/audit.html
-            _qa/audit-browser.log
-          if-no-files-found: warn
-          retention-days: 3
-
-      - name: Configure Pages
-        if: success()
-        uses: actions/configure-pages@v5
-
-      - name: Upload static site
-        if: success()
-        uses: actions/upload-pages-artifact@v3
+            qa/frame-audit.json
+            qa/key-*.png
+            qa/detail-*.png
+            qa/overlay-69.png
+            qa/motion-review.mp4
+          retention-days: 14
+      - name: Prepare canonical preview
+        run: |
+          mkdir -p _site
+          cp index.html *.js *.css timeline.json _site/
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-
-      - name: Deploy to GitHub Pages
-        if: success()
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v4

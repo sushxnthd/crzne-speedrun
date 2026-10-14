@@ -1,0 +1,129 @@
+{
+  "status": "pass",
+  "frames": 2700,
+  "fps": 30,
+  "duration": 90,
+  "maxRight": 1115.1083984375,
+  "maxJump": {
+    "value": 20.580622827223184,
+    "id": "ahSelector",
+    "frame": 1018
+  },
+  "proof": {
+    "sample1": 0,
+    "sample3": 0,
+    "zeroGap": 0.05800000000000005
+  },
+  "issues": [],
+  "browserErrors": [],
+  "seekChecks": 28,
+  "maxSeekEdgePixels": 457,
+  "rasterFrames": 2700,
+  "transparentSpeakerPixels": 756000,
+  "pixel_motion_review": {
+    "frames_analyzed": 2700,
+    "speaker_region_max_colour_delta": 2,
+    "minimum_ink": {
+      "mean": 0.6379781420765027,
+      "frame": 120
+    },
+    "largest_adjacent_frame_changes": [
+      {
+        "mean_channel_change": 2.3832156952034,
+        "frame": 1675,
+        "seconds": 55.833333333333336
+      },
+      {
+        "mean_channel_change": 2.365930479659988,
+        "frame": 1674,
+        "seconds": 55.8
+      },
+      {
+        "mean_channel_change": 2.364102661404574,
+        "frame": 1672,
+        "seconds": 55.733333333333334
+      },
+      {
+        "mean_channel_change": 2.330999544626594,
+        "frame": 1673,
+        "seconds": 55.766666666666666
+      },
+      {
+        "mean_channel_change": 2.20054771301356,
+        "frame": 1676,
+        "seconds": 55.86666666666667
+      },
+      {
+        "mean_channel_change": 2.1998773021655533,
+        "frame": 1671,
+        "seconds": 55.7
+      },
+      {
+        "mean_channel_change": 2.0800634992916414,
+        "frame": 1677,
+        "seconds": 55.9
+      },
+      {
+        "mean_channel_change": 1.886042805100182,
+        "frame": 1670,
+        "seconds": 55.666666666666664
+      },
+      {
+        "mean_channel_change": 1.8499101902448898,
+        "frame": 2555,
+        "seconds": 85.16666666666667
+      },
+      {
+        "mean_channel_change": 1.8257121534102407,
+        "frame": 2556,
+        "seconds": 85.2
+      },
+      {
+        "mean_channel_change": 1.7802254098360655,
+        "frame": 2554,
+        "seconds": 85.13333333333334
+      },
+      {
+        "mean_channel_change": 1.7798838797814207,
+        "frame": 2557,
+        "seconds": 85.23333333333333
+      }
+    ]
+  },
+  "motion_review": {
+    "duration_seconds": 90,
+    "fps": 30,
+    "frames": 2700,
+    "resolution": [
+      960,
+      540
+    ]
+  },
+  "master_boundary_captures": 91,
+  "source_sha256": {
+    "SCRIPT.md": "7edb12e12fcb059a21ce81b066e823a8e982415304367629e30871513b62cf8a",
+    "anatomy-hero.css": "7de148641ffc76b8df2199cbad4c430d1f9df8ee39abfc5ba8ebc03606f83b02",
+    "anatomy-hero.js": "5f33362763a4dfb8ceb582aacd177086dff130adfb32e9d92f3e7340f92e833a",
+    "anatomy-light.css": "1821066e828a42e670765252cbb5617f352e6936244c6762ade1a9d940ee92f0",
+    "anatomy-light.js": "2dea580cf8b151ed858a726f70c0728eae0300eb0af59668215a8e9ccd62fd35",
+    "anatomy-model.js": "34959d1a2a000cb0918bdb62de4292c626f872a2f643ac8eb354a15ae801eacb",
+    "anatomy-reassembly.js": "783c981754bf796e750df15406e6bd1756885124de30d2936c3e7dcd6c5d5834",
+    "anatomy-refine.css": "502c6a7eb414a45a0ca1b9ff04bc9437b7332c85e05c1df6f72c927151ceba2f",
+    "anatomy-refine.js": "3f83967275c3e7f55d2195269a65e14abbbc5445b68bdedbb1a27134099f5aaf",
+    "anatomy-transitions.js": "06c22a0088e57cc29be7c4293f4ae340f4e74ef6b25b85920b125d3feebeafa0",
+    "animation.js": "26e11fba7e45ebd541c3871e1a88996ca1063a86c7014ea68f1c85ae1836032e",
+    "early-scenes.js": "790ba9f2b27a1d3d16e39ff87dc6f591c40bb69eb82740ce1be22e1f97ecc21b",
+    "enhancements.css": "14f3a16cde8c8d8cf01a6c80a98e8cde34f487b412acae066a07d7655d23f163",
+    "enhancements.js": "bdf82e1520a1caef7c2146a10472c7e05ef31944e44d819d473d23c4288281b9",
+    "final-director.css": "59c40c74a7d72aadea532363252e820b02ba260d607981da6bed06a3142865ef",
+    "final-director.js": "323b6b92f7810ff13358e14ab4e89957a37b73579f4af61e37b76731ed1e4610",
+    "index.html": "5c3f789e049ae6d288be6579ff8e59704e20bcc86f866a0cbafd782738ab9fc8",
+    "scientific-polish.js": "d43d81c4307961fd32fb381a09d4296edba4e13d5b169d26781e1ba6b00484ce",
+    "scripts/qa.cjs": "35488356f1a0d94de91c12d42a6ff15a034bec7df8f909624317b3ec0b0b1556",
+    "styles.css": "d9baff26cf7254858591162678eb2a7c72fe0548bee6a9bccb0ae90fc17a0ece",
+    "timeline.json": "ce76edf1a7e3d2ea2acc1b305a018d7c2f8970f16c0b5c106f63bb291574e060",
+    "timing-fixes.js": "e7d93fb38e68850063c79827ca41387afdd04864f4e86d19fbdd4b6cf29c6cad",
+    "transition-polish.js": "5cbd9387ed3b865ef7aabc49de2cebab6b1523ad32d9fa85a3f5fe88769dcd5d",
+    "visual-audit.js": "38c17eb5702897d01c36ab4d3b126d4c83ed0bed09a7c89ea73c989be7918bf5"
+  }
+}

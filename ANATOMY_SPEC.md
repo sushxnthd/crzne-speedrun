@@ -224,3 +224,7 @@ Card-level information:
 - No floating label stands in for mechanism.
 - No quantitative visual invents hardware data not present in the paper.
 - QA screenshots at key master times: 12, 24, 34, 40, 52, 58, 66, 74, 84, 89 seconds.
+
+## Canonical final-production override
+
+The newer `STORYBOARD.md` and locked `SCRIPT.md` supersede this original full-screen rig specification wherever composition, colour, captions, or timing differ. Final production uses the left visual panel and right human safe zone, light paper / warm neutrals / orange, no narration strip, multiple coordinated explanatory views, and the exact beat boundaries in `timeline.json`. The original instrument remains the geometry source for physical control closeups, the factorial cage, service panel, and interlock. Mathematical curves are rendered from the explicit polynomial construction in `final-director.js`, rather than treating the earlier piecewise cam sketch as a numeric model.

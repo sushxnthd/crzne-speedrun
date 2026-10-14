@@ -67,22 +67,22 @@
     s.coverage=['contains','contains','excludes','excludes','excludes','contains'];
 
     // Service panel and proof mechanism.
-    s.screws=smooth(inv(t,59.8,61.0));
+    s.screws=smooth(inv(t,59.0,59.7));
     s.panel=smooth(inv(t,60.8,63.0));
     s.scan=smooth(inv(t,64.0,70.8));
     s.camReveal=smooth(inv(t,62.5,65.0));
     s.zeroReveal=smooth(inv(t,67.4,70.5));
 
     // More shots shrink uncertainty at sampled positions, not zero-limit ambiguity.
-    s.shotP=smooth(inv(t,71.5,78.8));
+    s.shotP=smooth(inv(t,71.5,76.8));
     s.shots=Math.round(20000*Math.pow(50,s.shotP));
     s.jaw=lerp(1,.14,s.shotP);
 
     // Final three-key interlock.
-    s.key1=smooth(inv(t,79.0,82.2));
-    s.key2=smooth(inv(t,83.3,86.0));
-    s.key3=smooth(inv(t,86.0,88.0));
-    s.latch=s.key1*s.key2*s.key3;
+    s.key1=smooth(inv(t,79.0,81.0));
+    s.key2=smooth(inv(t,85.3,86.7));
+    s.key3=smooth(inv(t,87.0,88.2));
+    s.latch=smooth(inv(t,88.2,89.0)); // All three keys have fully seated before release begins.
 
     return s;
   }

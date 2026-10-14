@@ -1,0 +1,6 @@
+qa/
+node_modules/
+_site/
+
+qa-final/
+qa-verified/

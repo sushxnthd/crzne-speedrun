@@ -15,20 +15,96 @@ const set=(id,attrs)=>{const el=typeof id==='string'?$(id):id;Object.entries(att
 const fmtTime=t=>`${String(Math.floor(t/60)).padStart(2,'0')}:${String(Math.floor(t%60)).padStart(2,'0')}.${Math.floor((t%1)*10)}`;
 
 const lines=[
- [0,4.0,'ARYAN','I’m Aryan Kumar, Grade [ARYAN GRADE], and this is Sushanth Dasari, Grade 12.'],
- [4.0,8.0,'ARYAN','We tested a dangerous assumption in quantum error mitigation.'],
- [8.0,16.0,'ARYAN','Zero-noise extrapolation makes a quantum computer deliberately noisier, measures how the output changes, then extrapolates backward toward zero noise.'],
- [16.0,19.0,'ARYAN','But dynamic circuits contain several distinct error sources.'],
- [19.0,34.0,'ARYAN','On IBM quantum processors, we independently amplified gate operations, feedforward latency, and mid-circuit measurements, then ran every low–high combination in a pre-specified two-to-the-three factorial experiment across circuits with known ideal answers.'],
- [34.0,42.0,'ARYAN','Our primary latency–measurement interaction was only 0.0007.'],
- [42.0,45.0,'ARYAN','A planned positive control also recovered interactions we deliberately injected.'],
- [45.0,47.5,'SUSHANTH','That looked reassuring.'],
- [47.5,56.0,'SUSHANTH','But when we actually extrapolated, all five original strategies excluded the known ideal value for three of six observables.'],
- [56.0,58.0,'SUSHANTH','Why?'],
- [58.0,71.5,'SUSHANTH','We proved that measurements at only two measurement-noise levels do not uniquely determine the zero-noise limit. Different response curves can match every sampled point and still extrapolate to different answers.'],
- [71.5,79.0,'SUSHANTH','More shots at those same settings only make the sampled points more precise; they cannot remove that ambiguity.'],
- [79.0,84.0,'SUSHANTH','So separability is a diagnostic, not a certificate.'],
- [84.0,90.0,'SUSHANTH','Reliable zero-noise extrapolation also requires a justified response model and a calibrated zero-noise target.']
+  [
+    0,
+    4,
+    "ARYAN",
+    "I’m Aryan Kumar, and with me is Sushanth Dasari of grade 12th."
+  ],
+  [
+    4,
+    14.5,
+    "ARYAN",
+    "Here’s a strange way quantum computers fight noise: make the machine deliberately noisier, watch how its answer changes, then extrapolate backward to what a perfect circuit should have produced."
+  ],
+  [
+    14.5,
+    16,
+    "ARYAN",
+    "That’s zero-noise extrapolation."
+  ],
+  [
+    16,
+    31.5,
+    "ARYAN",
+    "But dynamic quantum circuits combine several error sources at once. So on IBM quantum processors, we built independent controls for three of them: gate operations, feedforward latency, and mid-circuit measurements."
+  ],
+  [
+    31.5,
+    37,
+    "ARYAN",
+    "We tested every low–high combination in a pre-specified 2^3 factorial experiment on circuits whose correct answers we already knew."
+  ],
+  [
+    37,
+    45,
+    "ARYAN",
+    "And initially, it worked exactly as we hoped. Our primary latency–measurement interaction was only 0.0007, while a positive control successfully recovered interactions we deliberately injected."
+  ],
+  [
+    45,
+    46.8,
+    "SUSHANTH",
+    "That should have been reassuring."
+  ],
+  [
+    46.8,
+    48,
+    "SUSHANTH",
+    "It wasn’t."
+  ],
+  [
+    48,
+    56,
+    "SUSHANTH",
+    "When we actually extrapolated to zero noise, all five original strategies excluded the correct answer for three of six observables."
+  ],
+  [
+    56,
+    60,
+    "SUSHANTH",
+    "So we asked: how can the noise look separable, yet the correction still be wrong?"
+  ],
+  [
+    60,
+    62,
+    "SUSHANTH",
+    "We proved the reason mathematically."
+  ],
+  [
+    62,
+    71.5,
+    "SUSHANTH",
+    "With only two sampled measurement-noise levels, different response curves can pass through every measurement we made and still predict different values at zero noise."
+  ],
+  [
+    71.5,
+    77.5,
+    "SUSHANTH",
+    "And collecting more shots at those same points cannot tell those curves apart."
+  ],
+  [
+    77.5,
+    85,
+    "SUSHANTH",
+    "Separability is evidence about the measurements we observed. It is not a certificate that the unmeasured zero-noise answer is correct."
+  ],
+  [
+    85,
+    90,
+    "SUSHANTH",
+    "Reliable ZNE therefore needs three things kept separate: interaction diagnostics, a justified response model, and a calibrated zero-noise target."
+  ]
 ];
 
 const groups=['#intro','#machine','#question','#zne','#modules','#cubeScene','#interactionScene','#resultsScene','#whyScene','#cutawayScene','#shotsScene','#finalScene'];

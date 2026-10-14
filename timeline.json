@@ -1,22 +1,186 @@
 {
   "fps": 30,
   "duration_seconds": 90,
-  "resolution": [1920,1080],
-  "narrators": {"0-45":"Aryan Kumar","45-90":"Sushanth Dasari"},
+  "resolution": [
+    1920,
+    1080
+  ],
+  "speaker_safe_zone": [
+    1220,
+    0,
+    1920,
+    1080
+  ],
+  "critical_content_bounds": [
+    60,
+    75,
+    1160,
+    1005
+  ],
+  "narrators": {
+    "0-45": "Aryan Kumar",
+    "45-90": "Sushanth Dasari"
+  },
   "scenes": [
-    {"id":"intro","start":0,"end":4,"frames":[0,119],"owner":"Aryan","purpose":"identify researchers and establish human ownership"},
-    {"id":"zne-hook","start":4,"end":15,"frames":[120,449],"owner":"Aryan","purpose":"make ZNE intuitive: worsen noise, measure response, infer zero"},
-    {"id":"components","start":15,"end":32,"frames":[450,959],"owner":"Aryan","purpose":"reveal independently amplified G/L/M noise controls"},
-    {"id":"factorial","start":32,"end":38,"frames":[960,1139],"owner":"Aryan","purpose":"pre-specified 2^3 design and all eight conditions"},
-    {"id":"interaction-and-control","start":38,"end":45,"frames":[1140,1349],"owner":"Aryan","purpose":"bLM = 0.0007 plus injected-interaction positive control"},
-    {"id":"reassurance","start":45,"end":48.5,"frames":[1350,1454],"owner":"Sushanth","purpose":"quiet apparent-success state and reversal"},
-    {"id":"failure","start":48.5,"end":56,"frames":[1455,1679],"owner":"Sushanth","purpose":"all five original strategies exclude ideal for 3 of 6 observables"},
-    {"id":"why","start":56,"end":60,"frames":[1680,1799],"owner":"Sushanth","purpose":"pose the contradiction and open the mechanism"},
-    {"id":"proof-transition","start":60,"end":62,"frames":[1800,1859],"owner":"Sushanth","purpose":"move from empirical failure to mathematical explanation"},
-    {"id":"identifiability-proof","start":62,"end":71,"frames":[1860,2129],"owner":"Sushanth","purpose":"same sampled points, different zero-noise continuations"},
-    {"id":"more-shots","start":71,"end":76,"frames":[2130,2279],"owner":"Sushanth","purpose":"statistical precision shrinks while model ambiguity remains"},
-    {"id":"meaning-of-small-interaction","start":76,"end":80,"frames":[2280,2399],"owner":"Sushanth","purpose":"separate local factorial diagnostics from global extrapolation validity"},
-    {"id":"separability-not-certificate","start":80,"end":86,"frames":[2400,2579],"owner":"Sushanth","purpose":"engage separability interlock alone; output remains uncertified"},
-    {"id":"three-requirements","start":86,"end":90,"frames":[2580,2699],"owner":"Sushanth","purpose":"model validity and zero calibration join separability; final thesis"}
+    {
+      "id": "identity",
+      "start": 0,
+      "end": 4,
+      "frames": [
+        0,
+        119
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "zne",
+      "start": 4,
+      "end": 16,
+      "frames": [
+        120,
+        479
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "controls-wide",
+      "start": 16,
+      "end": 20,
+      "frames": [
+        480,
+        599
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "gate",
+      "start": 20,
+      "end": 24,
+      "frames": [
+        600,
+        719
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "latency",
+      "start": 24,
+      "end": 28,
+      "frames": [
+        720,
+        839
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "measurement",
+      "start": 28,
+      "end": 31.5,
+      "frames": [
+        840,
+        944
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "factorial",
+      "start": 31.5,
+      "end": 37,
+      "frames": [
+        945,
+        1109
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "interaction",
+      "start": 37,
+      "end": 41.5,
+      "frames": [
+        1110,
+        1244
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "positive-control",
+      "start": 41.5,
+      "end": 45,
+      "frames": [
+        1245,
+        1349
+      ],
+      "owner": "Aryan"
+    },
+    {
+      "id": "reversal",
+      "start": 45,
+      "end": 48,
+      "frames": [
+        1350,
+        1439
+      ],
+      "owner": "Sushanth"
+    },
+    {
+      "id": "coverage",
+      "start": 48,
+      "end": 56,
+      "frames": [
+        1440,
+        1679
+      ],
+      "owner": "Sushanth"
+    },
+    {
+      "id": "service-panel",
+      "start": 56,
+      "end": 60,
+      "frames": [
+        1680,
+        1799
+      ],
+      "owner": "Sushanth"
+    },
+    {
+      "id": "proof",
+      "start": 60,
+      "end": 71.5,
+      "frames": [
+        1800,
+        2144
+      ],
+      "owner": "Sushanth"
+    },
+    {
+      "id": "precision",
+      "start": 71.5,
+      "end": 77.5,
+      "frames": [
+        2145,
+        2324
+      ],
+      "owner": "Sushanth"
+    },
+    {
+      "id": "interpretation",
+      "start": 77.5,
+      "end": 85,
+      "frames": [
+        2325,
+        2549
+      ],
+      "owner": "Sushanth"
+    },
+    {
+      "id": "requirements",
+      "start": 85,
+      "end": 90,
+      "frames": [
+        2550,
+        2699
+      ],
+      "owner": "Sushanth"
+    }
   ]
 }
