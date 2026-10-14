@@ -30,6 +30,7 @@ jobs:
           node --check animation.js
           node --check enhancements.js
           node --check early-scenes.js
+          node --check scientific-polish.js
           node --check timing-fixes.js
 
       - name: Prepare animation preview
@@ -37,10 +38,10 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js timing-fixes.js _site/
+          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js _site/
           # Keep the stable base build untouched; inject iterative animation layers only in the live preview.
           sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n</head>#' _site/index.html
-          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="timing-fixes.js"></script>\n</body>#' _site/index.html
+          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n</body>#' _site/index.html
           touch _site/.nojekyll
 
       - name: Configure Pages
