@@ -4,14 +4,14 @@
   --anatomy-shade-0:#d4cfc6;--anatomy-shade-1:#dfdad1;--anatomy-shade-2:#e9e5dd;--anatomy-shade-3:#f2efe9;
   --anatomy-face:#f5f2ec;--anatomy-lit:#e8752b;--anatomy-lit-top:#f7a36b;--anatomy-lit-shade:#c95a1d;
   --anatomy-hi:#30312e;--anatomy-mid:#66655f;--anatomy-lo:#96938b;--anatomy-faint:#c9c4ba;
-  --anatomy-danger:#bf5140;--anatomy-track-b:#6e6961;
+  --anatomy-track-b:#6e6961;
 }
 html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 .stage-wrap{background:var(--anatomy-card)!important}
 #stage>rect:first-of-type{fill:var(--anatomy-card)!important}
 #grid{opacity:.15!important}#grid path{stroke:#d0cbc1!important}
 .headline,.mega,.subhead,.value,.small,.micro,.caption{fill:#292a27!important}
-.dim{fill:#77766f!important}.accent{fill:var(--accent)!important}.warn{fill:var(--warn)!important}
+.dim{fill:#77766f!important}.accent{fill:var(--accent)!important}.warn{fill:var(--accent)!important}
 .kicker{fill:var(--accent)!important}
 .controls{background:#fbfaf6!important;border-top-color:#d8d3ca!important;color:#4f504b!important}
 .controls button{background:#fffdfa!important;color:#30312e!important;border-color:#c9c4ba!important}
@@ -31,13 +31,13 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #stage .enhancement-micro{fill:#7d7a72!important}
 #stage .proof-cyan{fill:var(--accent)!important;stroke:var(--accent)!important}
 #stage .proof-amber{fill:#b86125!important;stroke:#b86125!important}
-#stage .proof-red{fill:var(--anatomy-danger)!important;stroke:var(--anatomy-danger)!important}
+#stage .proof-red{fill:var(--accent)!important;stroke:#a84615!important}
 #stage .thin-grid{stroke:#d2ccc2!important}
 #stage .sample-lock{fill:#fffdfa!important;stroke:#8b877f!important}
 #stage .proof-region{fill:var(--accent)!important;fill-opacity:.035!important;stroke:var(--accent)!important;stroke-opacity:.35!important}
 #stage .scan-line{stroke:#8b877f!important}.scan-head{fill:var(--accent)!important;filter:none!important}
 #stage .ambiguity-bracket{stroke:var(--accent)!important}.ideal-halo{fill:var(--accent)!important;stroke:var(--accent)!important}
-#stage .failure-chip{fill:#fbefec!important;stroke:#c97869!important}.success-chip{fill:#fff6ed!important;stroke:#db9b6c!important}
+#stage .failure-chip{fill:#fff3e9!important;stroke:#d88950!important}.success-chip{fill:#fffdfa!important;stroke:#aaa49a!important}
 #anatomyHero .ah-top{fill:var(--anatomy-top);stroke:var(--anatomy-mid);stroke-width:1.05}
 #anatomyHero .ah-x{fill:var(--anatomy-shade-2);stroke:#8d8981;stroke-width:1.05}
 #anatomyHero .ah-y{fill:var(--anatomy-shade-1);stroke:#8a867e;stroke-width:1.05}
@@ -52,8 +52,7 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #anatomyHero .ah-glass{fill:var(--accent);fill-opacity:.045;stroke:var(--accent);stroke-opacity:.26}
 #anatomyHero .ah-accent-line{stroke:var(--accent);stroke-width:2.2;filter:none!important}
 #anatomyHero .ah-amber-line{stroke:var(--accent)}
-#anatomyHero .ah-red{fill:var(--anatomy-danger);stroke:#8f3f32;filter:none!important}
-#anatomyHero .ah-amber,#anatomyHero .ah-cyan{fill:var(--accent);stroke:#b95b20;filter:none!important}
+#anatomyHero .ah-red,#anatomyHero .ah-amber,#anatomyHero .ah-cyan{fill:var(--accent);stroke:#b95b20;filter:none!important}
 #anatomyHero .ah-engrave{fill:#6d6b64}
 #anatomyHero .ah-card-kicker{fill:#77736b}
 #anatomyHero .ah-card-title{fill:#2c2d2a}
@@ -84,13 +83,10 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #anatomyHero .ah-follower{fill:#fffdfa;stroke:#56554f}
 #anatomyHero .ah-jaw{stroke:var(--accent)}
 #anatomyHero .ah-latch-on .ah-top{fill:#f29a60;stroke:#b95117}
-
-/* High-specificity reset for dark refinement rules: proof + interlock stay on the same paper material system. */
 #anatomyHero #ahProof.ah-lit .ah-top,#anatomyHero #ahInterlocks.ah-lit .ah-top{fill:var(--anatomy-shade-3)!important;stroke:#77746d!important}
 #anatomyHero #ahProof.ah-lit .ah-x,#anatomyHero #ahInterlocks.ah-lit .ah-x{fill:var(--anatomy-shade-2)!important;stroke:#8d8981!important}
 #anatomyHero #ahProof.ah-lit .ah-y,#anatomyHero #ahInterlocks.ah-lit .ah-y{fill:var(--anatomy-shade-1)!important;stroke:#8a867e!important}
 #anatomyHero #ahProof.ah-lit .ah-line,#anatomyHero #ahInterlocks.ah-lit .ah-line{stroke:#6f6c65!important}
 #anatomyHero #ahProof.ah-lit .ah-hi,#anatomyHero #ahInterlocks.ah-lit .ah-hi{fill:var(--anatomy-shade-3)!important;stroke:#77746d!important}
 #anatomyHero #ahProof.ah-lit .ah-lo,#anatomyHero #ahInterlocks.ah-lit .ah-lo{fill:var(--anatomy-shade-0)!important;stroke:#8e8a82!important}
-
 #ahFrame{opacity:1}#ahLegend circle{filter:none!important}
