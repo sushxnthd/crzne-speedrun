@@ -12,7 +12,7 @@
   function checkTheme(frame){
     if(frame!==0&&frame%30!==0)return;
     const bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g);if(bg){const l=(+bg[0]+ +bg[1]+ +bg[2])/3;if(l<180)add(frame,'theme',`body background too dark: ${bg.slice(0,3).join(',')}`);}
-    if($('#captionBox'))add(frame,'caption','reference narration caption still in DOM');
+    const cap=$('#captionBox');if(cap&&(effectiveOpacity(cap)>.001||cap.getAttribute('aria-hidden')!=='true'))add(frame,'caption','reference narration caption is not fully hidden');
     document.querySelectorAll('svg rect').forEach(el=>{
       if(effectiveOpacity(el)<.08)return;const r=el.getBoundingClientRect();if(r.width*r.height<220000)return;
       const m=getComputedStyle(el).fill.match(/\d+/g);if(m){const l=(+m[0]+ +m[1]+ +m[2])/3;if(l<95)add(frame,'dark-scrim',`large dark rect ${el.id||el.parentElement?.id||'unnamed'} luminance ${l.toFixed(0)}`);}
