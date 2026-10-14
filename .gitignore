@@ -7,3 +7,10 @@ qa-verified/
 qa-polish/
 qa-type-final/
 qa-hd-polish/
+
+qa-content/
+qa-recorded/
+
+__pycache__/
+
+qa-recorded-check/

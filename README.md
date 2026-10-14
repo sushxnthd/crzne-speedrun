@@ -2,11 +2,13 @@
 
 **Separability does not certify zero-noise extrapolation: Factorial diagnostics in dynamic quantum circuits**
 
-[Open the animation](https://sushxnthd.github.io/crzne-speedrun/?present=1) · [Download the silent 1080p master](https://sushxnthd.github.io/crzne-speedrun/animation-master.mp4)
+[Open the recording-conformed animation](https://sushxnthd.github.io/crzne-speedrun/?recorded=1&present=1) · [Nominal animation](https://sushxnthd.github.io/crzne-speedrun/?present=1) · [Download the silent 1080p master](https://sushxnthd.github.io/crzne-speedrun/animation-master.mp4)
 
 1920×1080 · 30 fps · 90 seconds / 2700 frames. Aryan: 0–45 s; Sushanth: 45–90 s.
 
-The locked narration in `SCRIPT.md` and the split-screen `STORYBOARD.md` are canonical. Anatomy supplies the physical controls and interlock; Papermorph directing supplies the coordinated diagram, cutaway, and mechanical transitions. Critical content stays within x=60–1160; x=1220–1920 is reserved for the recorded speaker. Warm paper, neutral metals, orange active accents; no narration captions.
+The recording-conformed cut is 89.8 seconds / 2694 frames, with Aryan at 1.1×, Sushanth at original speed, and a speaker handoff at 42 seconds. Full-screen diagrams alternate with speaker-right scenes. Colors encode scientific roles: measured blue, alternative violet, latency amber, failed-coverage vermilion, and requirement teal. Brief paper notes add context without narration subtitles.
+
+The locked script remains unchanged as the recording draft. The supplied takes and `recording-timeline.json` determine the edited timing. Anatomy and Papermorph remain the visual direction. In speaker scenes critical visuals remain left of x=1160; full-screen scenes expand the framing.
 
 ## Preview and compositing
 
@@ -16,7 +18,8 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000`. Local preview and GitHub Pages load the exact same scripts, with no deployment-only injection.
 
-- `?present=1` — clean master without player controls.
+- `?present=1` — clean nominal master without player controls.
+- `?recorded=1&present=1` — actual-speech timing, wider visual beats, and explanatory notes.
 - `?t=69&present=1` — precise timestamp; scrubber uses the 30 fps master.
 - `?autoplay=1&present=1` — full motion preview.
 - `?safe=1&present=1` — simulated right-side speaker mask.
@@ -52,4 +55,4 @@ Set `CHROME=/path/to/chrome` to use an installed browser. `QA_URL` can override 
 
 ## Footage conform
 
-This is the finished nominal animation master. Final speech synchronization follows the actual recorded waveform once the two clips are supplied. Preserve the right-side framing and the locked narration when conforming the scene timings; final submitted runtime must be ≤90 seconds.
+The supplied recordings have been conformed, cropped to the speaker region, and balanced in loudness for the separately delivered narrated video. Raw recordings are external to this repository. See `RECORDED_EDIT.md` and `recording-timeline.json`. Run `scripts/render-recorded.cjs` to audit/render all 2694 transparent frames; use `scripts/composite-recorded.py` with externally supplied aligned camera and narration tracks.

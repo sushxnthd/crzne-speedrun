@@ -1,0 +1,30 @@
+/* Role, rather than decorative accent: measured blue, alternative violet,
+   latency amber, failed coverage vermilion, requirements teal. */
+#finalFilm{--measured:#286a94;--alternative:#76529c;--latency:#ae7627;--failed:#bd4b37;--requirement:#26796c}
+#finalFilm .fd-track{stroke:var(--measured)}
+#finalFilm .fd-track-b{stroke:var(--alternative)}
+#finalFilm .fd-excluded{stroke:var(--failed)}
+#finalFilm #fdZNE #fdNoiseCarriage~text{fill:var(--measured)}
+#finalFilm #fdZeroLimits .fd-track{stroke:var(--alternative)}
+#finalFilm #fdPrimary .fd-number{fill:var(--measured)}
+#finalFilm #fdPositiveControl circle{fill:var(--requirement)}
+#finalFilm #fdNoiseCarriage .fd-metal{fill:#d5e4ed;stroke:var(--measured)}
+#finalFilm #ahG .ah-subject-lit .ah-top{fill:#a8c9dd;stroke:#286a94}
+#finalFilm #ahG .ah-subject-lit .ah-x{fill:#6098b8;stroke:#286a94}
+#finalFilm #ahG .ah-subject-lit .ah-y{fill:#477f9f;stroke:#286a94}
+#finalFilm #ahL .ah-subject-lit .ah-top{fill:#e8c58e;stroke:#ae7627}
+#finalFilm #ahL .ah-subject-lit .ah-x{fill:#cf9d51;stroke:#966220}
+#finalFilm #ahL .ah-subject-lit .ah-y{fill:#b7853f;stroke:#966220}
+#finalFilm #ahM .ah-subject-lit .ah-top{fill:#ccbadf;stroke:#76529c}
+#finalFilm #ahM .ah-subject-lit .ah-x{fill:#a38abe;stroke:#76529c}
+#finalFilm #ahM .ah-subject-lit .ah-y{fill:#876aa6;stroke:#604080}
+#finalFilm #ahInterlocks .ah-subject-lit .ah-top{fill:#b8d8ce!important;stroke:#26796c!important}
+#finalFilm #ahInterlocks .ah-subject-lit .ah-x{fill:#6cab9b!important;stroke:#26796c!important}
+#finalFilm #ahInterlocks .ah-subject-lit .ah-y{fill:#4a9382!important;stroke:#26796c!important}
+#finalFilm #ahInterlocks.ah-latch-on #ahLatch .ah-top{fill:#b8d8ce!important}
+#finalFilm #fdKeyLabels .fd-accent{fill:var(--requirement)}
+#recordedNotes text{font-family:"CRZNE Inter",sans-serif;fill:#30312e;font-size:25px;line-height:1.5}
+#recordedNotes .recorded-note-title{font-size:19px;font-weight:740;letter-spacing:1.8px;fill:#6b6860}
+#recordedNotes .recorded-note-body{font-size:25px;font-weight:500}
+#recordedNotes .recorded-note-ref{font-size:19px;fill:#6b6860}
+#recordedFootnote{font:500 21px "CRZNE Inter",sans-serif;fill:#55564e}

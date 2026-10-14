@@ -39,6 +39,10 @@ jobs:
             sudo apt-get install -y ffmpeg
           fi
           ffmpeg -v error -framerate 30 -i qa/frames/%04d.png -frames:v 2700 -c:v libx264 -crf 17 -pix_fmt yuv420p -movflags +faststart qa/animation-master.mp4
+      - name: Verify recording-conformed framing and typography
+        run: |
+          export CHROME="$(command -v google-chrome || command -v chromium || true)"
+          QA_OUT=qa-recorded node scripts/render-recorded.cjs
       - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -50,11 +54,13 @@ jobs:
             qa/detail-*.png
             qa/overlay-69.png
             qa/animation-master.mp4
+            qa-recorded/frame-audit.json
+            qa-recorded/key-*.png
           retention-days: 14
       - name: Prepare canonical preview
         run: |
           mkdir -p _site
-          cp index.html *.js *.css timeline.json _site/
+          cp index.html *.js *.css timeline.json recording-timeline.json _site/
           cp -R fonts _site/
           cp qa/animation-master.mp4 _site/
           touch _site/.nojekyll

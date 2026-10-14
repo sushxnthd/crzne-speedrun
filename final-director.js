@@ -28,8 +28,9 @@
     ['service-panel',56,60],['proof',60,71.5],['precision',71.5,77.5],
     ['interpretation',77.5,85],['requirements',85,90]
   ];
-  const A=lambda=>1-.04*lambda-.008*lambda*lambda;
-  const B=lambda=>A(lambda)-(.058/3)*(lambda-1)*(lambda-3);
+  // Sec. II C / Eq. (7): f = ln E, c = −0.02, with G=L=0 in this slice.
+  const A=lambda=>Math.exp(-.05*lambda);
+  const B=lambda=>Math.exp(-.05*lambda-.02*(lambda-1)*(lambda-3));
   const xy=(lambda,f)=>[260+220*lambda,370+(1-f)*1000];
   const curve=(fn,a=0,b=3)=>Array.from({length:121},(_,i)=>{const p=xy(L(a,b,i/120),fn(L(a,b,i/120)));return`${i?'L':'M'}${p[0]} ${p[1]}`}).join(' ');
   const R={},centers={},textGates=[],keyCenters=[];
@@ -83,26 +84,26 @@
       math(R.control,96,y+66,['Δ = '+signed(recovered-expected,4)],'fd-small');R.controlPairs.push({marker,ex,rx});
     });text(R.control,96,835,'Positive control recovered injected interactions','fd-small');
     // Qualitative coverage cartridges deliberately have no invented hardware magnitudes.
-    R.bank=g(root,'fdCoverage');R.cards=[];['contains','contains','excludes','excludes','excludes','contains'].forEach((status,i)=>{
+    R.bank=g(root,'fdCoverage');R.cards=[];['excludes','excludes','mixed','mixed','excludes','mixed'].forEach((status,i)=>{
       const x=96+(i%3)*325,y=385+Math.floor(i/3)*205,q=g(R.bank,'fdObservable'+i);q.dataset.coverage=status;
       add(q,'path',{d:`M${x} ${y}h282l12 12v145h-282l-12-12z`,class:'fd-metal'});add(q,'rect',{x,y,width:282,height:145,rx:8,class:'fd-paper'});
       [[x+12,y+12],[x+270,y+12],[x+12,y+133],[x+270,y+133]].forEach(([cx,cy])=>add(q,'circle',{cx,cy,r:3,fill:'#9b968c'}));
-      math(q,x+20,y+35,[['O','variable'],[String(i+1),'subscript']],'fd-small');const ideal=x+135;line(q,`M${ideal} ${y+50}v58`,'fd-line',{'stroke-dasharray':'3 5'});
-      const lo=status==='excludes'?x+170:x+93,hi=status==='excludes'?x+241:x+177;
-      line(q,`M${lo} ${y+78}H${hi}M${lo} ${y+66}v24M${hi} ${y+66}v24`,status==='excludes'?'fd-track':'fd-line');
-      text(q,x+20,y+128,status==='excludes'?'IDEAL EXCLUDED':'IDEAL CONTAINED','fd-small');
-      add(q,'circle',{cx:x+248,cy:y+31,r:6,fill:status==='excludes'?'#e8752b':'#9b968c'});R.cards.push(q);
+      text(q,x+20,y+35,['Probe spectator','Probe feedforward','Teleport target','Teleport spectator','GHZ parity','GHZ spectator'][i],'fd-small');const ideal=x+135;line(q,`M${ideal} ${y+50}v58`,'fd-line',{'stroke-dasharray':'3 5'});
+      const lo=status==='excludes'?x+43:x+93,hi=status==='excludes'?x+114:x+177;
+      line(q,`M${lo} ${y+78}H${hi}M${lo} ${y+66}v24M${hi} ${y+66}v24`,status==='excludes'?'fd-track fd-excluded':'fd-line');
+      text(q,x+20,y+128,status==='excludes'?'ALL FIVE EXCLUDE':'NOT ALL EXCLUDE','fd-small');
+      add(q,'circle',{cx:x+248,cy:y+31,r:6,fill:status==='excludes'?'#bd4b37':'#9b968c'});R.cards.push(q);
     });text(R.bank,96,313,'3 / 6','fd-number');text(R.bank,330,311,'IDEAL EXCLUDED','fd-label');text(R.bank,96,864,'All five original extrapolation strategies','fd-label');text(R.bank,96,906,'Coverage schematic · no estimate magnitudes','fd-small');
     R.why=g(root,'fdWhy');text(R.why,96,310,'WHY?','fd-number');
-    // True polynomial counterexample, not piecewise cams with accidental extra constraints.
-    R.proof=g(root,'fdProof');line(R.proof,'M660 256H688','fd-track');math(R.proof,702,264,[['f','variable'],'(',['λ','variable'],')'],'fd-small');line(R.proof,'M842 256H870','fd-track-b');math(R.proof,884,264,[['f','variable'],['c','subscript-variable'],'(',['λ','variable'],')'],'fd-small');add(R.proof,'rect',{x:180,y:300,width:850,height:395,rx:12,class:'fd-paper'});
+    // The plotted E and E_c are exponentials of the paper's log-response construction.
+    R.proof=g(root,'fdProof');line(R.proof,'M660 256H688','fd-track');math(R.proof,702,264,[['E','variable'],'(',['λ','variable'],')'],'fd-small');line(R.proof,'M842 256H870','fd-track-b');math(R.proof,884,264,[['E','variable'],['c','subscript-variable'],'(',['λ','variable'],')'],'fd-small');add(R.proof,'rect',{x:180,y:300,width:850,height:395,rx:12,class:'fd-paper'});
     [[196,316],[1014,316],[196,678],[1014,678]].forEach(([cx,cy])=>add(R.proof,'circle',{cx,cy,r:4,fill:'#9b968c'}));
     line(R.proof,'M260 630H960','fd-line');[0,1,3].forEach(x=>{line(R.proof,`M${260+x*220} 630v12`);math(R.proof,260+x*220,674,[...lambdaM(),' = '+x],'fd-axis',{'text-anchor':'middle'})});
     R.trackB=line(R.proof,curve(B),'fd-track-b');R.trackA=line(R.proof,curve(A),'fd-track');
     R.contacts=[1,3].map((x,i)=>{const p=xy(x,A(x)),q=g(R.proof,'fdContact'+i);line(q,`M${p[0]} ${p[1]+12}V620`,'fd-faint');add(q,'circle',{cx:p[0],cy:p[1],r:11,class:'fd-point'});return q});
     R.scan=g(R.proof,'fdScan');add(R.scan,'rect',{x:-18,y:-25,width:36,height:50,rx:7,class:'fd-metal'});line(R.scan,'M0 25v15','fd-track');
     R.zero=g(R.proof,'fdZeroLimits');line(R.zero,'M225 370v58M214 370h22M214 428h22','fd-track');[370,428].forEach(y=>{line(R.zero,`M165 ${y}H214`,'fd-faint');add(R.zero,'circle',{cx:165,cy:y,r:2.5,fill:'#77746d'})});text(R.zero,156,379,'1.000','fd-label',{'text-anchor':'end',id:'fdZeroAValue'});text(R.zero,156,437,'0.942','fd-label',{'text-anchor':'end',id:'fdZeroBValue'});
-    R.proofLabel=text(R.proof,96,792,'SAME SAMPLED VALUES','fd-label');R.formula=math(R.proof,96,856,[['f','variable'],['c','subscript-variable'],'(',['λ','variable'],') = ',['f','variable'],'(',['λ','variable'],') + ',['c','variable'],'(',...lambdaM(),' − 1)(',...lambdaM(),' − 3)'],'fd-formula',{id:'fdProofEquation','aria-label':'f sub c of lambda equals f of lambda plus c times lambda sub M minus one times lambda sub M minus three'});R.proofNote=text(R.proof,96,900,'Illustrative counterexample · not hardware estimates','fd-small');
+    R.proofLabel=text(R.proof,96,792,'SAME SAMPLED VALUES','fd-label');R.formula=math(R.proof,96,856,[['f','variable'],['c','subscript-variable'],'(',['λ','variable'],') = ',['f','variable'],'(',['λ','variable'],') + ',['c','variable'],'(',...lambdaM(),' − 1)(',...lambdaM(),' − 3)'],'fd-formula',{id:'fdProofEquation','aria-label':'f sub c of lambda equals f of lambda plus c times lambda sub M minus one times lambda sub M minus three'});R.proofNote=text(R.proof,96,900,'f = ln E · c = −0.02 · illustrative, not a hardware fit','fd-small');
     R.precision=g(root,'fdPrecision');R.shots=text(R.precision,96,805,'20,000','fd-number');text(R.precision,96,851,'ILLUSTRATIVE SHOTS · SAME SETTINGS','fd-kicker');text(R.precision,96,902,'MORE PRECISION ≠ IDENTIFIABILITY','fd-label');
     R.jaws=[1,3].map((x,i)=>line(R.proof,'','fd-track',{id:'fdJaw'+i}));
     R.interpret=g(root,'fdInterpretation');text(R.interpret,330,300,'OBSERVED GRID','fd-kicker',{'text-anchor':'middle'});text(R.interpret,1030,300,'UNSAMPLED ZERO','fd-kicker',{'text-anchor':'middle'});line(R.interpret,'M465 510H650L1005 370','fd-faint',{'stroke-dasharray':'7 9'});add(R.interpret,'circle',{cx:1030,cy:370,r:25,fill:'none',stroke:'#77746d','stroke-width':3});text(R.interpret,1030,379,'0','fd-label',{'text-anchor':'middle'});text(R.interpret,96,862,'SEPARABILITY ≠ CERTIFICATION','fd-title');
@@ -174,7 +175,7 @@
     });
     const latch=$('#ahLatch');latch.setAttribute('transform',`translate(${38*1.72*Math.cos(Math.PI/4)*s.release} ${38*1.72*Math.sin(Math.PI/4)*.5*s.release})`);
     $('#ahInterlocks').classList.toggle('ah-latch-on',s.release>.99);
-    op(R.keys,S(I(t,84.7,85.4)));R.lockState.textContent=s.release===1?'RELIABLE ZNE':'LATCH LOCKED';R.lockState.classList.toggle('fd-accent',s.release===1);
+    op(R.keys,S(I(t,84.7,85.4)));R.lockState.textContent=s.release===1?'REQUIREMENTS KEPT SEPARATE':'LATCH LOCKED';R.lockState.classList.toggle('fd-accent',s.release===1);
     // Every final visual is either inside this audited region or intentionally transparent.
     for(const {wrap,a,b} of textGates)op(wrap,S(I(t,a,a+.35))*(1-S(I(t,b-.35,b))));
     R.root.dataset.release=String(s.release);R.root.dataset.shots=String(s.shots);

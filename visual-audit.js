@@ -25,7 +25,7 @@
         if(x>1160.5||left<59.5||y>1005.5||top<74.5)add(frame,'bounds',`${el.id||el.parentElement.id||el.tagName}: [${left.toFixed(1)},${top.toFixed(1)},${x.toFixed(1)},${y.toFixed(1)}]`);
         if(el.tagName==='text'&&!el.closest('#anatomyHero')&&opacity(el)>.02){textBoxes.push({el,r});if(parseFloat(style(el).fontSize)<18)add(frame,'type-size',el.textContent)}
         const c=style(el);if(c.filter!=='none')add(frame,'effect',el.id||el.tagName);
-        for(const color of [c.fill,c.stroke]){const rgb=color.match(/^rgb\((\d+), (\d+), (\d+)\)/);if(rgb&&+rgb[3]>+rgb[1]+8&&+rgb[3]>+rgb[2]+3)add(frame,'palette',`${el.id||el.tagName}: unexpected cool tint ${color}`)}
+        // Scientific role colors deliberately include measured blue and alternate violet.
       }
       for(let i=0;i<textBoxes.length;i++)for(let j=i+1;j<textBoxes.length;j++){
         const a=textBoxes[i],b=textBoxes[j],w=Math.min(a.r.right,b.r.right)-Math.max(a.r.left,b.r.left),h=Math.min(a.r.bottom,b.r.bottom)-Math.max(a.r.top,b.r.top);
@@ -35,7 +35,7 @@
       if($('#fdProofEquation').querySelectorAll('.fd-subscript').length!==2||$('#fdProofEquation').querySelectorAll('.fd-subscript-variable').length!==1||$('#fdInteractionSymbol').querySelector('.fd-subscript')?.textContent!=='LM')add(frame,'math-type','missing subscript roles');
       if([...document.querySelectorAll('#fdPositiveControl text')].some(e=>/-\d/.test(e.textContent)))add(frame,'math-minus','ASCII minus in numeric control fields');
       if(opacity($('#captionBox'))!==0||$('#captionBox').getAttribute('aria-hidden')!=='true')add(frame,'caption','caption visible or not aria-hidden');
-      if(Math.abs(F.A(1)-F.B(1))>1e-12||Math.abs(F.A(3)-F.B(3))>1e-12||Math.abs(s.gap-.058)>1e-12)add(frame,'proof','sample equality / zero gap');
+      if(Math.abs(F.A(1)-F.B(1))>1e-12||Math.abs(F.A(3)-F.B(3))>1e-12||Math.abs(s.gap-(1-Math.exp(-.06)))>1e-12)add(frame,'proof','sample equality / zero gap');
       if(s.release>0&&s.key.some(p=>p<1))add(frame,'interlock','latch opened before all keys seated');
       if(t>=71.5&&t<77.5&&$('#fdPrecision text').textContent!==s.shots.toLocaleString('en-US'))add(frame,'shots','readout disagrees with state');
       if(t>=49.5&&t<=55&&document.querySelectorAll('#fdCoverage [data-coverage="excludes"]').length!==3)add(frame,'coverage','not exactly 3 exclusions');

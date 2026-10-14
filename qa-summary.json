@@ -1,176 +1,164 @@
 {
   "status": "pass",
-  "frames": 2700,
-  "fps": 30,
-  "duration": 90,
-  "maxRight": 1135.40625,
-  "maxJump": {
-    "value": 20.580622827223184,
-    "id": "ahSelector",
-    "frame": 1018
-  },
-  "textCollisionPairs": 118963,
-  "proof": {
-    "sample1": 0,
-    "sample3": 0,
-    "zeroGap": 0.05800000000000005
-  },
-  "issues": [],
-  "browserErrors": [],
-  "fontFaces": [
-    {
-      "family": "CRZNE Inter",
-      "style": "normal",
-      "status": "loaded"
-    },
-    {
-      "family": "CRZNE Inter",
-      "style": "normal",
-      "status": "loaded"
-    },
-    {
-      "family": "CRZNE Inter",
-      "style": "italic",
-      "status": "loaded"
-    },
-    {
-      "family": "CRZNE Inter",
-      "style": "italic",
-      "status": "loaded"
-    },
-    {
-      "family": "CRZNE Operators",
-      "style": "normal",
-      "status": "loaded"
-    },
-    {
-      "family": "CRZNE Operators",
-      "style": "normal",
-      "status": "loaded"
-    }
-  ],
-  "seekChecks": 28,
-  "maxSeekEdgePixels": 457,
-  "rasterResolution": [
-    1920,
-    1080
-  ],
-  "rasterFrames": 2700,
-  "transparentSpeakerPixels": 756000,
-  "pixel_motion_review": {
-    "frames_analyzed": 2700,
-    "speaker_region_max_colour_delta": 2,
-    "minimum_ink": {
-      "mean": 0.6468199757134183,
-      "frame": 120
-    },
-    "largest_adjacent_frame_changes": [
-      {
-        "mean_channel_change": 2.4063132463064156,
-        "frame": 1673,
-        "seconds": 55.766666666666666
-      },
-      {
-        "mean_channel_change": 2.363767455980571,
-        "frame": 1674,
-        "seconds": 55.8
-      },
-      {
-        "mean_channel_change": 2.3414604837077513,
-        "frame": 1675,
-        "seconds": 55.833333333333336
-      },
-      {
-        "mean_channel_change": 2.286436197126088,
-        "frame": 1672,
-        "seconds": 55.733333333333334
-      },
-      {
-        "mean_channel_change": 2.171505009107468,
-        "frame": 1677,
-        "seconds": 55.9
-      },
-      {
-        "mean_channel_change": 2.1671852863792753,
-        "frame": 1671,
-        "seconds": 55.7
-      },
-      {
-        "mean_channel_change": 2.147559957498482,
-        "frame": 1676,
-        "seconds": 55.86666666666667
-      },
-      {
-        "mean_channel_change": 2.0011384335154827,
-        "frame": 2556,
-        "seconds": 85.2
-      },
-      {
-        "mean_channel_change": 1.987350738716859,
-        "frame": 2557,
-        "seconds": 85.23333333333333
-      },
-      {
-        "mean_channel_change": 1.9868321190042502,
-        "frame": 2555,
-        "seconds": 85.16666666666667
-      },
-      {
-        "mean_channel_change": 1.9255780712406396,
-        "frame": 2558,
-        "seconds": 85.26666666666667
-      },
-      {
-        "mean_channel_change": 1.9226813904068003,
-        "frame": 2554,
-        "seconds": 85.13333333333334
-      }
-    ]
-  },
-  "motion_review": {
-    "duration_seconds": 90,
-    "fps": 30,
+  "nominal_master": {
+    "status": "pass",
     "frames": 2700,
+    "fps": 30,
+    "duration": 90,
+    "maxRight": 1135.40625,
+    "maxJump": {
+      "value": 20.580622827223184,
+      "id": "ahSelector",
+      "frame": 1018
+    },
+    "textCollisionPairs": 118963,
+    "proof": {
+      "sample1": 0,
+      "sample3": 0,
+      "zeroGap": 0.05823546641575128
+    },
+    "issues": [],
+    "browserErrors": [],
+    "fontFaces": [
+      {
+        "family": "CRZNE Inter",
+        "style": "normal",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Inter",
+        "style": "normal",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Inter",
+        "style": "italic",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Inter",
+        "style": "italic",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Operators",
+        "style": "normal",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Operators",
+        "style": "normal",
+        "status": "loaded"
+      }
+    ],
+    "seekChecks": 28,
+    "maxSeekEdgePixels": 457,
+    "transparentSpeakerPixels": 756000
+  },
+  "recorded_master": {
+    "status": "pass",
+    "frames": 2694,
+    "pairs": 194356,
+    "maxJump": 32.077206047323536,
+    "issues": [],
+    "proof": {
+      "zeroA": 1,
+      "zeroB": 0.9417645335842487,
+      "sample1": 0,
+      "sample3": 0
+    },
+    "browserErrors": [],
+    "fontFaces": [
+      {
+        "family": "CRZNE Inter",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Inter",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Inter",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Inter",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Operators",
+        "status": "loaded"
+      },
+      {
+        "family": "CRZNE Operators",
+        "status": "loaded"
+      }
+    ],
+    "reverseSeekChecks": 21,
+    "maxSeekPixels": 272
+  },
+  "recorded_duration": 89.8,
+  "speaker_handoff": 42,
+  "aryan_speed": 1.1,
+  "sushanth_speed": 1,
+  "source_sha256": {
+    "SCRIPT.md": "7edb12e12fcb059a21ce81b066e823a8e982415304367629e30871513b62cf8a",
+    "index.html": "d624a582fa36210c22394456043ceaafdb8769d47c48ebe120d191fa07822652",
+    "early-scenes.js": "790ba9f2b27a1d3d16e39ff87dc6f591c40bb69eb82740ce1be22e1f97ecc21b",
+    "anatomy-hero.js": "5f33362763a4dfb8ceb582aacd177086dff130adfb32e9d92f3e7340f92e833a",
+    "visual-audit.js": "6ae127095dcb4934a448120acb1e3276ee58b27a22f3ff01c4eac685de8f53f6",
+    "timing-fixes.js": "e7d93fb38e68850063c79827ca41387afdd04864f4e86d19fbdd4b6cf29c6cad",
+    "scientific-polish.js": "d43d81c4307961fd32fb381a09d4296edba4e13d5b169d26781e1ba6b00484ce",
+    "anatomy-transitions.js": "06c22a0088e57cc29be7c4293f4ae340f4e74ef6b25b85920b125d3feebeafa0",
+    "anatomy-reassembly.js": "783c981754bf796e750df15406e6bd1756885124de30d2936c3e7dcd6c5d5834",
+    "recorded-director.js": "51d44b16e31186ef81b00eb4190959c2b507f3e7d43c3323b9af118b2eb24994",
+    "transition-polish.js": "5cbd9387ed3b865ef7aabc49de2cebab6b1523ad32d9fa85a3f5fe88769dcd5d",
+    "anatomy-model.js": "a46992a17cfaf5a63ac68ca21aa37942a2c43b243b3ed4067ab5292fa21c9064",
+    "enhancements.js": "bdf82e1520a1caef7c2146a10472c7e05ef31944e44d819d473d23c4288281b9",
+    "animation.js": "26e11fba7e45ebd541c3871e1a88996ca1063a86c7014ea68f1c85ae1836032e",
+    "anatomy-refine.js": "3f83967275c3e7f55d2195269a65e14abbbc5445b68bdedbb1a27134099f5aaf",
+    "anatomy-light.js": "2dea580cf8b151ed858a726f70c0728eae0300eb0af59668215a8e9ccd62fd35",
+    "final-director.js": "9c2505a7cde66a908a196a2a84a076813a34b8e6b10943d735c2c73c5a110868",
+    "semantic-colors.css": "eaa5597e35370fd0b40f27c9ffc96be8a2687909e106a8ba4d1479b39c111216",
+    "final-director.css": "c9217fa1dc2ad8558ea278df09e93aba237e8a6c2340f83a0423e943a5e865f6",
+    "anatomy-refine.css": "502c6a7eb414a45a0ca1b9ff04bc9437b7332c85e05c1df6f72c927151ceba2f",
+    "typography.css": "b9a758f9daf311af7be59cc7a2e96056822933cbe540acb1f08f09377f53e36e",
+    "anatomy-light.css": "1821066e828a42e670765252cbb5617f352e6936244c6762ade1a9d940ee92f0",
+    "enhancements.css": "14f3a16cde8c8d8cf01a6c80a98e8cde34f487b412acae066a07d7655d23f163",
+    "styles.css": "d9baff26cf7254858591162678eb2a7c72fe0548bee6a9bccb0ae90fc17a0ece",
+    "anatomy-hero.css": "7de148641ffc76b8df2199cbad4c430d1f9df8ee39abfc5ba8ebc03606f83b02",
+    "recording-timeline.json": "2dd3f087af24ac924f518b965da55a75e3fcc733a9343d3686642c38582366b8",
+    "scripts/render-recorded.cjs": "356bd0d54658a92bb4a52e36dcede687fd3ee68855cdb3cde2d6f1eeb8d5029b",
+    "scripts/qa.cjs": "e4be657a722ed471f062b248a42793280daf7b074d01bf1364242885f0079e36",
+    "scripts/composite-recorded.py": "10aaed30f3e616f6c8bdc5d36037ab4220f5c3bdbd2afaa0d929c99080a9c9ed",
+    "scripts/prepare-recordings.py": "c1bc582e5f9aebccce924b0c0b6437ad89eec805d21d9baf855d7a5ee03fcde6"
+  },
+  "narrated_video": {
+    "status": "pass",
     "resolution": [
       1920,
       1080
     ],
-    "audio": false,
-    "crf": 17,
-    "progressive_streaming": true
-  },
-  "master_boundary_captures": 91,
-  "source_sha256": {
-    "SCRIPT.md": "7edb12e12fcb059a21ce81b066e823a8e982415304367629e30871513b62cf8a",
-    "anatomy-hero.css": "7de148641ffc76b8df2199cbad4c430d1f9df8ee39abfc5ba8ebc03606f83b02",
-    "anatomy-hero.js": "5f33362763a4dfb8ceb582aacd177086dff130adfb32e9d92f3e7340f92e833a",
-    "anatomy-light.css": "1821066e828a42e670765252cbb5617f352e6936244c6762ade1a9d940ee92f0",
-    "anatomy-light.js": "2dea580cf8b151ed858a726f70c0728eae0300eb0af59668215a8e9ccd62fd35",
-    "anatomy-model.js": "34959d1a2a000cb0918bdb62de4292c626f872a2f643ac8eb354a15ae801eacb",
-    "anatomy-reassembly.js": "783c981754bf796e750df15406e6bd1756885124de30d2936c3e7dcd6c5d5834",
-    "anatomy-refine.css": "502c6a7eb414a45a0ca1b9ff04bc9437b7332c85e05c1df6f72c927151ceba2f",
-    "anatomy-refine.js": "3f83967275c3e7f55d2195269a65e14abbbc5445b68bdedbb1a27134099f5aaf",
-    "anatomy-transitions.js": "06c22a0088e57cc29be7c4293f4ae340f4e74ef6b25b85920b125d3feebeafa0",
-    "animation.js": "26e11fba7e45ebd541c3871e1a88996ca1063a86c7014ea68f1c85ae1836032e",
-    "early-scenes.js": "790ba9f2b27a1d3d16e39ff87dc6f591c40bb69eb82740ce1be22e1f97ecc21b",
-    "enhancements.css": "14f3a16cde8c8d8cf01a6c80a98e8cde34f487b412acae066a07d7655d23f163",
-    "enhancements.js": "bdf82e1520a1caef7c2146a10472c7e05ef31944e44d819d473d23c4288281b9",
-    "final-director.css": "c9217fa1dc2ad8558ea278df09e93aba237e8a6c2340f83a0423e943a5e865f6",
-    "final-director.js": "1f9f3c59d1027caa96e58011887cf8e2ed2db9d29409d7cf70750a157cd1eee5",
-    "fonts/inter-greek-wght-italic.woff2": "29e273a42cac8240f37fbdd94c684f8a255e61c8076942d9b8f18a0e2c014991",
-    "fonts/inter-greek-wght-normal.woff2": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
-    "fonts/inter-latin-wght-italic.woff2": "7291b5970da2237441273c03b424a504b70b18f09791473fab99687dcc314720",
-    "fonts/inter-latin-wght-normal.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
-    "fonts/operators-bold.ttf": "5aecb918addd02f42170ce8714282c6a447f02cd78560c55c5a429b2c2ead86a",
-    "fonts/operators-normal.ttf": "b66ec220348b7deabae12745844daa4cb319032c02fe49da85e88294cc4be37b",
-    "index.html": "c3099be0afe8a280625f6f7c203d6c32eb88cb9c369262a4e3d0a9f410bba383",
-    "scientific-polish.js": "d43d81c4307961fd32fb381a09d4296edba4e13d5b169d26781e1ba6b00484ce",
-    "scripts/qa.cjs": "e4be657a722ed471f062b248a42793280daf7b074d01bf1364242885f0079e36",
-    "styles.css": "d9baff26cf7254858591162678eb2a7c72fe0548bee6a9bccb0ae90fc17a0ece",
-    "timeline.json": "ce76edf1a7e3d2ea2acc1b305a018d7c2f8970f16c0b5c106f63bb291574e060",
-    "timing-fixes.js": "e7d93fb38e68850063c79827ca41387afdd04864f4e86d19fbdd4b6cf29c6cad",
-    "transition-polish.js": "5cbd9387ed3b865ef7aabc49de2cebab6b1523ad32d9fa85a3f5fe88769dcd5d",
-    "typography.css": "b9a758f9daf311af7be59cc7a2e96056822933cbe540acb1f08f09377f53e36e",
-    "visual-audit.js": "9d63aaf9d0c429be96f31ece56df6d8e353bef58a7ebeea1ff918e60993da9b2"
+    "fps": 30,
+    "video_frames": 2694,
+    "video_duration": 89.8,
+    "container_duration": 89.834167,
+    "audio": "aac",
+    "size_bytes": 21693623,
+    "pixel_compared_frames": 2694,
+    "mean_left_panel_channel_error": 2.2343948723301676,
+    "max_left_panel_channel_error": 2.399294376373291,
+    "max_opaque_animation_channel_error": 2.4079928398132324,
+    "max_error_frame": 2158,
+    "audio_decode_errors": [],
+    "narration_loudness_lufs": -16.06,
+    "narration_true_peak_dbtp": -1.49,
+    "handoff_seconds": 42,
+    "aryan_speed": 1.1,
+    "sushanth_speed": 1,
+    "encoded_audio_loudness_lufs": -16.08,
+    "encoded_audio_true_peak_dbtp": -1.06,
+    "sha256": "1b3b9585ba9003363184104521d1037334d258b738a996280e5eca6a151c2825",
+    "reviewed_composite_frames": 18
   }
 }

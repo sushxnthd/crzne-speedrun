@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "video_frames": 2694,
+  "video_duration": 89.8,
+  "container_duration": 89.834167,
+  "audio": "aac",
+  "size_bytes": 21693623,
+  "pixel_compared_frames": 2694,
+  "mean_left_panel_channel_error": 2.2343948723301676,
+  "max_left_panel_channel_error": 2.399294376373291,
+  "max_opaque_animation_channel_error": 2.4079928398132324,
+  "max_error_frame": 2158,
+  "audio_decode_errors": [],
+  "narration_loudness_lufs": -16.06,
+  "narration_true_peak_dbtp": -1.49,
+  "handoff_seconds": 42,
+  "aryan_speed": 1.1,
+  "sushanth_speed": 1,
+  "encoded_audio_loudness_lufs": -16.08,
+  "encoded_audio_true_peak_dbtp": -1.06,
+  "sha256": "1b3b9585ba9003363184104521d1037334d258b738a996280e5eca6a151c2825",
+  "reviewed_composite_frames": 18
+}

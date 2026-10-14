@@ -64,7 +64,7 @@
     // Six known-answer checks. We encode only the established count, not invented magnitudes.
     s.failure=smooth(inv(t,48.4,54.5));
     s.failureHold=smooth(inv(t,52.0,55.0))*(1-smooth(inv(t,56.0,58.0)));
-    s.coverage=['contains','contains','excludes','excludes','excludes','contains'];
+    s.coverage=['excludes','excludes','mixed','mixed','excludes','mixed'];
 
     // Service panel and proof mechanism.
     s.screws=smooth(inv(t,59.0,59.7));
