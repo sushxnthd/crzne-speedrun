@@ -38,6 +38,7 @@ jobs:
           node --check anatomy-refine.js
           node --check anatomy-reassembly.js
           node --check anatomy-light.js
+          node --check anatomy-transitions.js
           node --check visual-audit.js
 
       - name: Prepare animation preview
@@ -45,9 +46,9 @@ jobs:
         run: |
           rm -rf _site _qa
           mkdir -p _site _qa
-          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css anatomy-refine.js anatomy-refine.css anatomy-reassembly.js anatomy-light.css anatomy-light.js visual-audit.js _site/
+          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css anatomy-refine.js anatomy-refine.css anatomy-reassembly.js anatomy-light.css anatomy-light.js anatomy-transitions.js visual-audit.js _site/
           sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n<link rel="stylesheet" href="anatomy-hero.css" />\n<link rel="stylesheet" href="anatomy-refine.css" />\n<link rel="stylesheet" href="anatomy-light.css" />\n</head>#' _site/index.html
-          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n<script src="anatomy-refine.js"></script>\n<script src="anatomy-reassembly.js"></script>\n<script src="anatomy-light.js"></script>\n<script src="visual-audit.js"></script>\n</body>#' _site/index.html
+          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n<script src="anatomy-refine.js"></script>\n<script src="anatomy-reassembly.js"></script>\n<script src="anatomy-light.js"></script>\n<script src="anatomy-transitions.js"></script>\n<script src="visual-audit.js"></script>\n</body>#' _site/index.html
           touch _site/.nojekyll
 
       - name: Audit every rendered frame
@@ -82,11 +83,11 @@ jobs:
           }
           for T in $(seq 0 3 90); do shot "$T"; done
           for T in \
-            3.35 3.60 3.85 7.15 7.40 7.65 7.75 8.00 8.25 \
-            16.75 17.00 17.25 18.75 19.00 19.25 \
+            3.35 3.60 3.85 4.10 4.35 7.15 7.40 7.65 7.75 8.00 8.25 \
+            16.00 16.15 16.20 16.25 16.50 16.75 17.00 17.25 18.75 19.00 19.25 \
             23.95 24.20 24.45 28.25 28.50 28.75 31.25 31.50 31.75 \
             36.75 37.00 37.25 44.75 45.00 45.25 47.75 48.00 48.25 \
-            55.75 56.00 56.25 57.75 58.00 58.25 59.75 60.00 60.25 \
+            55.50 55.75 56.00 56.25 57.50 57.75 58.00 58.25 59.00 59.50 59.75 60.00 60.25 \
             71.25 71.50 71.75 76.95 77.20 77.45 78.75 79.00 79.25 \
             79.45 79.70 79.95 80.05 80.30 80.55 83.05 83.30 83.55 \
             85.75 86.00 86.25 87.75 88.00 88.25 89.50; do shot "$T"; done
