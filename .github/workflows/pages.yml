@@ -47,6 +47,7 @@ jobs:
         run: |
           export CHROME="$(command -v google-chrome || command -v chromium || true)"
           QA_OUT=qa-motion node scripts/render-motion.cjs
+          QA_OUT=qa-motion node scripts/check-motion-seeks.cjs
       - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -61,6 +62,7 @@ jobs:
             qa-recorded/frame-audit.json
             qa-recorded/key-*.png
             qa-motion/motion-audit.json
+            qa-motion/seek-qa.json
             qa-motion/key-*.png
           retention-days: 14
       - name: Prepare canonical preview

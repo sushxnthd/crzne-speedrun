@@ -1,3 +1,9 @@
+## Current recorded film: transparent overlays
+
+The revised footage composition uses **[motion-film.html](motion-film.html)**. It keeps both recordings full-frame and overlays kinetic type, animated diagrams and original paper excerpts with transparency. The recorded edit is 89.8 seconds; Aryan is at 1.1× and Sushanth is at 1×. See [MOTION_EDIT.md](MOTION_EDIT.md) for reproducible rendering and [paper-assets/README.md](paper-assets/README.md) for source locations.
+
+The final narrated MP4 is delivered separately. Personal footage remains outside this public repository.
+
 # CR-ZNE · IRIS 90-second animation master
 
 **Separability does not certify zero-noise extrapolation: Factorial diagnostics in dynamic quantum circuits**
