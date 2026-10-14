@@ -2,46 +2,52 @@
 
 **Project:** *Separability does not certify zero-noise extrapolation: Factorial diagnostics in dynamic quantum circuits*  
 **Master:** 90 s, 30 fps  
-**Narrator split:** Aryan 0:00–0:45 · Sushanth 0:45–1:30  
-**Total narration:** 185 words (92 Aryan / 93 Sushanth)
+**Narrator split:** Aryan 0:00–0:45 · Sushanth 0:45–1:30
 
-The script is designed around the IRIS video priorities: communicate the innovation quickly, show what was actually done, state the strongest result, and end on the scientific conclusion rather than reciting the paper abstract.
+This is the locked clear-first script chosen for recording. The animations carry additional technical detail visually rather than forcing it into the narration.
 
 ## Aryan — 0:00–0:45
 
-I’m Aryan Kumar, Grade [ARYAN GRADE], and this is Sushanth Dasari, Grade 12.
+I’m Aryan Kumar, and this is Sushanth Dasari. We’re student researchers from Gurugram, Haryana.
 
-We tested a dangerous assumption in quantum error mitigation.
+Here’s a strange way quantum computers fight noise: make the machine deliberately noisier, watch how its answer changes, then extrapolate backward to what a perfect circuit should have produced.
 
-Zero-noise extrapolation makes a quantum computer deliberately noisier, measures how the output changes, then extrapolates backward toward zero noise.
+That’s zero-noise extrapolation.
 
-But dynamic circuits contain several distinct error sources.
+But dynamic quantum circuits combine several error sources at once. So on IBM quantum processors, we independently amplified three of them: gate operations, feedforward latency, and mid-circuit measurements.
 
-On IBM quantum processors, we independently amplified gate operations, feedforward latency, and mid-circuit measurements, then ran every low–high combination in a pre-specified two-to-the-three factorial experiment across circuits with known ideal answers.
+We tested every low–high combination in a pre-specified $2^3$ factorial experiment on circuits whose correct answers we already knew.
 
-Our primary latency–measurement interaction was only 0.0007. A planned positive control also recovered interactions we deliberately injected.
+And initially, it worked exactly as we hoped. Our primary latency–measurement interaction was only **0.0007**, while a positive control successfully recovered interactions we deliberately injected.
 
 ## Sushanth — 0:45–1:30
 
-That looked reassuring.
+That should have been reassuring.
 
-But when we actually extrapolated, all five original strategies excluded the known ideal value for three of six observables.
+It wasn’t.
 
-Why?
+When we actually extrapolated to zero noise, **all five original strategies excluded the correct answer for three of six observables.**
 
-We proved that measurements at only two measurement-noise levels do not uniquely determine the zero-noise limit. Different response curves can match every sampled point and still extrapolate to different answers.
+So we asked: how can the noise look separable, yet the correction still be wrong?
 
-More shots at those same settings only make the sampled points more precise; they cannot remove that ambiguity.
+We proved the reason mathematically.
 
-So separability is a diagnostic, not a certificate.
+With only two sampled measurement-noise levels, different response curves can pass through **every measurement we made** and still predict different values at zero noise.
 
-Reliable zero-noise extrapolation also requires a justified response model and a calibrated zero-noise target.
+And collecting more shots at those same points cannot tell those curves apart.
+
+That changes what a small interaction actually means.
+
+**Separability is evidence about the measurements we observed. It is not a certificate that the unmeasured zero-noise answer is correct.**
+
+Reliable ZNE therefore needs three things kept separate: interaction diagnostics, a justified response model, and a calibrated zero-noise target.
 
 ## Delivery notes
 
-- Do **not** sound like an abstract reading. Use a conversational scientific explanation.
-- Aryan: calm, explanatory; slightly emphasize **“dangerous assumption,” “independently amplified,” “0.0007,”** and **“positive control.”**
-- Sushanth: leave a visible beat after **“That looked reassuring.”** and a short beat after **“Why?”**
-- The strongest line is **“three of six observables.”** Do not rush it.
-- Final sentence should slow slightly. It is the contribution, not a closing slogan.
-- Record clean, dry audio with no music underneath; music/SFX can be mixed later.
+- Aryan: explanatory rather than dramatic; make **“make the machine deliberately noisier”** intuitive.
+- Pause very briefly after **“That’s zero-noise extrapolation.”**
+- Sushanth: leave a visible beat after **“That should have been reassuring.”** and make **“It wasn’t.”** short and dry.
+- Do not rush **“three of six observables.”** The animation freezes on that result.
+- The mathematical explanation should sound like you are resolving the mystery, not reading a theorem.
+- Slow slightly on the final two sentences.
+- Record clean, dry audio; music and mechanical SFX are added later.
