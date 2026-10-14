@@ -16,15 +16,24 @@
     document.querySelectorAll('#anatomyHero [style*="filter"]').forEach(el=>{if(el.style.filter.includes('softGlow'))el.style.filter='none';});
     document.querySelectorAll('#whyEnhancement circle').forEach(el=>el.setAttribute('stroke','#e8752b'));
   }
+  function forcePaperBox(name){
+    const g=document.querySelector(`#anatomyHero [data-name="${name}"]`);if(!g)return;
+    g.querySelectorAll('.ah-top').forEach(el=>{el.style.fill='#fffdfa';el.style.stroke='#77746d';});
+    g.querySelectorAll('.ah-x').forEach(el=>{el.style.fill='#e9e5dd';el.style.stroke='#8d8981';});
+    g.querySelectorAll('.ah-y').forEach(el=>{el.style.fill='#dfdad1';el.style.stroke='#8a867e';});
+  }
+  function forcePaperStructures(){
+    ['proof-backplate','proof-ruler','service-panel','interlock-frame','lock-socket-0','lock-socket-1','lock-socket-2'].forEach(forcePaperBox);
+  }
   function setup(){
     document.body.classList.add('anatomy-paper-theme');
-    recolorDefs();hideReferenceCaptions();cleanInlineEffects();
+    recolorDefs();hideReferenceCaptions();cleanInlineEffects();forcePaperStructures();
   }
   const start=()=>{
     setup();
     if(typeof render!=='function')return;
     const prev=render;
-    render=function(t){prev(t);hideReferenceCaptions();cleanInlineEffects();};
+    render=function(t){prev(t);hideReferenceCaptions();cleanInlineEffects();forcePaperStructures();};
     const j=$('#jump');const t=j?parseFloat(j.value||0):0;render(Number.isFinite(t)?t:0);
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
