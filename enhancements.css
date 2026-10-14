@@ -1,0 +1,22 @@
+:root{--proof-cyan:#90e6ff;--proof-amber:#ffbd6c;--proof-red:#ff7d75;--proof-ink:#071017}
+#stage .enhancement-label{font-size:14px;font-weight:760;letter-spacing:2.2px;fill:#91a3ae}
+#stage .enhancement-value{font-size:26px;font-weight:760;fill:#eef7fa}
+#stage .enhancement-formula{font-size:23px;font-weight:650;fill:#dce8ee;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+#stage .enhancement-micro{font-size:13px;font-weight:650;letter-spacing:1.4px;fill:#9eb0ba}
+#stage .proof-cyan{fill:var(--proof-cyan);stroke:var(--proof-cyan)}
+#stage .proof-amber{fill:var(--proof-amber);stroke:var(--proof-amber)}
+#stage .proof-red{fill:var(--proof-red);stroke:var(--proof-red)}
+#stage .thin-grid{stroke:#334b59;stroke-width:1;opacity:.45}
+#stage .mechanical-line{fill:none;stroke-linecap:round;stroke-linejoin:round}
+#stage .failure-ring{fill:none;stroke:#ff7d75;stroke-width:3;stroke-dasharray:6 8}
+#stage .sample-lock{fill:#0a141b;stroke:#dce9ef;stroke-width:2}
+#stage .proof-plate{fill:#081117;stroke:#415765;stroke-width:1.5}
+#stage .proof-region{fill:#ffbd6c;fill-opacity:.035;stroke:#ffbd6c;stroke-opacity:.42;stroke-width:1.5;stroke-dasharray:7 9}
+#stage .scan-line{stroke:#dce9ef;stroke-width:2;stroke-opacity:.55;stroke-dasharray:5 7}
+#stage .scan-head{fill:#edf6f9;filter:url(#softGlow)}
+#stage .ambiguity-bracket{stroke:#ffbd6c;stroke-width:4;fill:none;stroke-linecap:round}
+#stage .ideal-halo{fill:#90e6ff;fill-opacity:.055;stroke:#90e6ff;stroke-opacity:.28;stroke-width:1}
+#stage .proof-shadow{filter:url(#shadow)}
+#stage .hud-line{stroke:#78909d;stroke-width:1.5;opacity:.62}
+#stage .failure-chip{fill:#180f12;stroke:#8f4648;stroke-width:1.5}
+#stage .success-chip{fill:#08151a;stroke:#396f7c;stroke-width:1.5}
