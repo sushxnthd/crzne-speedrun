@@ -1,213 +1,517 @@
-# IRIS CR-ZNE — locked 90-second production storyboard
+# IRIS CR-ZNE — split-screen production storyboard
 
 **Master:** 1920×1080 · 30 fps · 2700 frames  
 **Narrators:** Aryan 0:00–0:45 · Sushanth 0:45–1:30  
-**Narrative:** intuitive setup → controlled experiment → reassuring diagnostic → contradiction → mathematical proof → stronger reliability rule.
+**Footage constraint:** both speakers are recorded on the **right side** of frame.  
+**Visual stage:** scientific animation lives primarily in the **left 60–65%**.  
+**Narration:** `SCRIPT.md` is the locked source of truth.  
+**Theme:** light paper / warm-neutral technical illustration with restrained orange accents.
 
-The film uses one persistent precision **quantum-noise calibration bench**. The machine is the explanation: rails, gauges, control modules, follower wheels, response tracks, and interlocks all correspond to an actual part of the experiment or argument.
+## Core production rule
 
-## Locked shot map
+This is no longer a full-screen animation with occasional talking heads. It is a **composited research explainer**:
 
-| Time | Frames | Narrator | Spoken idea | Visual action |
-|---|---:|---|---|---|
-| 0:00–0:04 | 0000–0119 | Aryan | Introduce both researchers | Recorded-video slots; calibration bench dormant behind them |
-| 0:04–0:15 | 0120–0449 | Aryan | Explain ZNE intuitively | Noise carriage moves toward higher noise; schematic response records λ=1,3; dashed continuation extrapolates into an explicitly **unmeasured** λ=0 region |
-| 0:15–0:20 | 0450–0599 | Aryan | Dynamic circuits contain distinct errors | Pull back from rail and reveal the three independent control modules |
-| 0:20–0:32 | 0600–0959 | Aryan | Gate, latency, measurement amplification | G gate cassette folds/repeats; L timing window stretches; M measurement head repeats. Physical harness joins all three into the same response rig |
-| 0:32–0:38 | 0960–1139 | Aryan | Pre-specified factorial design | G/L/M become axes of a 2³ cube; selector and acquisition trace visit all eight corners |
-| 0:38–0:42 | 1140–1259 | Aryan | Primary interaction = 0.0007 | Precision interaction dial settles near zero; CI closes; ±0.005 planned equivalence strip appears |
-| 0:42–0:45 | 1260–1349 | Aryan | Positive control validates sensitivity | Control lever engages; known injected interactions are recovered at approximately −0.0104 and −0.0213 |
-| **0:45** | **1350** | **HANDOFF** | Sushanth begins | Instrument becomes almost motionless |
-| 0:45–0:48.5 | 1350–1454 | Sushanth | “That should have been reassuring. It wasn’t.” | Quiet success state collapses into a neutral evaluation state—no glitch or melodrama |
-| 0:48.5–0:56 | 1455–1679 | Sushanth | All five strategies fail on 3/6 observables | Scientifically faithful **known-ideal coverage** view: six qualitative intervals, three contain ideal and three exclude it; freeze on 3/6 |
-| 0:56–1:00 | 1680–1799 | Sushanth | Ask how separable-looking noise can still fail | Previous result fully fades. `WHY?` sits alone against a dark field; no competing gauges or panels |
-| 1:00–1:02 | 1800–1859 | Sushanth | “We proved the reason mathematically.” | Closed machine cutaway emerges; inspection panel unlocks |
-| 1:02–1:11 | 1860–2129 | Sushanth | Same sampled measurements can imply different zero limits | Inside the rig, two response cam tracks coincide at λM=1 and 3. A scan head moves left into the unmeasured region. Tracks diverge at λM=0. Formula plate shows `f_c(λ)=f(λ)+c(λ_M−1)(λ_M−3)` |
-| 1:11–1:16 | 2130–2279 | Sushanth | More shots cannot distinguish the continuations | Shot count rises toward 1,000,000; sampled uncertainty visibly shrinks; zero-limit gap does not move |
-| 1:16–1:20 | 2280–2399 | Sushanth | Interpret what a small interaction means | Return attention to sampled grid vs unsampled origin: local diagnostic ≠ extrapolation certificate |
-| 1:20–1:26 | 2400–2579 | Sushanth | Separability is evidence, not certification | `SEPARABILITY` key engages first; machine deliberately remains locked |
-| 1:26–1:30 | 2580–2699 | Sushanth | Reliable ZNE needs three separate requirements | `MODEL VALIDITY` and `ZERO CALIBRATION` engage; output unlocks; final thesis holds |
+- the human speaker remains visible on the right;
+- the left side continuously carries the scientific explanation;
+- the Anatomy metrology rig is a recurring anchor, not the only visual;
+- Papermorph-style visual beats transform one explanatory object into the next wherever possible;
+- the picture does the technical work while the narration stays clear;
+- narration captions are **not shown** in the final film.
 
-## Scene 1 — Human ownership · 0:00–0:04
+The result should feel like one coherent scientific film built from several visual modes, not one machine shot and not a sequence of disconnected slides.
 
-The two current `VIDEO INSERT` slots will be replaced by the actual Aryan/Sushanth footage after recording. Keep this short. The purpose is ownership and identity, not a title sequence.
+---
 
-**Motion:** very slow push-in; a single status lamp wakes.  
-**Text:** names only.  
-**Do not:** show the full paper title yet.
+# Composition system
 
-## Scene 2 — ZNE as a physical inference problem · 0:04–0:15
+## Final-frame zones
 
-A precision rail is marked λ=0,1,2,3. The machine deliberately moves from ordinary to amplified noise while a small response screen plots measured points at λ=1 and λ=3. The continuation toward λ=0 is dashed and amber, while the measured region is cyan.
+### Right human zone — x ≈ 1220–1920
+Reserved for Aryan/Sushanth. Do not place critical scientific content here.
 
-This establishes the most important distinction in the entire film before any theorem appears:
+### Left visual zone — x ≈ 0–1240
+Primary animation stage. Most hero content should sit inside x ≈ 90–1120 and y ≈ 120–920.
 
-- **cyan = observed/measured**
-- **amber = inferred/unmeasured**
+### Transition gutter — x ≈ 1080–1320
+Use only for soft overlap, camera travel, thin connecting lines, or a feathered paper edge. Do not put labels here that can collide with the speaker.
 
-The response graph is explicitly marked **SCHEMATIC** and contains no invented experimental values.
+The visual layer should normally be transparent over the recorded footage. When contrast is poor, use a subtle off-white paper field behind the left visual stage with a feathered right edge; avoid a hard split-screen divider.
 
-## Scene 3 — Three independent noise controls · 0:15–0:32
+---
 
-The rig exposes three machined modules sequentially:
+# Visual language
+
+## Anatomy supplies the physical mechanism
+
+Use the Anatomy-style object language for:
+- ZNE carriage / rail;
+- G, L, M physical controls;
+- factorial selector;
+- precision interaction dial;
+- proof cutaway / cams / scan head;
+- uncertainty calipers;
+- final reliability interlock.
+
+## Papermorph supplies the directing logic
+
+Apply these principles throughout:
+
+1. **One picture per beat.** The eye should know immediately what to look at.
+2. **Change the thing, do not replace it.** Transform existing objects into the next explanation where scientifically meaningful.
+3. **Purposeful camera.** Wide → push-in → follow mechanism → pull back for result.
+4. **Truth at every moment.** Labels, numbers, motion, and state must agree with the same time model.
+5. **Storyboard key moments first.** Each beat has a start, explanatory peak, and exit composition.
+6. **No stale half-fades.** A previous visual must be fully resolved before the next idea becomes dominant.
+
+## Supporting visual modes
+
+The film deliberately uses more than the hero rig:
+
+- clean response diagrams;
+- miniature physical vignettes;
+- the 2³ factorial cube;
+- precision numeric result plates;
+- injected-vs-recovered control visualization;
+- six-observable known-answer coverage panel;
+- mathematical response-curve proof;
+- uncertainty-vs-identifiability comparison;
+- final three-condition interlock.
+
+All of these share the same off-white paper, warm-neutral strokes, typography, orange accent, and line-weight system.
+
+---
+
+# Locked left-panel beat map
+
+Times are **nominal design timings**. Final animation is conformed to the actual recorded speech waveform.
+
+| Time | Speaker | Spoken idea | Left-side visual | Visual mode |
+|---|---|---|---|---|
+| 0:00–0:04 | Aryan | Introduces Aryan + Sushanth | Minimal identity mark, tiny dynamic-circuit trace, project shorthand only. No full title card. | identity / diagram |
+| 0:04–0:12 | Aryan | “make the machine deliberately noisier…” | Clean ZNE response graph: carriage/noise marker moves from λ=1 → λ=3 while measured points appear. | diagram + mechanism |
+| 0:12–0:16 | Aryan | “…extrapolate backward…” / “That’s ZNE.” | Same plotted object extends left into λ=0; measured region remains solid, extrapolation into zero is visibly inferred. | morphing diagram |
+| 0:16–0:20 | Aryan | dynamic circuits contain several error sources | ZNE plot compresses upward; three small physical factor modules unfold beneath it. | morph transition |
+| 0:20–0:24 | Aryan | gate operations | Close-up micro-vignette: G cassette folds a gate sequence from 1× to 3×. | Anatomy close-up |
+| 0:24–0:28 | Aryan | feedforward latency | Camera tracks horizontally to L: timing window physically extends along a ruled rail. | Anatomy close-up |
+| 0:28–0:31.5 | Aryan | mid-circuit measurements | Camera continues to M: one measurement event becomes repeated indexed measurement events. | Anatomy close-up |
+| 0:31.5–0:37 | Aryan | every low–high combination / 2³ factorial | G/L/M modules physically become the three axes of a cube; selector visits all eight corners. | factorial diagram-mechanism |
+| 0:37–0:41.5 | Aryan | interaction only 0.0007 | Cube folds down into a precision dial/result plate. Needle settles near zero; `bLM = +0.0007` dominates. | quantitative result |
+| 0:41.5–0:45 | Aryan | positive control recovered injected interactions | Dial becomes paired injected/recovered markers: expected −0.010 aligns with ≈−0.0104; expected −0.020 aligns with ≈−0.0213. | validation result |
+| **0:45** | **handoff** | Sushanth begins | Result holds nearly motionless for the narrator change. | quiet hold |
+| 0:45–0:48 | Sushanth | “That should have been reassuring. It wasn’t.” | Orange success accent drains to neutral; camera pulls back slightly; no glitch effect. | rhetorical transition |
+| 0:48–0:56 | Sushanth | five strategies miss correct answer for 3/6 | Six known-ideal interval cartridges slide in. Exactly three contain the ideal line; exactly three exclude it. Dominant `3 / 6`. | coverage result |
+| 0:56–1:00 | Sushanth | “how can noise look separable…?” / “We proved…” | Coverage cartridges retract into the rig; camera follows their track to a sealed service panel. Small `WHY?` appears briefly near the seam, then disappears as the panel opens. | camera bridge |
+| 1:00–1:11.5 | Sushanth | two sampled measurement-noise levels; different curves match every measurement | Inside cutaway: two response tracks coincide exactly at λM=1 and λM=3. Scan head traverses those sampled points, then moves toward λM=0 where tracks diverge. | hero proof mechanism |
+| 1:11.5–1:17.5 | Sushanth | more shots cannot distinguish curves | Proof mechanism morphs into two sampled-point calipers. Shot count increases; uncertainty jaws close; zero-limit separation gauge remains unchanged. | precision vs identifiability |
+| 1:17.5–1:25 | Sushanth | separability is evidence, not a certificate | Split conceptual view: left miniature factorial cube marked `OBSERVED GRID`; adjacent zero coordinate remains outside it. A mechanical certificate latch refuses to open from separability alone. | conceptual bridge |
+| 1:25–1:30 | Sushanth | diagnostics + model + zero calibration | Three physical keys engage sequentially: `INTERACTION DIAGNOSTICS`, `MODEL VALIDITY`, `ZERO CALIBRATION`. Only all three release `RELIABLE ZNE`. | final interlock |
+
+---
+
+# Beat detail
+
+## Beat 1 — Human ownership · 0:00–0:04
+
+Speaker stays dominant. The left side should not immediately overwhelm the introduction.
+
+**Left visual:**
+- tiny dynamic-circuit timeline;
+- small project shorthand `CR-ZNE` or abbreviated title line;
+- Aryan/Sushanth names may appear once if needed, but do not duplicate the spoken intro as captions.
+
+**Motion:** one restrained orange pulse moving through the circuit line.
+
+---
+
+## Beat 2 — Explain ZNE cleanly · 0:04–0:16
+
+This should be the clearest visual explanation in the first half.
+
+Start with a simple coordinate view rather than the full machine:
+
+- horizontal axis `noise scale λ`;
+- explicit positions λ=0,1,3;
+- λ=1 and λ=3 are sampled/measured;
+- a small orange carriage deliberately moves toward larger noise;
+- measured response points appear from the same state model;
+- an extrapolation continuation travels backward toward λ=0.
+
+The key visual distinction is:
+
+- **solid / observed** = measurements actually taken;
+- **lighter / dashed / open region** = extrapolated or unmeasured.
+
+Do not imply the plotted curve is one of the paper's actual empirical response curves unless it is explicitly labeled schematic.
+
+At “That’s zero-noise extrapolation,” hold the whole idea cleanly for a fraction of a second.
+
+---
+
+## Beat 3 — Three independent controls · 0:16–0:31.5
+
+This should use three different close-up compositions, not one wide machine with sequential highlights.
 
 ### G — gate operations
-A CZ cassette physically folds/repeats from 1× to 3× exposure.
+A gate cassette shows nominal sequence → folded sequence. The transformation happens in place.
 
 ### L — feedforward latency
-A timing window extends along a ruled track from 1× to 3×.
+Camera follows the common harness to a timing carriage; delay window extends physically on a scale.
 
 ### M — mid-circuit measurement
-One measurement actuator becomes three repeated events.
+Camera follows the harness again to an indexed measurement mechanism; one event becomes repeated measurement exposure.
 
-A mechanical harness runs from all three modules to one common response instrument. The point is that these are independently manipulated factors, not three unrelated infographic cards.
+The three closeups are visually different, but parts, strokes, material, lighting, and orange active accent remain identical.
 
-## Scene 4 — Full 2³ factorial design · 0:32–0:38
+At the end, pull back just enough to show all three controls are part of the same experiment.
 
-G, L, and M form the three axes of a physical cube. Eight nodes are the eight low/high combinations. A selector visits every corner and leaves an amber acquisition trace behind it.
+---
 
-**Text:** `PRE-SPECIFIED DESIGN` / `ALL 8 CORNERS ACQUIRED`  
-**Secondary:** `3 DYNAMIC CIRCUITS · 6 OBSERVABLES · KNOWN IDEAL OUTPUTS`
+## Beat 4 — Pre-specified 2³ factorial design · 0:31.5–0:37
 
-The visual job is experimental rigor.
+Rather than cutting to a separate infographic, the three factor controls become the axes of the cube.
 
-## Scene 5 — Reassuring primary diagnostic · 0:38–0:42
+- G axis grows from gate control;
+- L axis grows from latency control;
+- M axis grows from measurement control;
+- eight low/high states appear as physical detents;
+- acquisition selector visits all 8;
+- trace remains behind only long enough to communicate complete coverage.
 
-The camera settles on a dial-indicator-like interaction gauge.
+Supporting labels:
 
-**Primary result:** `bLM = +0.0007`  
-**Nominal interval:** `95% CI [−0.0033, +0.0049]`  
-**Planned equivalence window:** `−0.005 … +0.005`
+`2³ FULL FACTORIAL`  
+`8 CONDITIONS`  
+`KNOWN IDEAL OUTPUTS`
 
-Motion becomes deliberately quiet once the needle settles.
+Optional very small secondary line if legible:
+`3 dynamic circuits · 6 observables`
 
-## Scene 6 — Sensitivity check · 0:42–0:45
+---
 
-A physical control lever injects known interactions. A compact instrument readout shows:
+## Beat 5 — Primary interaction result · 0:37–0:41.5
 
-- expected −0.010 → recovered ≈ −0.0104
-- expected −0.020 → recovered ≈ −0.0213
+The factorial cube should physically collapse/fold into the dial housing rather than disappear abruptly.
 
-This prevents the natural objection that the near-zero primary interaction simply came from an insensitive experiment.
+Primary plate:
 
-## Narrator handoff · exactly 0:45 / frame 1350
+`LATENCY × MEASUREMENT`  
+`bLM = +0.0007`
 
-Aryan stops. Sushanth owns the contradiction, proof, and conclusion continuously.
+Secondary technical detail may appear briefly:
 
-## Scene 7 — The experimental contradiction · 0:45–0:56
+`95% CI [−0.0033,+0.0049]`
 
-The machine initially looks stable. Then the test changes from interaction size to **known-answer coverage**.
+The numeric result must be much larger than the interval. The audience should not have to read a dense card.
 
-Do **not** use arbitrary bar heights as if they were the paper’s numeric estimates. The current animation instead shows a qualitative interval-style summary explicitly labeled as such:
+Needle motion settles and becomes quiet.
 
-`KNOWN-IDEAL COVERAGE ACROSS 6 OBSERVABLES`  
-`QUALITATIVE SUMMARY — NOT A NUMERIC PLOT OF THE ESTIMATES`
+---
 
-Three intervals contain the known ideal; three exclude it.
+## Beat 6 — Positive control · 0:41.5–0:45
 
-**Dominant result:** `3 / 6` / `FAILURE ON HALF THE OBSERVABLES`
+Do not explain this with prose. Show it.
 
-## Scene 8 — WHY? · 0:56–1:00
+Two compact paired tracks:
 
-Everything from the previous scene disappears first. A dark scrim isolates a single word:
+`INJECTED −0.010` → `RECOVERED −0.0104`  
+`INJECTED −0.020` → `RECOVERED −0.0213`
 
-`WHY?`
+Markers approach one another and lock into near-alignment.
 
-The pause is intentional. It lets the judge experience the same contradiction the paper resolves.
+Purpose: visually answer the objection “maybe your test was simply insensitive.”
 
-Near the end of the hold, the closed internal proof apparatus emerges behind the question.
+---
 
-## Scene 9 — Constructive non-identifiability · 1:00–1:11
+# Sushanth half
 
-The machine opens to reveal two physical response tracks.
+## Beat 7 — Reversal · 0:45–0:48
 
-At λM=1 and λM=3, follower wheels sit on exactly the same positions for both tracks. A scan head then physically travels from the sampled region toward λM=0.
+“That should have been reassuring.”
 
-Only in that **unmeasured extrapolation region** do the tracks separate.
+Hold the validated result with restrained orange accent.
 
-**At sampled levels:** `SAME MEASUREMENTS`  
-**At zero:** `DIFFERENT ZERO LIMITS`
+“It wasn’t.”
 
-A secondary formula plate gives the actual construction:
+Do **not** use glitch, shake, red flash, or cinematic alarm effects. Simply withdraw the success accent and change the instrument mode from `INTERACTION` to `KNOWN-ANSWER CHECK`.
 
-`f_c(λ) = f(λ) + c(λ_M−1)(λ_M−3)`
+The understated reversal is stronger.
 
-The added term is visually explained as vanishing at λM=1 and 3 but changing λM=0.
+---
 
-Illustrative readouts `1.000` and `0.942` are the mathematical counterexample, **not experimental hardware estimates**.
+## Beat 8 — 3 of 6 failure · 0:48–0:56
 
-This is the hero scene and the visual quality bar for the film.
+Use six equal interval-style cartridges in two rows of three or a compact 3×2 rack.
 
-## Scene 10 — More shots ≠ identifiability · 1:11–1:16
+Each has:
+- same ideal reference line;
+- qualitative estimate interval;
+- status indicator.
 
-The shot counter rises from 20,000 toward 1,000,000. Sample uncertainty bars collapse.
+Exactly:
+- 3 contain the ideal;
+- 3 exclude the ideal.
 
-A paired mechanical meter simultaneously shows:
+Only the excluded three receive orange failure shutters / emphasis. The other three remain warm-neutral, not a second competing color.
 
-- `STATISTICAL UNCERTAINTY` → shrinking
-- `ZERO-LIMIT AMBIGUITY` → unchanged
+Dominant visual:
 
-The response tracks themselves remain separated at zero.
+`3 / 6`
 
-## Scene 11 — What the small interaction actually means · 1:16–1:20
+Supporting line:
 
-The film briefly reconnects the proof to the original factorial cube. Small interaction is evidence about the measured cube—not proof about the unsampled origin.
+`CORRECT IDEAL VALUE EXCLUDED`
 
-No new theorem or number is introduced here; this is the conceptual bridge to the conclusion.
+Small qualifier only if needed:
+`all five original strategies`
 
-## Scene 12 — Final reliability interlock · 1:20–1:30
+Do not show invented estimate magnitudes.
 
-Three machined keys control the output:
+---
 
-1. `SEPARABILITY` — **what the measured grid shows**
-2. `MODEL VALIDITY` — **how the response is allowed to continue**
-3. `ZERO CALIBRATION` — **where the target “zero” physically corresponds**
+## Beat 9 — Question becomes cutaway · 0:56–1:00
 
-The first key engages alone and the output remains locked. The other two enter only during the final sentence.
+This is a Papermorph-style transform rather than a slide change.
 
-Only all three release:
+- six cartridges retract on rails;
+- their rail converges physically on the service panel;
+- camera follows the motion;
+- brief `WHY?` appears adjacent to the seam;
+- at “We proved the reason mathematically,” the seam becomes the focus;
+- fasteners release and the panel opens.
 
-`RELIABLE EXTRAPOLATION`
+No narration caption remains on screen.
 
-Final primary line:
+---
+
+## Beat 10 — Constructive non-identifiability · 1:00–1:11.5
+
+This is the hero explanatory sequence.
+
+Inside the machine:
+
+- x-axis / carriage position represents λM;
+- two response tracks represent two admissible continuations;
+- follower contacts at λM=1 and λM=3 lie at identical measured positions;
+- scan head pauses at each sampled level to establish equality;
+- it then moves left into the unmeasured region;
+- only there do the tracks separate;
+- at λM=0, two zero-limit readouts become visibly different.
+
+Primary on-object labels only:
+
+`λM = 3`  
+`λM = 1`  
+`λM = 0`  
+`SAMPLED` / `UNMEASURED`
+
+Brief result:
+
+`SAME MEASUREMENTS`  
+`DIFFERENT ZERO LIMITS`
+
+The mathematical construction may appear as a small engraved formula plate, not a floating slide:
+
+`f_c(λ)=f(λ)+c(λ_M−1)(λ_M−3)`
+
+If illustrative values `1.000` and `0.942` are used, explicitly mark them as `ILLUSTRATIVE COUNTEREXAMPLE`, not empirical hardware outputs.
+
+---
+
+## Beat 11 — More shots ≠ identifiability · 1:11.5–1:17.5
+
+Transform the sampled follower positions into uncertainty calipers rather than cutting away.
+
+Shared model drives all three:
+
+- shot count: `20,000 → 1,000,000`;
+- uncertainty width: shrinks visibly;
+- zero-limit gap: remains fixed.
+
+The key visual equation may appear once:
+
+`MORE PRECISION ≠ IDENTIFIABILITY`
+
+This is conceptual text, not a narration caption.
+
+---
+
+## Beat 12 — What separability really certifies · 1:17.5–1:25
+
+Reconnect the proof to the factorial experiment.
+
+- miniature factorial cube reappears as a physical insert labelled `OBSERVED GRID`;
+- the sampled cube is clean and nearly separable;
+- a rail extends from it to the unsampled λ=0 target outside the cube;
+- the `SEPARABILITY` key engages;
+- output latch remains visibly locked.
+
+The image should communicate before text does:
+
+**the cube describes the measured region; it does not determine the unseen origin.**
+
+Optional compact labels:
+
+`DIAGNOSTIC ✓`  
+`CERTIFICATE ✕`
+
+Avoid large explanatory sentences.
+
+---
+
+## Beat 13 — Three requirements · 1:25–1:30
+
+Final visual should be the cleanest Anatomy mechanism in the film.
+
+Three physical interlocks:
+
+1. `INTERACTION DIAGNOSTICS`
+2. `MODEL VALIDITY`
+3. `ZERO CALIBRATION`
+
+First key is already engaged from the previous beat. The second and third engage in sync with the final sentence.
+
+Only when all three are seated does the output latch move.
+
+Final output plate:
+
+`RELIABLE ZNE`
+
+Optional final thesis beneath it, only if it remains legible without competing with the speaker:
 
 `SEPARABILITY ≠ CERTIFICATION`
 
-Final small credit:
+No full narration caption. No scrolling credits.
 
-`Factorial diagnostics in dynamic quantum circuits · Aryan Kumar · Sushanth Dasari`
+---
 
-## Visual grammar
+# Camera plan
 
-### Material language
-- dark anodized metal
-- restrained cyan for measured/validated states
-- amber for inference/ambiguity
-- red only for empirical failure/exclusion
-- screws, seams, ruled rails, followers, gauges, keys, and moving mechanical parts rather than floating UI wherever possible
+The camera is part of the explanation, not decoration.
 
-### Motion hierarchy
-Highest motion:
-- intentional noise amplification
-- G/L/M mechanisms
-- 8-corner acquisition trace
-- positive-control injection
-- scan head entering unmeasured region
-- response-track divergence
+| Beat | Camera behavior |
+|---|---|
+| intro | essentially fixed |
+| ZNE | gentle left-panel push-in toward graph/carriage |
+| G | close-up |
+| G→L | short horizontal tracking move along harness |
+| L→M | continue track, do not hard cut |
+| factorial | pull back/up to reveal cube structure |
+| interaction | push toward dial |
+| positive control | small lateral reveal |
+| 3/6 | pull back enough to see all six cartridges |
+| WHY/proof | follow retracting cartridges to service panel |
+| proof | move inside cutaway and follow scan head |
+| more shots | hold steady; motion belongs to uncertainty jaws |
+| interpretation | pull back to show cube + unsampled target relationship |
+| final | settle into clean orthographic-ish hero framing of three interlocks |
 
-Quiet holds:
-- +0.0007
-- 3/6
-- WHY?
-- final three-key lock
+Avoid constant camera motion. One purposeful move per explanatory beat is enough.
 
-## Recorded-footage compositing plan
+---
 
-Once Aryan and Sushanth recordings are supplied:
+# Text policy
 
-- use recorded audio as the actual timing master;
-- fit animation timing to natural delivery rather than artificially time-stretching voices;
-- keep human footage dominant in the introduction and use selective returns only where presence helps;
-- never cover the factorial cube, 3/6 result, proof tracks, or final interlocks with a talking-head overlay;
-- mask/crop recorded footage into the machine world rather than using a generic picture-in-picture box where possible;
-- keep the final submission ≤90 seconds.
+## Never show
+- narration captions;
+- sentence-length subtitles;
+- paragraph cards;
+- redundant spoken text.
+
+## Allowed
+- variable names;
+- axis labels;
+- exact measured/result numbers;
+- 1–4 word conceptual labels;
+- very short scientific conclusions when they function as the visual itself.
+
+Examples:
+
+`bLM = +0.0007`  
+`3 / 6`  
+`SAMPLED`  
+`UNMEASURED`  
+`MORE PRECISION ≠ IDENTIFIABILITY`  
+`RELIABLE ZNE`
+
+---
+
+# Color / material policy
+
+One visual system across every visual type:
+
+- background / paper: warm off-white;
+- hardware: warm neutrals, ivory, light metal;
+- outlines: graphite / warm gray;
+- primary active accent: orange;
+- failure: orange may intensify/darken, but avoid introducing a separate red visual language unless absolutely necessary;
+- inactive elements: neutral;
+- no cyan remnants from the older build;
+- no dark navy proof/interlock plates;
+- no glow-heavy sci-fi effects.
+
+The visuals should resemble a high-end scientific illustration / precision instrument, not a futuristic quantum-computing stock graphic.
+
+---
+
+# Transition rules
+
+Every transition must satisfy one of these:
+
+1. **Morph:** the current object becomes the next one.
+2. **Camera reveal:** move through the existing apparatus to reveal the next mechanism.
+3. **Mechanical reconfiguration:** parts retract/open/fold to expose the next idea.
+4. **Clean dissolve:** only when there is no scientifically meaningful physical relationship to exploit.
+
+Do not use slide wipes, generic zoom transitions, glitch effects, spinning cards, or unrelated decorative particles.
+
+Critical transitions to QA frame-by-frame:
+
+- ZNE extrapolation → factor controls;
+- G → L → M;
+- M → factorial cube;
+- cube → interaction dial;
+- dial → positive control;
+- positive control → known-answer check;
+- 3/6 → WHY/service panel;
+- panel opening → proof scan;
+- proof scan → uncertainty calipers;
+- calipers → observed-grid interpretation;
+- observed-grid → three-key final interlock.
+
+---
+
+# Recorded-footage compositing rules
+
+When clips arrive:
+
+- use the actual recorded audio waveform as timing master;
+- keep Aryan continuously available on the right for 0:00–0:45 and Sushanth for 0:45–1:30 unless a brief full-screen proof insert is clearly stronger;
+- preferred default is still **speaker-right + visual-left**, not constant full-screen cutaways;
+- crop/scale both speakers to comparable head size and eyeline;
+- match exposure/white balance between the two clips;
+- use the left visual field to cover empty negative space, never the face/body;
+- use a soft paper backing under left-side diagrams only when the footage background compromises legibility;
+- do not cover the speaker with labels;
+- do not display narration subtitles unless IRIS accessibility requirements later make them necessary;
+- final runtime must remain ≤90 seconds.
+
+---
+
+# QA requirements
+
+Before final compositing:
+
+1. run the full 2700-frame numeric/continuity audit;
+2. capture start / peak / end keyframes for every beat;
+3. capture ±0.25 s around every transition boundary;
+4. inspect overlaps at 1920×1080 with a simulated speaker-safe mask on the right;
+5. verify no critical object enters the human safe zone;
+6. verify exact scientific state at every displayed number;
+7. verify the 3/6 scene encodes exactly three exclusions;
+8. verify the two proof curves coincide at both sampled levels before diverging at zero;
+9. verify increasing shots changes uncertainty but not zero-limit ambiguity;
+10. verify the first final key alone cannot unlock the output;
+11. verify captions remain hidden;
+12. watch the entire sequence in motion, not only screenshots.
+
+The final animation should be judged as a viewer experiences it: **clear in one glance, technically truthful, visually varied, and compositionally subordinate to the speaker rather than competing with them.**
