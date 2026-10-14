@@ -8,8 +8,9 @@
     const gl=$('#glass');if(gl){const s=gl.querySelectorAll('stop');if(s[0]){s[0].setAttribute('stop-color','#e8752b');s[0].setAttribute('stop-opacity','.09');}if(s[1]){s[1].setAttribute('stop-color','#e8752b');s[1].setAttribute('stop-opacity','.025');}}
     const arrow=$('#arrow path');if(arrow)arrow.setAttribute('fill','#e8752b');
   }
-  function removeReferenceCaptions(){
-    const cap=$('#captionBox');if(cap)cap.remove();
+  function hideReferenceCaptions(){
+    const cap=$('#captionBox');if(!cap)return;
+    cap.style.display='none';cap.style.opacity='0';cap.setAttribute('aria-hidden','true');
   }
   function cleanInlineEffects(){
     document.querySelectorAll('#anatomyHero [style*="filter"]').forEach(el=>{if(el.style.filter.includes('softGlow'))el.style.filter='none';});
@@ -17,13 +18,13 @@
   }
   function setup(){
     document.body.classList.add('anatomy-paper-theme');
-    recolorDefs();removeReferenceCaptions();cleanInlineEffects();
+    recolorDefs();hideReferenceCaptions();cleanInlineEffects();
   }
   const start=()=>{
     setup();
     if(typeof render!=='function')return;
     const prev=render;
-    render=function(t){prev(t);removeReferenceCaptions();cleanInlineEffects();};
+    render=function(t){prev(t);hideReferenceCaptions();cleanInlineEffects();};
     const j=$('#jump');const t=j?parseFloat(j.value||0):0;render(Number.isFinite(t)?t:0);
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
