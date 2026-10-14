@@ -4,7 +4,7 @@ const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
 const inv=(t,a,b)=>clamp((t-a)/(b-a));
 const easeOut=t=>1-Math.pow(1-clamp(t),5);
-const easeIn=t=>Math.pow(clamp(t),3;
+const easeIn=t=>Math.pow(clamp(t),3);
 const easeInOut=t=>{t=clamp(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
 const smooth=(t)=>{t=clamp(t);return t*t*(3-2*t)};
 const pulse=(t,c,w=.18)=>Math.exp(-Math.pow((t-c)/w,2));
@@ -15,7 +15,7 @@ const set=(id,attrs)=>{const el=typeof id==='string'?$(id):id;Object.entries(att
 const fmtTime=t=>`${String(Math.floor(t/60)).padStart(2,'0')}:${String(Math.floor(t%60)).padStart(2,'0')}.${Math.floor((t%1)*10)}`;
 
 const lines=[
- [0,4.0,'ARYAN','I’m Aryan Kumar, and this is Sushanth Dasari.'],
+ [0,4.0,'ARYAN','I’m Aryan Kumar, Grade [ARYAN GRADE], and this is Sushanth Dasari, Grade 12.'],
  [4.0,8.0,'ARYAN','We tested a dangerous assumption in quantum error mitigation.'],
  [8.0,16.0,'ARYAN','Zero-noise extrapolation makes a quantum computer deliberately noisier, measures how the output changes, then extrapolates backward toward zero noise.'],
  [16.0,19.0,'ARYAN','But dynamic circuits contain several distinct error sources.'],

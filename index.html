@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>IRIS CR-ZNE — 90s Animation Prototype</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+    <div class="stage-wrap">
+      <svg id="stage" viewBox="0 0 1920 1080" role="img" aria-label="Animated precision quantum-noise calibration machine explaining the CR-ZNE experiment">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080b10"/><stop offset="1" stop-color="#121923"/></linearGradient>
+          <linearGradient id="metalTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#323d49"/><stop offset="1" stop-color="#232b34"/></linearGradient>
+          <linearGradient id="metalSide" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a222b"/><stop offset="1" stop-color="#0e141b"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9de6ff" stop-opacity=".15"/><stop offset="1" stop-color="#6acff6" stop-opacity=".04"/></linearGradient>
+          <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-opacity=".45"/></filter>
+          <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <clipPath id="machineClip"><rect x="190" y="220" width="1540" height="690" rx="48"/></clipPath>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#90e6ff"/></marker>
+        </defs>
+
+        <rect width="1920" height="1080" fill="url(#bg)"/>
+        <g id="grid" opacity=".22">
+          <path d="M0 900 H1920" stroke="#274151" stroke-width="1"/>
+          <path d="M0 960 H1920" stroke="#274151" stroke-width="1"/>
+          <path d="M0 1020 H1920" stroke="#274151" stroke-width="1"/>
+        </g>
+
+        <!-- INTRO -->
+        <g id="intro">
+          <g id="introCards">
+            <rect x="250" y="220" width="570" height="650" rx="34" fill="#101720" stroke="#2a3b48"/>
+            <rect x="1100" y="220" width="570" height="650" rx="34" fill="#101720" stroke="#2a3b48"/>
+            <circle cx="535" cy="470" r="104" fill="#17232e" stroke="#4e6677" stroke-width="3"/>
+            <circle cx="1385" cy="470" r="104" fill="#17232e" stroke="#4e6677" stroke-width="3"/>
+            <path d="M390 750 Q535 610 680 750" fill="#17232e" stroke="#4e6677" stroke-width="3"/>
+            <path d="M1240 750 Q1385 610 1530 750" fill="#17232e" stroke="#4e6677" stroke-width="3"/>
+            <text x="535" y="820" text-anchor="middle" class="small cap">ARYAN KUMAR</text>
+            <text x="1385" y="820" text-anchor="middle" class="small cap">SUSHANTH DASARI</text>
+            <text x="535" y="500" text-anchor="middle" class="micro dim">VIDEO INSERT</text>
+            <text x="1385" y="500" text-anchor="middle" class="micro dim">VIDEO INSERT</text>
+          </g>
+        </g>
+
+        <!-- MACHINE -->
+        <g id="machine" filter="url(#shadow)" opacity="0">
+          <!-- feet -->
+          <g fill="#0b1016" stroke="#384652">
+            <rect x="300" y="850" width="150" height="54" rx="16"/><rect x="1470" y="850" width="150" height="54" rx="16"/>
+          </g>
+          <!-- base isometric body -->
+          <path d="M250 735 L390 635 L1670 635 L1530 735 Z" fill="url(#metalTop)" stroke="#526474" stroke-width="2"/>
+          <path d="M250 735 L1530 735 L1530 885 L250 885 Z" fill="url(#metalSide)" stroke="#3c4c59" stroke-width="2"/>
+          <path d="M1530 735 L1670 635 L1670 785 L1530 885 Z" fill="#151e26" stroke="#3c4c59" stroke-width="2"/>
+          <g fill="#778995" opacity=".55">
+            <circle cx="295" cy="770" r="5"/><circle cx="1488" cy="770" r="5"/><circle cx="1545" cy="710" r="5"/><circle cx="1622" cy="663" r="5"/>
+          </g>
+          <rect x="323" y="782" width="390" height="56" rx="11" fill="#0b1015" stroke="#40525f"/>
+          <text x="350" y="817" class="micro cap dim">COMPONENT-RESOLVED ZNE CALIBRATION BENCH</text>
+          <!-- rail -->
+          <g id="railBase">
+            <rect x="385" y="505" width="1130" height="46" rx="15" fill="#151d25" stroke="#536573" stroke-width="2"/>
+            <rect x="410" y="520" width="1080" height="9" rx="4" fill="#90e6ff" opacity=".15"/>
+            <g class="micro dim" text-anchor="middle">
+              <text x="470" y="590">0</text><text x="790" y="590">1</text><text x="1110" y="590">2</text><text x="1430" y="590">3</text>
+            </g>
+            <g stroke="#778b99" stroke-width="3"><path d="M470 548v20"/><path d="M790 548v20"/><path d="M1110 548v20"/><path d="M1430 548v20"/></g>
+            <text x="470" y="624" text-anchor="middle" class="micro accent">ZERO</text>
+          </g>
+          <g id="mainCarriage">
+            <rect x="745" y="460" width="90" height="110" rx="17" fill="#273440" stroke="#7792a3" stroke-width="2"/>
+            <rect x="760" y="476" width="60" height="34" rx="7" fill="#091117" stroke="#3c5969"/>
+            <circle cx="790" cy="493" r="7" fill="#90e6ff" class="lamp"/>
+            <path d="M770 535 H810" stroke="#90e6ff" stroke-width="3"/>
+          </g>
+          <!-- status top -->
+          <g id="statusPanel">
+            <rect x="620" y="325" width="680" height="105" rx="24" fill="#0c1219" stroke="#3d5262"/>
+            <circle cx="670" cy="377" r="12" fill="#90e6ff" opacity=".25" id="statusLamp"/>
+            <text x="710" y="366" class="micro dim cap">SYSTEM STATUS</text>
+            <text x="710" y="398" class="small cap" id="statusText">INITIALIZING</text>
+          </g>
+        </g>
+
+        <!-- QUESTION -->
+        <g id="question" opacity="0">
+          <text x="960" y="125" text-anchor="middle" class="kicker cap accent">RESEARCH QUESTION</text>
+          <text x="960" y="183" text-anchor="middle" class="headline">CAN SEPARABLE NOISE GUARANTEE THE RIGHT ANSWER?</text>
+        </g>
+
+        <!-- ZNE EXPLAINER -->
+        <g id="zne" opacity="0">
+          <g id="sample1"><circle cx="790" cy="445" r="13" fill="#90e6ff" filter="url(#softGlow)"/><text x="790" y="420" text-anchor="middle" class="micro accent">MEASURE</text></g>
+          <g id="sample3"><circle cx="1430" cy="445" r="13" fill="#90e6ff" filter="url(#softGlow)"/><text x="1430" y="420" text-anchor="middle" class="micro accent">MEASURE</text></g>
+          <path id="extrapLine" d="M1430 445 L790 445 L470 445" stroke="#90e6ff" stroke-width="4" stroke-dasharray="12 12" fill="none" marker-end="url(#arrow)"/>
+          <text x="575" y="410" class="small cap accent">EXTRAPOLATE</text>
+          <g id="obsGauge" transform="translate(1420 300)">
+            <circle r="82" fill="#0a1118" stroke="#425666" stroke-width="3"/>
+            <path d="M-58 35 A68 68 0 1 1 58 35" fill="none" stroke="#607785" stroke-width="4"/>
+            <path id="obsNeedle" d="M0 0 L0 -58" stroke="#ffbd6c" stroke-width="5" stroke-linecap="round"/>
+            <circle r="9" fill="#d6e7f0"/>
+            <text y="62" text-anchor="middle" class="micro dim">OBSERVABLE</text>
+          </g>
+        </g>
+
+        <!-- THREE MODULES -->
+        <g id="modules" opacity="0">
+          <g id="modG" transform="translate(300 230)">
+            <rect width="350" height="240" rx="28" fill="#101821" stroke="#485d6c"/>
+            <text x="36" y="48" class="moduleLetter accent">G</text><text x="92" y="45" class="small cap">GATE OPERATIONS</text>
+            <g id="gateStack" transform="translate(175 135)">
+              <rect x="-90" y="-45" width="180" height="90" rx="17" fill="#273440" stroke="#7692a4" stroke-width="2"/>
+              <text y="10" text-anchor="middle" class="subhead">CZ</text>
+              <rect id="gate2" x="-90" y="-45" width="180" height="90" rx="17" fill="#22303a" stroke="#7692a4" stroke-width="2" opacity="0"/>
+              <rect id="gate3" x="-90" y="-45" width="180" height="90" rx="17" fill="#1d2932" stroke="#7692a4" stroke-width="2" opacity="0"/>
+            </g>
+            <text x="175" y="215" text-anchor="middle" class="micro dim">1× → 3× EXPOSURE</text>
+          </g>
+          <g id="modL" transform="translate(785 230)">
+            <rect width="350" height="240" rx="28" fill="#101821" stroke="#485d6c"/>
+            <text x="36" y="48" class="moduleLetter accent">L</text><text x="92" y="45" class="small cap">FEEDFORWARD LATENCY</text>
+            <rect x="65" y="118" width="220" height="20" rx="9" fill="#202c36" stroke="#6a8292"/>
+            <rect id="latencyWindow" x="65" y="106" width="72" height="44" rx="12" fill="url(#glass)" stroke="#90e6ff" stroke-width="2"/>
+            <g stroke="#607785"><path d="M65 164v15M175 164v15M285 164v15"/></g>
+            <text x="65" y="205" text-anchor="middle" class="micro dim">1×</text><text x="285" y="205" text-anchor="middle" class="micro dim">3×</text>
+          </g>
+          <g id="modM" transform="translate(1270 230)">
+            <rect width="350" height="240" rx="28" fill="#101821" stroke="#485d6c"/>
+            <text x="36" y="48" class="moduleLetter accent">M</text><text x="92" y="45" class="small cap">MID-CIRCUIT MEASUREMENT</text>
+            <g id="measureHeads" transform="translate(175 130)">
+              <g id="mh1"><rect x="-28" y="-50" width="56" height="72" rx="10" fill="#273440" stroke="#7692a4"/><path d="M0 22v30" stroke="#90e6ff" stroke-width="4"/><circle cy="58" r="9" fill="#90e6ff"/></g>
+              <g id="mh2" opacity="0" transform="translate(-78 0)"><rect x="-28" y="-50" width="56" height="72" rx="10" fill="#273440" stroke="#7692a4"/><path d="M0 22v30" stroke="#90e6ff" stroke-width="4"/><circle cy="58" r="9" fill="#90e6ff"/></g>
+              <g id="mh3" opacity="0" transform="translate(78 0)"><rect x="-28" y="-50" width="56" height="72" rx="10" fill="#273440" stroke="#7692a4"/><path d="M0 22v30" stroke="#90e6ff" stroke-width="4"/><circle cy="58" r="9" fill="#90e6ff"/></g>
+            </g>
+            <text x="175" y="215" text-anchor="middle" class="micro dim">1 → 3 MEASUREMENTS</text>
+          </g>
+        </g>
+
+        <!-- FACTORIAL CUBE -->
+        <g id="cubeScene" opacity="0">
+          <text x="960" y="160" text-anchor="middle" class="headline">2³ FACTORIAL DESIGN</text>
+          <g id="cube" transform="translate(960 520)">
+            <g fill="none" stroke="#536b7a" stroke-width="4">
+              <path d="M-240 120 L100 120 L250 10 L-90 10 Z"/>
+              <path d="M-240 -160 L100 -160 L250 -270 L-90 -270 Z"/>
+              <path d="M-240 120V-160M100 120V-160M250 10V-270M-90 10V-270"/>
+            </g>
+            <g id="cubeNodes" fill="#14222d" stroke="#90e6ff" stroke-width="3">
+              <circle data-node="0" cx="-240" cy="120" r="22"/><circle data-node="1" cx="100" cy="120" r="22"/>
+              <circle data-node="2" cx="250" cy="10" r="22"/><circle data-node="3" cx="-90" cy="10" r="22"/>
+              <circle data-node="4" cx="-240" cy="-160" r="22"/><circle data-node="5" cx="100" cy="-160" r="22"/>
+              <circle data-node="6" cx="250" cy="-270" r="22"/><circle data-node="7" cx="-90" cy="-270" r="22"/>
+            </g>
+            <g class="small cap">
+              <text x="-325" y="160" class="accent">G</text><text x="280" y="70" class="accent">L</text><text x="-280" y="-205" class="accent">M</text>
+            </g>
+            <g id="selector"><circle r="34" fill="none" stroke="#ffbd6c" stroke-width="6" filter="url(#softGlow)"/></g>
+          </g>
+          <g transform="translate(960 860)"><text text-anchor="middle" class="subhead"><tspan id="cubeCounter" class="accent">0 / 8</tspan> CONDITIONS</text><text y="52" text-anchor="middle" class="small dim cap">3 DYNAMIC CIRCUITS · 6 OBSERVABLES · KNOWN IDEAL OUTPUTS</text></g>
+        </g>
+
+        <!-- INTERACTION GAUGE -->
+        <g id="interactionScene" opacity="0">
+          <text x="960" y="135" text-anchor="middle" class="kicker cap accent">PRIMARY TEST</text>
+          <text x="960" y="190" text-anchor="middle" class="headline">LATENCY × MEASUREMENT</text>
+          <g id="interactionGauge" transform="translate(960 555)">
+            <circle r="245" fill="#0c131a" stroke="#4b6171" stroke-width="5"/>
+            <circle r="210" fill="none" stroke="#25323d" stroke-width="34"/>
+            <path d="M-182 104 A210 210 0 0 1 182 104" fill="none" stroke="#607985" stroke-width="5"/>
+            <g id="gaugeTicks" stroke="#718797" stroke-width="4">
+              <path d="M-180 103l-20 12"/><path d="M-126 -153l-13 -18"/><path d="M0 -210v-24"/><path d="M126 -153l13 -18"/><path d="M180 103l20 12"/>
+            </g>
+            <path id="intNeedle" d="M0 20 L0 -176" stroke="#ffbd6c" stroke-width="8" stroke-linecap="round"/>
+            <circle r="18" fill="#e6eef3"/><circle r="8" fill="#18232b"/>
+            <rect id="ciBand" x="-60" y="-236" width="120" height="34" rx="16" fill="#90e6ff" opacity=".16" stroke="#90e6ff"/>
+            <text y="145" text-anchor="middle" class="value accent">+0.0007</text>
+            <text y="190" text-anchor="middle" class="small dim">95% CI [−0.0033, +0.0049]</text>
+          </g>
+          <g id="controlLever" transform="translate(1310 680)" opacity="0">
+            <rect x="-70" y="-40" width="140" height="80" rx="18" fill="#17222b" stroke="#516877"/>
+            <circle cy="0" r="18" fill="#ffbd6c"/><path d="M0 0L55 -80" stroke="#d9e6ed" stroke-width="12" stroke-linecap="round"/>
+            <text y="74" text-anchor="middle" class="micro cap dim">CONTROL</text>
+          </g>
+          <text id="controlCaption" x="960" y="930" text-anchor="middle" class="subhead cap" opacity="0"><tspan class="warn">INJECTED</tspan> → <tspan class="accent">RECOVERED</tspan></text>
+        </g>
+
+        <!-- RESULT FAILURE -->
+        <g id="resultsScene" opacity="0">
+          <text x="960" y="135" text-anchor="middle" class="kicker cap dim">EXTRAPOLATION CHECK</text>
+          <line x1="300" y1="355" x2="1620" y2="355" stroke="#90e6ff" stroke-width="4" stroke-dasharray="8 12"/>
+          <text x="1615" y="330" text-anchor="end" class="small accent cap">KNOWN IDEAL = 1</text>
+          <g id="resultGauges" transform="translate(360 780)">
+            <g class="resultGauge" data-i="0" transform="translate(0 0)"><rect x="-55" y="-390" width="110" height="390" rx="28" fill="#121b23" stroke="#4b6171"/><rect class="fill" x="-38" y="-40" width="76" height="40" rx="18" fill="#90e6ff"/><text y="55" text-anchor="middle" class="micro dim">OBS 1</text></g>
+            <g class="resultGauge" data-i="1" transform="translate(240 0)"><rect x="-55" y="-390" width="110" height="390" rx="28" fill="#121b23" stroke="#4b6171"/><rect class="fill" x="-38" y="-40" width="76" height="40" rx="18" fill="#90e6ff"/><text y="55" text-anchor="middle" class="micro dim">OBS 2</text></g>
+            <g class="resultGauge" data-i="2" transform="translate(480 0)"><rect x="-55" y="-390" width="110" height="390" rx="28" fill="#121b23" stroke="#4b6171"/><rect class="fill" x="-38" y="-40" width="76" height="40" rx="18" fill="#ff7d75"/><text y="55" text-anchor="middle" class="micro dim">OBS 3</text></g>
+            <g class="resultGauge" data-i="3" transform="translate(720 0)"><rect x="-55" y="-390" width="110" height="390" rx="28" fill="#121b23" stroke="#4b6171"/><rect class="fill" x="-38" y="-40" width="76" height="40" rx="18" fill="#ff7d75"/><text y="55" text-anchor="middle" class="micro dim">OBS 4</text></g>
+            <g class="resultGauge" data-i="4" transform="translate(960 0)"><rect x="-55" y="-390" width="110" height="390" rx="28" fill="#121b23" stroke="#4b6171"/><rect class="fill" x="-38" y="-40" width="76" height="40" rx="18" fill="#ff7d75"/><text y="55" text-anchor="middle" class="micro dim">OBS 5</text></g>
+            <g class="resultGauge" data-i="5" transform="translate(1200 0)"><rect x="-55" y="-390" width="110" height="390" rx="28" fill="#121b23" stroke="#4b6171"/><rect class="fill" x="-38" y="-40" width="76" height="40" rx="18" fill="#90e6ff"/><text y="55" text-anchor="middle" class="micro dim">OBS 6</text></g>
+          </g>
+          <g id="threeSix" opacity="0"><rect x="585" y="760" width="750" height="205" rx="30" fill="#0b1117" stroke="#803f43"/><text x="960" y="845" text-anchor="middle" class="mega warn">3 / 6</text><text x="960" y="913" text-anchor="middle" class="subhead cap">MISSED THE KNOWN ANSWER</text><text x="960" y="950" text-anchor="middle" class="micro dim cap">ALL FIVE ORIGINAL EXTRAPOLATION STRATEGIES</text></g>
+        </g>
+
+        <!-- WHY -->
+        <g id="whyScene" opacity="0"><text x="960" y="490" text-anchor="middle" class="mega">WHY?</text></g>
+
+        <!-- CUTAWAY / IDENTIFIABILITY -->
+        <g id="cutawayScene" opacity="0">
+          <text x="960" y="110" text-anchor="middle" class="kicker cap accent">IDENTIFIABILITY</text>
+          <g id="cutawayBench" transform="translate(210 260)">
+            <rect x="0" y="0" width="1500" height="610" rx="38" fill="#0c131a" stroke="#445968" stroke-width="3"/>
+            <g id="panel" transform="translate(0 0)">
+              <rect x="0" y="0" width="1500" height="610" rx="38" fill="#1a242d" stroke="#526675" stroke-width="3"/>
+              <g fill="#758794"><circle cx="42" cy="42" r="6"/><circle cx="1458" cy="42" r="6"/><circle cx="42" cy="568" r="6"/><circle cx="1458" cy="568" r="6"/></g>
+              <text x="750" y="305" text-anchor="middle" class="small cap dim">RESPONSE MODEL HOUSING</text>
+            </g>
+            <g id="internals">
+              <line x1="170" y1="460" x2="1330" y2="460" stroke="#657b89" stroke-width="4"/>
+              <g stroke="#657b89" stroke-width="3"><path d="M250 448v30"/><path d="M620 448v30"/><path d="M1160 448v30"/></g>
+              <g class="small cap"><text x="250" y="515" text-anchor="middle" class="accent">ZERO</text><text x="620" y="515" text-anchor="middle" class="dim">λM = 1</text><text x="1160" y="515" text-anchor="middle" class="dim">λM = 3</text></g>
+              <path id="trackA" d="M250 240 C390 270 500 318 620 330 C820 350 980 340 1160 320 C1230 312 1280 308 1330 306" fill="none" stroke="#90e6ff" stroke-width="12" stroke-linecap="round"/>
+              <path id="trackB" d="M250 390 C390 360 500 342 620 330 C820 350 980 340 1160 320 C1230 312 1280 308 1330 306" fill="none" stroke="#ffbd6c" stroke-width="12" stroke-linecap="round"/>
+              <g id="followers">
+                <g transform="translate(620 330)"><circle r="30" fill="#101820" stroke="#dce9ef" stroke-width="5"/><circle r="10" fill="#dce9ef"/></g>
+                <g transform="translate(1160 320)"><circle r="30" fill="#101820" stroke="#dce9ef" stroke-width="5"/><circle r="10" fill="#dce9ef"/></g>
+              </g>
+              <g id="zeroReadouts" opacity="0">
+                <rect x="75" y="158" width="240" height="90" rx="18" fill="#081016" stroke="#90e6ff"/><text x="195" y="195" text-anchor="middle" class="micro cap accent">RESPONSE A</text><text x="195" y="228" text-anchor="middle" class="subhead">1.000</text>
+                <rect x="75" y="338" width="240" height="90" rx="18" fill="#081016" stroke="#ffbd6c"/><text x="195" y="375" text-anchor="middle" class="micro cap warn">RESPONSE B</text><text x="195" y="408" text-anchor="middle" class="subhead">0.942</text>
+              </g>
+              <g id="sampleLabel"><rect x="675" y="60" width="500" height="90" rx="18" fill="#091117" stroke="#49616f"/><text x="925" y="115" text-anchor="middle" class="subhead cap">SAME MEASUREMENTS</text></g>
+              <g id="differentLabel" opacity="0"><rect x="165" y="28" width="480" height="90" rx="18" fill="#091117" stroke="#876537"/><text x="405" y="83" text-anchor="middle" class="subhead cap">DIFFERENT ZERO LIMITS</text></g>
+            </g>
+          </g>
+        </g>
+
+        <!-- MORE SHOTS -->
+        <g id="shotsScene" opacity="0">
+          <g transform="translate(1230 175)"><rect width="430" height="116" rx="24" fill="#0a1118" stroke="#4b6171"/><text x="215" y="39" text-anchor="middle" class="micro cap dim">SHOTS AT SAME SETTINGS</text><text id="shotCount" x="215" y="88" text-anchor="middle" class="value accent">20,000</text></g>
+          <g id="uncertainty" stroke="#90e6ff" stroke-width="7">
+            <path id="unc1" d="M805 545v120 M760 545h90 M760 665h90"/><path id="unc2" d="M1345 535v120 M1300 535h90 M1300 655h90"/>
+          </g>
+          <g id="precisionLabel" opacity="0"><rect x="530" y="880" width="860" height="120" rx="26" fill="#091117" stroke="#4a6070"/><text x="960" y="953" text-anchor="middle" class="subhead cap"><tspan class="accent">MORE PRECISION</tspan> ≠ <tspan class="warn">IDENTIFIABILITY</tspan></text></g>
+        </g>
+
+        <!-- FINAL INTERLOCKS -->
+        <g id="finalScene" opacity="0">
+          <text x="960" y="125" text-anchor="middle" class="headline">SEPARABILITY ≠ CERTIFICATION</text>
+          <g transform="translate(420 300)">
+            <rect width="1080" height="430" rx="42" fill="#0d151c" stroke="#445b6a" stroke-width="3"/>
+            <g class="lock" id="lock1" transform="translate(180 0)"><rect x="-110" y="150" width="220" height="160" rx="24" fill="#17222b" stroke="#5f7584"/><rect class="key" x="-55" y="-40" width="110" height="180" rx="18" fill="#90e6ff" opacity=".8"/><text y="365" text-anchor="middle" class="small cap">SEPARABILITY</text></g>
+            <g class="lock" id="lock2" transform="translate(540 0)"><rect x="-110" y="150" width="220" height="160" rx="24" fill="#17222b" stroke="#5f7584"/><rect class="key" x="-55" y="-40" width="110" height="180" rx="18" fill="#90e6ff" opacity=".8"/><text y="365" text-anchor="middle" class="small cap">MODEL VALIDITY</text></g>
+            <g class="lock" id="lock3" transform="translate(900 0)"><rect x="-110" y="150" width="220" height="160" rx="24" fill="#17222b" stroke="#5f7584"/><rect class="key" x="-55" y="-40" width="110" height="180" rx="18" fill="#90e6ff" opacity=".8"/><text y="365" text-anchor="middle" class="small cap">ZERO CALIBRATION</text></g>
+          </g>
+          <g id="reliable" opacity="0"><rect x="640" y="790" width="640" height="110" rx="28" fill="#0b171b" stroke="#90e6ff" stroke-width="2" filter="url(#softGlow)"/><text x="960" y="860" text-anchor="middle" class="subhead cap accent">RELIABLE EXTRAPOLATION</text></g>
+          <text id="paperTitle" x="960" y="1015" text-anchor="middle" class="small dim">Factorial diagnostics in dynamic quantum circuits · Aryan Kumar · Sushanth Dasari</text>
+        </g>
+
+        <!-- narration caption -->
+        <g id="captionBox">
+          <rect x="280" y="948" width="1360" height="90" rx="24" fill="#05080c" opacity=".78"/>
+          <text id="speaker" x="330" y="982" class="micro cap accent">ARYAN</text>
+          <text id="caption" x="330" y="1018" class="caption"></text>
+        </g>
+      </svg>
+    </div>
+
+    <section class="controls" id="controls">
+      <button id="play">Play</button><button id="restart">Restart</button>
+      <div class="readout"><span id="timeRead">00:00.0</span><span id="frameRead">F0000</span></div>
+      <input id="scrub" type="range" min="0" max="90" value="0" step="0.01" />
+      <label>Jump <input id="jump" type="number" min="0" max="90" value="0" step="0.1"/> s</label><button id="go">Go</button>
+    </section>
+  </main>
+<script src="animation.js"></script>
+</body>
+</html>
