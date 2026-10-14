@@ -17,22 +17,14 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 .controls button{background:#fffdfa!important;color:#30312e!important;border-color:#c9c4ba!important}
 .controls button:hover{background:#f2eee6!important}.controls input[type=number]{background:#fffdfa!important;color:#30312e!important;border-color:#c9c4ba!important}
 .readout{color:#6e6d66!important}
-
-/* Narration captions are reference-only and never belong in the film. */
 #captionBox,#speaker,#caption{display:none!important;opacity:0!important}
-
-/* Intro insert placeholders inherit the same paper/ink material system. */
 #introCards>rect{fill:#fffdfa!important;stroke:#d2cdc4!important}
 #introCards circle,#introCards path{fill:#efebe4!important;stroke:#aba69d!important}
 #introCards .small{fill:#333430!important}#introCards .micro{fill:#8a877f!important}
-
-/* Quiet question / WHY beats: no dark scrims. */
 #whyIsolation rect{fill:var(--anatomy-card)!important;fill-opacity:.985!important}
 #whyIsolation circle{fill:var(--accent)!important;fill-opacity:.025!important}
 #whyEnhancement circle{stroke:var(--accent)!important}
 #whyEnhancement .hud-line{stroke:#b9b4aa!important}
-
-/* Older fallback layers stay coherent if they briefly appear before the Anatomy rig takes over. */
 #stage .proof-plate{fill:#fffdfa!important;stroke:#c8c2b7!important}
 #stage .enhancement-label{fill:#6f6d66!important}
 #stage .enhancement-value,#stage .enhancement-formula{fill:#2f302d!important}
@@ -46,8 +38,6 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #stage .scan-line{stroke:#8b877f!important}.scan-head{fill:var(--accent)!important;filter:none!important}
 #stage .ambiguity-bracket{stroke:var(--accent)!important}.ideal-halo{fill:var(--accent)!important;stroke:var(--accent)!important}
 #stage .failure-chip{fill:#fbefec!important;stroke:#c97869!important}.success-chip{fill:#fff6ed!important;stroke:#db9b6c!important}
-
-/* Anatomy light/paper mapping: top + four neutral side tones + one orange subject. */
 #anatomyHero .ah-top{fill:var(--anatomy-top);stroke:var(--anatomy-mid);stroke-width:1.05}
 #anatomyHero .ah-x{fill:var(--anatomy-shade-2);stroke:#8d8981;stroke-width:1.05}
 #anatomyHero .ah-y{fill:var(--anatomy-shade-1);stroke:#8a867e;stroke-width:1.05}
@@ -71,8 +61,6 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #anatomyHero .ah-legend{fill:#4f504b}
 #anatomyHero .ah-shadow{fill:#7d766b;opacity:.10;filter:none}
 #anatomyHero .ah-part{transition:opacity .18s linear}
-
-/* The active mechanism is warm orange, not neon/glowing. */
 #anatomyHero .ah-lit .ah-top,#anatomyHero .ah-lit.ah-top{fill:#f5f1ea;stroke:#858078}
 #anatomyHero .ah-lit .ah-x,#anatomyHero .ah-lit.ah-x{fill:#e5e0d7;stroke:#8b867e}
 #anatomyHero .ah-lit .ah-y,#anatomyHero .ah-lit.ah-y{fill:#dad4ca;stroke:#8b867e}
@@ -85,8 +73,6 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #anatomyHero .ah-dim{opacity:.56}
 #anatomyHero .ah-proof-dim{opacity:.38}
 #anatomyHero .ah-scan{filter:none!important}
-
-/* Instrument details. */
 #anatomyHero .ah-needle{stroke:var(--accent)}
 #anatomyHero .ah-dial-face{fill:#fffdfa;stroke:#76736c}
 #anatomyHero .ah-dial-ring{stroke:#ded9d0}
@@ -99,5 +85,12 @@ html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
 #anatomyHero .ah-jaw{stroke:var(--accent)}
 #anatomyHero .ah-latch-on .ah-top{fill:#f29a60;stroke:#b95117}
 
-/* Clean framed-figure typography, matching the reference site's light figures. */
+/* High-specificity reset for dark refinement rules: proof + interlock stay on the same paper material system. */
+#anatomyHero #ahProof.ah-lit .ah-top,#anatomyHero #ahInterlocks.ah-lit .ah-top{fill:var(--anatomy-shade-3)!important;stroke:#77746d!important}
+#anatomyHero #ahProof.ah-lit .ah-x,#anatomyHero #ahInterlocks.ah-lit .ah-x{fill:var(--anatomy-shade-2)!important;stroke:#8d8981!important}
+#anatomyHero #ahProof.ah-lit .ah-y,#anatomyHero #ahInterlocks.ah-lit .ah-y{fill:var(--anatomy-shade-1)!important;stroke:#8a867e!important}
+#anatomyHero #ahProof.ah-lit .ah-line,#anatomyHero #ahInterlocks.ah-lit .ah-line{stroke:#6f6c65!important}
+#anatomyHero #ahProof.ah-lit .ah-hi,#anatomyHero #ahInterlocks.ah-lit .ah-hi{fill:var(--anatomy-shade-3)!important;stroke:#77746d!important}
+#anatomyHero #ahProof.ah-lit .ah-lo,#anatomyHero #ahInterlocks.ah-lit .ah-lo{fill:var(--anatomy-shade-0)!important;stroke:#8e8a82!important}
+
 #ahFrame{opacity:1}#ahLegend circle{filter:none!important}
