@@ -35,18 +35,19 @@ jobs:
           node --check transition-polish.js
           node --check anatomy-model.js
           node --check anatomy-hero.js
+          node --check anatomy-refine.js
 
       - name: Prepare animation preview
         shell: bash
         run: |
           rm -rf _site _qa
           mkdir -p _site _qa
-          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css _site/
-          sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n<link rel="stylesheet" href="anatomy-hero.css" />\n</head>#' _site/index.html
-          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n</body>#' _site/index.html
+          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css anatomy-refine.js anatomy-refine.css _site/
+          sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n<link rel="stylesheet" href="anatomy-hero.css" />\n<link rel="stylesheet" href="anatomy-refine.css" />\n</head>#' _site/index.html
+          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n<script src="anatomy-refine.js"></script>\n</body>#' _site/index.html
           touch _site/.nojekyll
 
-      - name: Render QA keyframes
+      - name: Render and audit Anatomy figure
         shell: bash
         run: |
           python3 -m http.server 8000 --directory _site >/tmp/crzne-http.log 2>&1 &
@@ -58,11 +59,25 @@ jobs:
             kill "$SERVER_PID" || true
             exit 0
           fi
+
           for T in 8 12 20 24 29 34 40 43 52 58 62 66 74 82 86 89; do
             SAFE_T="${T/./_}"
             "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1400 --screenshot="_qa/t${SAFE_T}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${SAFE_T}.log 2>&1 || true
           done
+
+          # Anatomy-style close-up inspection passes: active controls, factorial cage, proof mechanism, interlock.
+          for T in 20 34 66 86; do
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1400 --screenshot="_qa/detail-${T}.png" "http://127.0.0.1:8000/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${T}.log 2>&1 || true
+          done
+
+          # Density sanity check on the live rendered DOM. A Hero must contain real parts, not a few slabs.
+          "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=1400 --dump-dom "http://127.0.0.1:8000/?t=34&present=1" > _qa/dom.html 2>/tmp/chrome-dom.log || true
+          PARTS=$(grep -o 'ah-part' _qa/dom.html | wc -l | tr -d ' ')
+          echo "Anatomy rendered part groups: $PARTS"
+          test "$PARTS" -ge 100
+
           kill "$SERVER_PID" || true
+          rm -f _qa/dom.html
           ls -lh _qa || true
 
       - name: Upload QA keyframes
