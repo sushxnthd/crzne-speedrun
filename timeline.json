@@ -1,0 +1,22 @@
+{
+  "fps": 30,
+  "duration_seconds": 90,
+  "resolution": [1920,1080],
+  "narrators": {"0-45":"Aryan Kumar","45-90":"Sushanth Dasari"},
+  "scenes": [
+    {"id":"intro","start":0,"end":3.6,"frames":[0,107],"owner":"Aryan","purpose":"human ownership"},
+    {"id":"question","start":3.6,"end":7.4,"frames":[108,221],"owner":"Aryan","purpose":"research question"},
+    {"id":"zne","start":7.4,"end":15.3,"frames":[222,458],"owner":"Aryan","purpose":"teach extrapolation"},
+    {"id":"components","start":15.3,"end":31.5,"frames":[459,944],"owner":"Aryan","purpose":"G/L/M controls"},
+    {"id":"factorial","start":31.5,"end":36.9,"frames":[945,1106],"owner":"Aryan","purpose":"2^3 design"},
+    {"id":"interaction","start":36.9,"end":41.4,"frames":[1107,1241],"owner":"Aryan","purpose":"bLM result"},
+    {"id":"positive-control","start":41.4,"end":45,"frames":[1242,1349],"owner":"Aryan","purpose":"sensitivity validation"},
+    {"id":"reversal","start":45,"end":48.4,"frames":[1350,1451],"owner":"Sushanth","purpose":"apparent success"},
+    {"id":"failure","start":48.4,"end":58.5,"frames":[1452,1754],"owner":"Sushanth","purpose":"3/6 known-answer miss"},
+    {"id":"why","start":58.5,"end":61.9,"frames":[1755,1856],"owner":"Sushanth","purpose":"cognitive pause"},
+    {"id":"identifiability","start":61.9,"end":75.4,"frames":[1857,2261],"owner":"Sushanth","purpose":"same samples, different zero limits"},
+    {"id":"more-shots","start":75.4,"end":82.1,"frames":[2262,2462],"owner":"Sushanth","purpose":"precision does not cure identifiability"},
+    {"id":"diagnostic","start":82.1,"end":85.5,"frames":[2463,2564],"owner":"Sushanth","purpose":"separability is diagnostic"},
+    {"id":"interlocks","start":85.5,"end":90,"frames":[2565,2699],"owner":"Sushanth","purpose":"model validity + zero calibration"}
+  ]
+}
