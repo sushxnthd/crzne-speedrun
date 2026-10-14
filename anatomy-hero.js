@@ -55,24 +55,17 @@
 
   function buildBase(parent){
     const s=g('ahStatic','');parent.appendChild(s);
-    // halo / cast base
     const shadow=poly(s,[[-278,-138,-13],[278,-138,-13],[278,138,-13],[-278,138,-13]],'ah-shadow');shadow.dataset.depth=-999;
     box(s,'base',-270,-130,0,540,260,18);
-    // feet + flanges
     [[-235,-98],[235,-98],[-235,98],[235,98]].forEach(([x,y],i)=>{cyl(s,`foot-flange-${i}`,x,y,-15,18,4,'ah-lo');cyl(s,`foot-${i}`,x,y,-12,13,12);});
-    // datum rails and ruler strips
     box(s,'front-datum',-235,91,19,470,9,7,'ah-lo');
     box(s,'rear-datum',-235,-101,19,470,8,7,'ah-lo');
     box(s,'ruler-strip',-210,77,19,420,7,2,'ah-lo');
     for(let x=-205;x<=205;x+=10){const h=x%50===0?8:4;line(s,[x,79,21],[x,79-h*.22,21],x%50===0?'ah-line':'ah-faint');}
-    // cable trough
     box(s,'cable-trough',-218,-120,18,436,14,8,'ah-lo');
-    // end stops
     box(s,'left-stop',-251,-105,20,12,210,20);
     box(s,'right-stop',239,-105,20,12,210,20);
-    // top plate screws
     [-225,-150,-75,0,75,150,225].forEach(x=>[-108,108].forEach(y=>bolt(s,x,y,19,3.2)));
-    // engraved plate
     const lp=box(s,'label-plate',-245,108,26,118,9,3,'ah-lo');
     const pp=P([-187,113,30]);const txt=E('text',{x:pp[0],y:pp[1],class:'ah-engrave','text-anchor':'middle'},'CR-ZNE');s.appendChild(txt);
     sortParts(s);
@@ -80,19 +73,14 @@
 
   function buildZNE(parent){
     const q=g('ahZNE','');parent.appendChild(q);R.zne=q;
-    // twin rails and supports
     [-8,28].forEach(y=>{box(q,`zne-rail-${y}`,-160,y,27,330,6,6);[-145,150].forEach(x=>{box(q,`rail-support-${x}-${y}`,x-9,y-7,19,18,20,8,'ah-lo');bolt(q,x,y,28,2.4);});});
-    // physical detents: zero, 1, 3
     [[-145,'zero'],[-35,'one'],[145,'three']].forEach(([x,n])=>{cyl(q,`detent-${n}`,x,47,26,6,5,'ah-lo');bolt(q,x,47,32,2.2);});
-    // frosted unsampled guard from zero to nominal
     const a=P([-152,-14,40]),b=P([-37,-14,40]),c=P([-37,35,40]),d=P([-152,35,40]);q.appendChild(E('polygon',{points:[a,b,c,d].map(v=>v.join(',')).join(' '),class:'ah-glass'}));
-    // carriage built at x=0 and moved along x
     const car=g('ahZNECarriage','');R.zneCar=car;q.appendChild(car);
     box(car,'zne-carriage',-28,-18,34,56,58,10,'ah-hi');
     [[-19,-9],[19,-9],[-19,31],[19,31]].forEach(([x,y])=>{box(car,'zne-bushing',x-7,y-7,44,14,14,7,'ah-lo');bolt(car,x,y,52,2.2);});
     box(car,'zne-pointer',-4,42,44,8,12,12,'ah-lo');
     line(car,[0,48,58],[0,48,68],'ah-accent-line',2.5);
-    // extrapolation plunger
     box(car,'extrap-plunger',-9,-28,47,18,14,18,'ah-hi');
     sortParts(q);
   }
@@ -103,7 +91,6 @@
     cyl(q,'G-spindle',-186,-61,41,8,38);
     cyl(q,'G-knob',-186,-61,79,18,8,'ah-hi');knurl(q,-186,-61,87,18,24);
     line(q,[-186,-61,87],[-174,-61,87],'ah-accent-line');
-    // guides
     [-208,-164].forEach(x=>line(q,[x,-90,62],[x,-28,62],'ah-line',4));
     [-92,-27].forEach(y=>box(q,`G-stop-${y}`,-222,y,52,72,6,14,'ah-lo'));
     R.gCass=[];
@@ -133,7 +120,6 @@
     line(q,[166,-61,88],[180,-61,88],'ah-accent-line');
     R.mHeads=[];
     [-30,0,30].forEach((dx,i)=>{const h=g(`ahMHead${i}`,'');q.appendChild(h);R.mHeads.push(h);cyl(h,`M-collar-${i}`,166+dx,-61,61,8,10,'ah-lo');box(h,`M-plunger-${i}`,162+dx,-65,44,8,8,20,'ah-hi');cyl(h,`M-tip-${i}`,166+dx,-61,39,5,5,'ah-cyan');});
-    // parity pawl
     box(q,'parity-pawl',150,-35,50,32,10,7,'ah-lo');
     sortParts(q);
   }
@@ -144,7 +130,6 @@
     const xs=[cx-wx/2,cx+wx/2],ys=[cy-wy/2,cy+wy/2],zs=[cz,cz+h];
     xs.forEach(x=>ys.forEach(y=>box(q,'cage-post',x-3,y-3,cz,6,6,h,'ah-lo')));
     zs.forEach(z=>{ys.forEach(y=>box(q,'cage-x-rail',cx-wx/2,y-3,z,wx,6,6,'ah-lo'));xs.forEach(x=>box(q,'cage-y-rail',x-3,cy-wy/2,z,6,wy,6,'ah-lo'));});
-    // 8 physical detent cups
     xs.forEach(x=>ys.forEach(y=>zs.forEach(z=>{cyl(q,'factorial-detent',x,y,z+7,5,4,'ah-lo',12);})))
     const puck=g('ahSelector','');q.appendChild(puck);R.selector=puck;cyl(puck,'selector-puck',cx,cy,cz+h/2,9,7,'ah-cyan',16);
     sortParts(q);
@@ -160,23 +145,27 @@
     const face=g('ahDialFace','');q.appendChild(face);R.dialFace=face;
     face.appendChild(E('circle',{cx:a[0],cy:a[1],r:101,class:'ah-dial-face'}));
     face.appendChild(E('circle',{cx:a[0],cy:a[1],r:84,class:'ah-dial-ring'}));
-    for(let i=0;i<=20;i++){const ang=(-140+i*14)*Math.PI/180;const r1=i%5===0?72:77,r2=86;face.appendChild(E('path',{d:`M${a[0]+r1*Math.cos(ang)} ${a[1]+r1*Math.sin(ang)}L${a[0]+r2*Math.cos(ang)} ${a[1]+r2*Math.sin(ang)}`,class:'ah-dial-tick'}));}
-    face.appendChild(E('path',{d:arcPath(a[0],a[1],84,-Math.PI/2-.25,-Math.PI/2+.25),class:'ah-equivalence'}));
-    const nd=E('path',{d:`M${a[0]} ${a[1]+8}L${a[0]} ${a[1]-72}`,class:'ah-needle'});face.appendChild(nd);R.needle=nd;R.dialAnchor=a;
-    face.appendChild(E('circle',{cx:a[0],cy:a[1],r:10,class:'ah-hi'}));
-    const hw=g('ahHandwheel','');q.appendChild(hw);R.handwheel=hw;const hwa=[a[0]+132,a[1]+52];hw.appendChild(E('circle',{cx:hwa[0],cy:hwa[1],r:32,class:'ah-line','stroke-width':5}));for(let i=0;i<4;i++){const ang=i*Math.PI/2;hw.appendChild(E('path',{d:`M${hwa[0]} ${hwa[1]}L${hwa[0]+27*Math.cos(ang)} ${hwa[1]+27*Math.sin(ang)}`,class:'ah-line'}));}hw.appendChild(E('circle',{cx:hwa[0],cy:hwa[1],r:7,class:'ah-fastener'}));R.handwheelAnchor=hwa;
+    for(let i=0;i<=12;i++){const ang=(-125+i*(250/12))*Math.PI/180;const r0=i%3===0?64:70,r1=80;face.appendChild(E('line',{x1:a[0]+r0*Math.cos(ang),y1:a[1]+r0*Math.sin(ang),x2:a[0]+r1*Math.cos(ang),y2:a[1]+r1*Math.sin(ang),class:'ah-dial-tick'}));}
+    face.appendChild(E('path',{d:arcPath(a[0],a[1],72,-1.75,-1.39),class:'ah-equivalence'}));
+    const n=E('line',{x1:a[0],y1:a[1],x2:a[0],y2:a[1]-72,class:'ah-needle'});face.appendChild(n);R.needle=n;R.dialAnchor=a;
+    face.appendChild(E('circle',{cx:a[0],cy:a[1],r:12,class:'ah-fastener'}));
+    const hw=P([246,86,73]);const hand=g('ahHandwheel','');q.appendChild(hand);R.handwheel=hand;R.handwheelAnchor=hw;
+    hand.appendChild(E('circle',{cx:hw[0],cy:hw[1],r:42,fill:'none',stroke:'#7f919b','stroke-width':5}));
+    for(let i=0;i<4;i++){const ang=i*Math.PI/2;hand.appendChild(E('line',{x1:hw[0]+8*Math.cos(ang),y1:hw[1]+8*Math.sin(ang),x2:hw[0]+36*Math.cos(ang),y2:hw[1]+36*Math.sin(ang),class:'ah-line'}));}
+    hand.appendChild(E('circle',{cx:hw[0],cy:hw[1],r:9,class:'ah-fastener'}));
     sortParts(q);
   }
 
   function buildFailureBank(parent){
     const q=g('ahFailureBank','');parent.appendChild(q);R.failureBank=q;
-    box(q,'inspection-carrier',-185,92,28,370,24,18,'ah-lo');
-    R.cart=[];R.shutters=[];R.status=[];
+    box(q,'inspection-rail',-218,92,26,436,14,9,'ah-lo');
+    R.status=[];R.shutters=[];
     for(let i=0;i<6;i++){
-      const x=-150+i*60;const c=g(`ahCart${i}`,'');q.appendChild(c);R.cart.push(c);
-      box(c,`observable-cartridge-${i}`,x-20,96,46,40,18,34,'ah-hi');
-      const p=P([x,116,66]);const mark=E('path',{d:`M${p[0]-15} ${p[1]}L${p[0]+15} ${p[1]}`,class:'ah-faint'});c.appendChild(mark);
-      const led=E('circle',{cx:p[0],cy:p[1]-23,r:5,class:'ah-dark-fastener'});c.appendChild(led);R.status.push(led);
+      const x=-190+i*75;
+      const c=g(`ahCart${i}`,'');q.appendChild(c);
+      box(c,`inspection-cartridge-${i}`,x,97,32,58,28,54,'ah-hi');
+      bolt(c,x+29,111,89,4,'ah-dark-fastener');
+      const led=P([x+29,124,79]);const lamp=E('circle',{cx:led[0],cy:led[1],r:7,class:'ah-dark-fastener'});c.appendChild(lamp);R.status.push(lamp);
       const sh=g(`ahShutter${i}`,'');c.appendChild(sh);R.shutters.push(sh);const sp=P([x,118,48]);sh.appendChild(E('rect',{x:sp[0]-13,y:sp[1]-7,width:26,height:14,rx:4,class:'ah-red'}));
     }
     sortParts(q);
@@ -189,15 +178,11 @@
   function buildProof(parent){
     const q=g('ahProof','');parent.appendChild(q);R.proof=q;
     box(q,'proof-backplate',-226,115,24,452,6,84,'ah-lo');
-    // ruler / datum strip inside
     box(q,'proof-ruler',-188,111,32,376,5,8,'ah-lo');
     [-150,-40,150].forEach(x=>{line(q,[x,110,32],[x,110,46],'ah-line',2);bolt(q,x,111,40,2,'ah-dark-fastener');});
     const pa=CAM_A.map(([x,z])=>[x,109,z+18]),pb=CAM_B.map(([x,z])=>[x,109,z+18]);R.trackA=path3(q,pa,'ah-track-a');R.trackB=path3(q,pb,'ah-track-b');
-    // sampled follower wheels at λ=1 and λ=3
     R.followers=[];[-40,150].forEach((x,i)=>{const z=camZ(CAM_A,x)+18;const p=P([x,108,z]);const f=g(`ahFollower${i}`,'');f.appendChild(E('circle',{cx:p[0],cy:p[1],r:17,class:'ah-follower'}));f.appendChild(E('circle',{cx:p[0],cy:p[1],r:5,class:'ah-fastener'}));q.appendChild(f);R.followers.push(f);});
-    // scan carriage
     const sc=g('ahScan','ah-scan');q.appendChild(sc);R.scan=sc;const p=P([150,104,100]);sc.appendChild(E('rect',{x:p[0]-19,y:p[1]-28,width:38,height:56,rx:10,class:'ah-hi'}));sc.appendChild(E('path',{d:`M${p[0]} ${p[1]+28}L${p[0]} ${p[1]+48}`,class:'ah-accent-line'}));R.scanBase=[150,104,100];
-    // precision jaws at sampled points
     R.jaws=[];[-40,150].forEach((x,i)=>{const z=camZ(CAM_A,x)+18,p=P([x,104,z]);const j=g(`ahJaw${i}`,'');q.appendChild(j);const l=E('path',{class:'ah-jaw'}),r=E('path',{class:'ah-jaw'});j.appendChild(l);j.appendChild(r);R.jaws.push({l,r,p});});
     sortParts(q);
   }
@@ -205,10 +190,8 @@
   function buildPanel(parent){
     const q=g('ahPanel','ah-panel');parent.appendChild(q);R.panel=q;
     box(q,'service-panel',-246,120,23,492,8,91,'ah-hi');
-    // seam and real fasteners
     const a=P([-232,125,31]),b=P([232,125,31]);q.appendChild(E('path',{d:`M${a[0]} ${a[1]}L${b[0]} ${b[1]}`,class:'ah-faint'}));
     R.panelScrews=[];[[-225,124,99],[225,124,99],[-225,124,39],[225,124,39]].forEach((p,i)=>{const s=bolt(q,p[0],p[1],p[2],5,'ah-fastener');R.panelScrews.push(s);});
-    // two guide rails that the panel physically leaves along
     box(parent,'panel-guide-L',-258,116,10,8,8,108,'ah-lo');box(parent,'panel-guide-R',250,116,10,8,8,108,'ah-lo');
   }
 
@@ -226,7 +209,6 @@
     cable(q,[[-186,-36,52],[-135,-12,44],[-70,-4,50],[-40,0,73]]);
     cable(q,[[-5,-35,56],[-2,-10,47],[0,0,63],[0,0,79]]);
     cable(q,[[166,-35,52],[120,-12,45],[70,-2,52],[48,0,74]]);
-    // clamps physically attach cables to base
     [[-132,-12,45],[-66,-4,51],[0,-9,48],[72,-2,52],[121,-12,46]].forEach((p,i)=>{cyl(q,`cable-clamp-${i}`,p[0],p[1],p[2],5,4,'ah-lo',12);});
   }
 
@@ -236,7 +218,6 @@
     f.appendChild(E('text',{x:118,y:124,class:'ah-card-title'},'COMPONENT-RESOLVED ZERO-NOISE EXTRAPOLATION'));
     const ph=E('text',{x:1800,y:93,class:'ah-card-kicker','text-anchor':'end'},'LIVE MODEL');f.appendChild(ph);
     const rd=E('text',{x:1800,y:126,class:'ah-readout','text-anchor':'end'},'');f.appendChild(rd);R.readout=rd;
-    // final legend, deliberately outside the machine
     const lg=g('ahLegend','');f.appendChild(lg);R.legend=lg;
     const items=[['SEPARABILITY',700],['MODEL VALIDITY',960],['ZERO CALIBRATION',1235]];
     items.forEach(([t,x],i)=>{lg.appendChild(E('circle',{cx:x-92,cy:852,r:7,class:i===0?'ah-cyan':'ah-dark-fastener'}));lg.appendChild(E('text',{x,y:858,class:'ah-legend','text-anchor':'middle'},t));});
@@ -276,31 +257,18 @@
     R.readout.textContent=model.readoutOf(s);
     setFocus(t);
 
-    // ZNE carriage — same physical carriage for sampled and extrapolated positions.
     const dz=delta([s.zneX,0,0]);R.zneCar.setAttribute('transform',`translate(${dz[0]} ${dz[1]})`);
-
-    // G: three gate cassettes separate on their guide pins.
     R.gCass.forEach((el,i)=>{const off=(i-1)*23*s.g,dd=delta([0,off,0]);el.setAttribute('transform',`translate(${dd[0]} ${dd[1]})`);});
-
-    // L: carriage travels on real rails.
     const dl=delta([42*s.l,0,0]);R.lCar.setAttribute('transform',`translate(${dl[0]} ${dl[1]})`);
-
-    // M: second and third plungers descend into the measurement stack.
     R.mHeads.forEach((el,i)=>{const active=i===0?1:s.m;const lift=i===0?0:26*(1-active);const dm=delta([0,0,lift]);el.setAttribute('transform',`translate(${dm[0]} ${dm[1]})`);el.style.opacity=i===0?1:(.22+.78*active);});
-
-    // Factorial selector physically indexes all eight corners.
     const fs=s.factorial;const ds=delta([fs.x*52,fs.y*36,fs.z*37]);R.selector.setAttribute('transform',`translate(${ds[0]} ${ds[1]})`);
-
-    // Interaction dial and planned positive-control handwheel.
     const max=.025;const ang=Math.max(-70,Math.min(70,s.interaction/max*70));R.needle.setAttribute('transform',`rotate(${ang} ${R.dialAnchor[0]} ${R.dialAnchor[1]})`);
     R.handwheel.setAttribute('transform',`rotate(${s.control*220} ${R.handwheelAnchor[0]} ${R.handwheelAnchor[1]})`);
 
-    // Known-answer inspection cartridges: no invented magnitudes, only coverage/exclusion state.
     show(R.failureBank,t>=46&&t<60?model.smooth(model.inv(t,46.5,48.5))*(1-model.smooth(model.inv(t,57.2,59.5))):0);
-    R.status.forEach((led,i)=>{const fail=s.coverage[i]==='excludes';led.setAttribute('class',s.failure>.65?(fail?'ah-red':'ah-cyan'):'ah-dark-fastener');});
+    R.status.forEach((led,i)=>{const fail=s.coverage[i]==='excludes';led.setAttribute('class',s.failure>.65?(fail?'ah-amber':'ah-dark-fastener'):'ah-dark-fastener');});
     R.shutters.forEach((sh,i)=>{const fail=s.coverage[i]==='excludes';const d=delta([0,0,fail?22*s.failure:0]);sh.setAttribute('transform',`translate(${d[0]} ${d[1]})`);sh.style.opacity=fail?s.failure:0;});
 
-    // Proof: panel fasteners release, panel drops on guides, exposing same sampled followers / different zero cams.
     const screwOut=delta([0,12*s.screws,4*s.screws]);R.panelScrews.forEach((x,i)=>x.setAttribute('transform',`translate(${screwOut[0]} ${screwOut[1]}) rotate(${s.screws*180*(i%2?1:-1)} ${x.getAttribute('cx')} ${x.getAttribute('cy')})`));
     const dp=delta([0,42*s.panel,-118*s.panel]);R.panel.setAttribute('transform',`translate(${dp[0]} ${dp[1]})`);
     show(R.proof,s.camReveal);
@@ -308,7 +276,6 @@
     R.trackA.style.opacity=.25+.75*s.camReveal;R.trackB.style.opacity=.25+.75*s.camReveal;
     R.jaws.forEach(j=>{const half=38*s.jaw+5;j.l.setAttribute('d',`M${j.p[0]-half} ${j.p[1]-18}L${j.p[0]-half} ${j.p[1]+18}`);j.r.setAttribute('d',`M${j.p[0]+half} ${j.p[1]-18}L${j.p[0]+half} ${j.p[1]+18}`);});
 
-    // Final three-key interlock. Separability alone cannot move the output latch.
     show(R.interlocks,t>=78.4?model.smooth(model.inv(t,78.4,80)):0);show(R.legend,t>=79?model.smooth(model.inv(t,79,80.5)):0);
     [s.key1,s.key2,s.key3].forEach((p,i)=>{const dk=delta([0,0,-42*p]);R.keys[i].setAttribute('transform',`translate(${dk[0]} ${dk[1]})`);});
     const latchMove=delta([38*s.latch,0,0]);R.latch.setAttribute('transform',`translate(${latchMove[0]} ${latchMove[1]})`);R.interlocks.classList.toggle('ah-latch-on',s.latch>.96);
