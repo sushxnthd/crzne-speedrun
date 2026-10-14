@@ -1,0 +1,103 @@
+:root{
+  --bg:#f7f5ef;--fg:#262724;--dim:#74736c;--accent:#e8752b;--warn:#c6533f;--amber:#e8752b;
+  --anatomy-card:#f7f5ef;--anatomy-paper:#f7f5ef;--anatomy-top:#fffdfa;
+  --anatomy-shade-0:#d4cfc6;--anatomy-shade-1:#dfdad1;--anatomy-shade-2:#e9e5dd;--anatomy-shade-3:#f2efe9;
+  --anatomy-face:#f5f2ec;--anatomy-lit:#e8752b;--anatomy-lit-top:#f7a36b;--anatomy-lit-shade:#c95a1d;
+  --anatomy-hi:#30312e;--anatomy-mid:#66655f;--anatomy-lo:#96938b;--anatomy-faint:#c9c4ba;
+  --anatomy-danger:#bf5140;--anatomy-track-b:#6e6961;
+}
+html,body{background:var(--anatomy-card)!important;color:var(--fg)!important}
+.stage-wrap{background:var(--anatomy-card)!important}
+#stage>rect:first-of-type{fill:var(--anatomy-card)!important}
+#grid{opacity:.15!important}#grid path{stroke:#d0cbc1!important}
+.headline,.mega,.subhead,.value,.small,.micro,.caption{fill:#292a27!important}
+.dim{fill:#77766f!important}.accent{fill:var(--accent)!important}.warn{fill:var(--warn)!important}
+.kicker{fill:var(--accent)!important}
+.controls{background:#fbfaf6!important;border-top-color:#d8d3ca!important;color:#4f504b!important}
+.controls button{background:#fffdfa!important;color:#30312e!important;border-color:#c9c4ba!important}
+.controls button:hover{background:#f2eee6!important}.controls input[type=number]{background:#fffdfa!important;color:#30312e!important;border-color:#c9c4ba!important}
+.readout{color:#6e6d66!important}
+
+/* Narration captions are reference-only and never belong in the film. */
+#captionBox,#speaker,#caption{display:none!important;opacity:0!important}
+
+/* Intro insert placeholders inherit the same paper/ink material system. */
+#introCards>rect{fill:#fffdfa!important;stroke:#d2cdc4!important}
+#introCards circle,#introCards path{fill:#efebe4!important;stroke:#aba69d!important}
+#introCards .small{fill:#333430!important}#introCards .micro{fill:#8a877f!important}
+
+/* Quiet question / WHY beats: no dark scrims. */
+#whyIsolation rect{fill:var(--anatomy-card)!important;fill-opacity:.985!important}
+#whyIsolation circle{fill:var(--accent)!important;fill-opacity:.025!important}
+#whyEnhancement circle{stroke:var(--accent)!important}
+#whyEnhancement .hud-line{stroke:#b9b4aa!important}
+
+/* Older fallback layers stay coherent if they briefly appear before the Anatomy rig takes over. */
+#stage .proof-plate{fill:#fffdfa!important;stroke:#c8c2b7!important}
+#stage .enhancement-label{fill:#6f6d66!important}
+#stage .enhancement-value,#stage .enhancement-formula{fill:#2f302d!important}
+#stage .enhancement-micro{fill:#7d7a72!important}
+#stage .proof-cyan{fill:var(--accent)!important;stroke:var(--accent)!important}
+#stage .proof-amber{fill:#b86125!important;stroke:#b86125!important}
+#stage .proof-red{fill:var(--anatomy-danger)!important;stroke:var(--anatomy-danger)!important}
+#stage .thin-grid{stroke:#d2ccc2!important}
+#stage .sample-lock{fill:#fffdfa!important;stroke:#8b877f!important}
+#stage .proof-region{fill:var(--accent)!important;fill-opacity:.035!important;stroke:var(--accent)!important;stroke-opacity:.35!important}
+#stage .scan-line{stroke:#8b877f!important}.scan-head{fill:var(--accent)!important;filter:none!important}
+#stage .ambiguity-bracket{stroke:var(--accent)!important}.ideal-halo{fill:var(--accent)!important;stroke:var(--accent)!important}
+#stage .failure-chip{fill:#fbefec!important;stroke:#c97869!important}.success-chip{fill:#fff6ed!important;stroke:#db9b6c!important}
+
+/* Anatomy light/paper mapping: top + four neutral side tones + one orange subject. */
+#anatomyHero .ah-top{fill:var(--anatomy-top);stroke:var(--anatomy-mid);stroke-width:1.05}
+#anatomyHero .ah-x{fill:var(--anatomy-shade-2);stroke:#8d8981;stroke-width:1.05}
+#anatomyHero .ah-y{fill:var(--anatomy-shade-1);stroke:#8a867e;stroke-width:1.05}
+#anatomyHero .ah-hi{fill:var(--anatomy-shade-3);stroke:#77746d;stroke-width:1.05}
+#anatomyHero .ah-lo{fill:var(--anatomy-shade-0);stroke:#8e8a82;stroke-width:1}
+#anatomyHero .ah-line{stroke:var(--anatomy-mid);stroke-width:1.15}
+#anatomyHero .ah-faint{stroke:var(--anatomy-faint);stroke-width:.75}
+#anatomyHero .ah-cable{stroke:#c5c0b7;stroke-width:7}
+#anatomyHero .ah-cable-core{stroke:#6e6c65;stroke-width:1.15;opacity:.8}
+#anatomyHero .ah-fastener{fill:#8e8b84;stroke:#fffdfa;stroke-width:1}
+#anatomyHero .ah-dark-fastener{fill:#aaa69e;stroke:#f8f5ef;stroke-width:1}
+#anatomyHero .ah-glass{fill:var(--accent);fill-opacity:.045;stroke:var(--accent);stroke-opacity:.26}
+#anatomyHero .ah-accent-line{stroke:var(--accent);stroke-width:2.2;filter:none!important}
+#anatomyHero .ah-amber-line{stroke:var(--accent)}
+#anatomyHero .ah-red{fill:var(--anatomy-danger);stroke:#8f3f32;filter:none!important}
+#anatomyHero .ah-amber,#anatomyHero .ah-cyan{fill:var(--accent);stroke:#b95b20;filter:none!important}
+#anatomyHero .ah-engrave{fill:#6d6b64}
+#anatomyHero .ah-card-kicker{fill:#77736b}
+#anatomyHero .ah-card-title{fill:#2c2d2a}
+#anatomyHero .ah-readout{fill:#5f5e58}
+#anatomyHero .ah-legend{fill:#4f504b}
+#anatomyHero .ah-shadow{fill:#7d766b;opacity:.10;filter:none}
+#anatomyHero .ah-part{transition:opacity .18s linear}
+
+/* The active mechanism is warm orange, not neon/glowing. */
+#anatomyHero .ah-lit .ah-top,#anatomyHero .ah-lit.ah-top{fill:#f5f1ea;stroke:#858078}
+#anatomyHero .ah-lit .ah-x,#anatomyHero .ah-lit.ah-x{fill:#e5e0d7;stroke:#8b867e}
+#anatomyHero .ah-lit .ah-y,#anatomyHero .ah-lit.ah-y{fill:#dad4ca;stroke:#8b867e}
+#anatomyHero .ah-lit .ah-line{stroke:#6f6c65}
+#anatomyHero .ah-subject-lit .ah-top,#anatomyHero .ah-subject-lit.ah-top{fill:#f7a36b;stroke:#b95117}
+#anatomyHero .ah-subject-lit .ah-x,#anatomyHero .ah-subject-lit.ah-x{fill:#e8752b;stroke:#a84615}
+#anatomyHero .ah-subject-lit .ah-y,#anatomyHero .ah-subject-lit.ah-y{fill:#cf5d1f;stroke:#963d12}
+#anatomyHero .ah-subject-lit .ah-line{stroke:#b94d16}
+#anatomyHero .ah-subject-lit{filter:none!important}
+#anatomyHero .ah-dim{opacity:.56}
+#anatomyHero .ah-proof-dim{opacity:.38}
+#anatomyHero .ah-scan{filter:none!important}
+
+/* Instrument details. */
+#anatomyHero .ah-needle{stroke:var(--accent)}
+#anatomyHero .ah-dial-face{fill:#fffdfa;stroke:#76736c}
+#anatomyHero .ah-dial-ring{stroke:#ded9d0}
+#anatomyHero .ah-dial-tick{stroke:#66645e}
+#anatomyHero .ah-equivalence{stroke:var(--accent);opacity:.16}
+#anatomyHero .ah-panel{filter:none}
+#anatomyHero .ah-track-a{stroke:var(--accent);stroke-width:7}
+#anatomyHero .ah-track-b{stroke:var(--anatomy-track-b);stroke-width:7}
+#anatomyHero .ah-follower{fill:#fffdfa;stroke:#56554f}
+#anatomyHero .ah-jaw{stroke:var(--accent)}
+#anatomyHero .ah-latch-on .ah-top{fill:#f29a60;stroke:#b95117}
+
+/* Clean framed-figure typography, matching the reference site's light figures. */
+#ahFrame{opacity:1}#ahLegend circle{filter:none!important}
