@@ -4,17 +4,17 @@
 **Master:** 90 s, 30 fps  
 **Narrator split:** Aryan 0:00–0:45 · Sushanth 0:45–1:30
 
-This is the locked clear-first script chosen for recording. The animations carry additional technical detail visually rather than forcing it into the narration.
+This is the exact narration copy to record. Do not paraphrase it in the animation source. Additional technical detail belongs in visuals, not added narration.
 
 ## Aryan — 0:00–0:45
 
-I’m Aryan Kumar, and this is Sushanth Dasari. We’re student researchers from Gurugram, Haryana.
+I’m Aryan Kumar, and with me is Sushanth Dasari of grade 12th.
 
 Here’s a strange way quantum computers fight noise: make the machine deliberately noisier, watch how its answer changes, then extrapolate backward to what a perfect circuit should have produced.
 
 That’s zero-noise extrapolation.
 
-But dynamic quantum circuits combine several error sources at once. So on IBM quantum processors, we independently amplified three of them: gate operations, feedforward latency, and mid-circuit measurements.
+But dynamic quantum circuits combine several error sources at once. So on IBM quantum processors, we built independent controls for three of them: gate operations, feedforward latency, and mid-circuit measurements.
 
 We tested every low–high combination in a pre-specified $2^3$ factorial experiment on circuits whose correct answers we already knew.
 
@@ -36,18 +36,13 @@ With only two sampled measurement-noise levels, different response curves can pa
 
 And collecting more shots at those same points cannot tell those curves apart.
 
-That changes what a small interaction actually means.
-
 **Separability is evidence about the measurements we observed. It is not a certificate that the unmeasured zero-noise answer is correct.**
 
 Reliable ZNE therefore needs three things kept separate: interaction diagnostics, a justified response model, and a calibrated zero-noise target.
 
-## Delivery notes
+## Recording / compositing constraint
 
-- Aryan: explanatory rather than dramatic; make **“make the machine deliberately noisier”** intuitive.
-- Pause very briefly after **“That’s zero-noise extrapolation.”**
-- Sushanth: leave a visible beat after **“That should have been reassuring.”** and make **“It wasn’t.”** short and dry.
-- Do not rush **“three of six observables.”** The animation freezes on that result.
-- The mathematical explanation should sound like you are resolving the mystery, not reading a theorem.
-- Slow slightly on the final two sentences.
-- Record clean, dry audio; music and mechanical SFX are added later.
+- Two source clips total: Aryan for 0:00–0:45 and Sushanth for 0:45–1:30.
+- In both recordings, the speaker is framed on the **right side** of the screen.
+- The animation is therefore authored primarily for the **left 60–65%** of the final frame and must not place critical information under the speaker.
+- Recorded audio becomes the final timing master. The nominal timings below are design timings only and should be conformed to the real spoken waveform after recording.
