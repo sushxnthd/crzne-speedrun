@@ -19,7 +19,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,18 +37,20 @@ jobs:
           node --check anatomy-hero.js
           node --check anatomy-refine.js
           node --check anatomy-reassembly.js
+          node --check anatomy-light.js
+          node --check visual-audit.js
 
       - name: Prepare animation preview
         shell: bash
         run: |
           rm -rf _site _qa
           mkdir -p _site _qa
-          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css anatomy-refine.js anatomy-refine.css anatomy-reassembly.js _site/
-          sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n<link rel="stylesheet" href="anatomy-hero.css" />\n<link rel="stylesheet" href="anatomy-refine.css" />\n</head>#' _site/index.html
-          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n<script src="anatomy-refine.js"></script>\n<script src="anatomy-reassembly.js"></script>\n</body>#' _site/index.html
+          cp index.html animation.js styles.css timeline.json enhancements.js enhancements.css early-scenes.js scientific-polish.js timing-fixes.js transition-polish.js anatomy-model.js anatomy-hero.js anatomy-hero.css anatomy-refine.js anatomy-refine.css anatomy-reassembly.js anatomy-light.css anatomy-light.js visual-audit.js _site/
+          sed -i 's#</head>#<link rel="stylesheet" href="enhancements.css" />\n<link rel="stylesheet" href="anatomy-hero.css" />\n<link rel="stylesheet" href="anatomy-refine.css" />\n<link rel="stylesheet" href="anatomy-light.css" />\n</head>#' _site/index.html
+          sed -i 's#</body>#<script src="enhancements.js"></script>\n<script src="early-scenes.js"></script>\n<script src="scientific-polish.js"></script>\n<script src="timing-fixes.js"></script>\n<script src="transition-polish.js"></script>\n<script src="anatomy-model.js"></script>\n<script src="anatomy-hero.js"></script>\n<script src="anatomy-refine.js"></script>\n<script src="anatomy-reassembly.js"></script>\n<script src="anatomy-light.js"></script>\n<script src="visual-audit.js"></script>\n</body>#' _site/index.html
           touch _site/.nojekyll
 
-      - name: Render and audit Anatomy figure
+      - name: Audit every rendered frame
         shell: bash
         run: |
           python3 -m http.server 8000 --directory _site >/tmp/crzne-http.log 2>&1 &
@@ -56,37 +58,67 @@ jobs:
           sleep 1
           CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
           if [ -z "$CHROME" ]; then
-            echo "No Chrome/Chromium binary on runner; skipping screenshots."
+            echo "No Chrome/Chromium binary available."
             kill "$SERVER_PID" || true
-            exit 0
+            exit 1
           fi
+          timeout 90s "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=12000 --dump-dom "http://127.0.0.1:8000/?audit=1&present=1" > _qa/audit.html 2>_qa/audit-browser.log
+          grep -q 'id="frameAudit"' _qa/audit.html
+          grep -q 'data-status="pass"' _qa/audit.html
+          grep -q 'data-frames="2700"' _qa/audit.html
+          echo "Full 2700-frame audit passed."
+          kill "$SERVER_PID" || true
 
-          for T in 8 12 20 24 29 34 40 43 52 58 62 66 74 78 79 80.5 82 86 89; do
-            SAFE_T="${T/./_}"
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1400 --screenshot="_qa/t${SAFE_T}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${SAFE_T}.log 2>&1 || true
+      - name: Render film and transition QA
+        shell: bash
+        run: |
+          python3 -m http.server 8000 --directory _site >/tmp/crzne-http-2.log 2>&1 &
+          SERVER_PID=$!
+          sleep 1
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          shot(){
+            T="$1"; TAG="${T/./_}"
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/t${TAG}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${TAG}.log 2>&1
+          }
+
+          # Whole-film sweep every three seconds.
+          for T in $(seq 0 3 90); do shot "$T"; done
+
+          # Every scene handoff sampled before / at / after the boundary.
+          for T in \
+            3.35 3.60 3.85 7.15 7.40 7.65 7.75 8.00 8.25 \
+            16.75 17.00 17.25 18.75 19.00 19.25 \
+            23.95 24.20 24.45 28.25 28.50 28.75 31.25 31.50 31.75 \
+            36.75 37.00 37.25 44.75 45.00 45.25 47.75 48.00 48.25 \
+            55.75 56.00 56.25 57.75 58.00 58.25 59.75 60.00 60.25 \
+            71.25 71.50 71.75 76.95 77.20 77.45 78.75 79.00 79.25 \
+            79.45 79.70 79.95 80.05 80.30 80.55 83.05 83.30 83.55 \
+            85.75 86.00 86.25 87.75 88.00 88.25 89.50; do shot "$T"; done
+
+          # Anatomy 4×-style inspection targets.
+          for T in 12 20 34 40 52 66 74 80.3 86 89; do
+            TAG="${T/./_}"
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/detail-${TAG}.png" "http://127.0.0.1:8000/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${TAG}.log 2>&1
           done
 
-          # Anatomy-style close-up inspection passes: active controls, factorial cage, proof mechanism, interlock.
-          for T in 20 34 66 86; do
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=1400 --screenshot="_qa/detail-${T}.png" "http://127.0.0.1:8000/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${T}.log 2>&1 || true
-          done
-
-          # Density sanity check on the live rendered DOM. A Hero must contain real parts, not a few slabs.
-          "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=1400 --dump-dom "http://127.0.0.1:8000/?t=34&present=1" > _qa/dom.html 2>/tmp/chrome-dom.log || true
+          "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=900 --dump-dom "http://127.0.0.1:8000/?t=34&present=1" > _qa/dom.html 2>/tmp/chrome-dom.log
           PARTS=$(grep -o 'ah-part' _qa/dom.html | wc -l | tr -d ' ')
           echo "Anatomy rendered part groups: $PARTS"
           test "$PARTS" -ge 100
-
+          ! grep -q 'id="captionBox"' _qa/dom.html
           kill "$SERVER_PID" || true
           rm -f _qa/dom.html
-          ls -lh _qa || true
+          ls -lh _qa | tail -30
 
-      - name: Upload QA keyframes
+      - name: Upload QA renders
         uses: actions/upload-artifact@v4
         with:
-          name: qa-keyframes
-          path: _qa/*.png
-          if-no-files-found: ignore
+          name: qa-light-theme
+          path: |
+            _qa/*.png
+            _qa/audit.html
+            _qa/audit-browser.log
+          if-no-files-found: error
           retention-days: 3
 
       - name: Configure Pages
