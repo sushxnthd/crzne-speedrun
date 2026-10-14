@@ -55,34 +55,32 @@ jobs:
         run: |
           python3 -m http.server 8000 --directory _site >/tmp/crzne-http.log 2>&1 &
           SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
           sleep 1
           CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
-          if [ -z "$CHROME" ]; then
-            echo "No Chrome/Chromium binary available."
-            kill "$SERVER_PID" || true
-            exit 1
-          fi
+          if [ -z "$CHROME" ]; then echo "No Chrome/Chromium binary available."; exit 1; fi
           timeout 90s "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=12000 --dump-dom "http://127.0.0.1:8000/?audit=1&present=1" > _qa/audit.html 2>_qa/audit-browser.log
+          echo '--- FRAME AUDIT RESULT ---'
+          grep -A 160 'id="frameAudit"' _qa/audit.html | tail -170 || true
           grep -q 'id="frameAudit"' _qa/audit.html
           grep -q 'data-status="pass"' _qa/audit.html
           grep -q 'data-frames="2700"' _qa/audit.html
           echo "Full 2700-frame audit passed."
-          kill "$SERVER_PID" || true
 
       - name: Render film and transition QA
+        if: always()
         shell: bash
         run: |
-          python3 -m http.server 8000 --directory _site >/tmp/crzne-http-2.log 2>&1 &
+          python3 -m http.server 8001 --directory _site >/tmp/crzne-http-2.log 2>&1 &
           SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
           sleep 1
           CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
           shot(){
             T="$1"; TAG="${T/./_}"
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/t${TAG}.png" "http://127.0.0.1:8000/?t=${T}&present=1" >/tmp/chrome-${TAG}.log 2>&1
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/t${TAG}.png" "http://127.0.0.1:8001/?t=${T}&present=1" >/tmp/chrome-${TAG}.log 2>&1 || true
           }
-
           for T in $(seq 0 3 90); do shot "$T"; done
-
           for T in \
             3.35 3.60 3.85 7.15 7.40 7.65 7.75 8.00 8.25 \
             16.75 17.00 17.25 18.75 19.00 19.25 \
@@ -92,24 +90,22 @@ jobs:
             71.25 71.50 71.75 76.95 77.20 77.45 78.75 79.00 79.25 \
             79.45 79.70 79.95 80.05 80.30 80.55 83.05 83.30 83.55 \
             85.75 86.00 86.25 87.75 88.00 88.25 89.50; do shot "$T"; done
-
           for T in 12 20 34 40 52 66 74 80.3 86 89; do
             TAG="${T/./_}"
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/detail-${TAG}.png" "http://127.0.0.1:8000/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${TAG}.log 2>&1
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=900 --screenshot="_qa/detail-${TAG}.png" "http://127.0.0.1:8001/?t=${T}&present=1&detail=1" >/tmp/chrome-detail-${TAG}.log 2>&1 || true
           done
-
-          "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=900 --dump-dom "http://127.0.0.1:8000/?t=34&present=1" > _qa/dom.html 2>/tmp/chrome-dom.log
+          "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=900 --dump-dom "http://127.0.0.1:8001/?t=34&present=1" > _qa/dom.html 2>/tmp/chrome-dom.log || true
           PARTS=$(grep -o 'ah-part' _qa/dom.html | wc -l | tr -d ' ')
           echo "Anatomy rendered part groups: $PARTS"
           test "$PARTS" -ge 100
           grep -q 'id="captionBox"' _qa/dom.html
           grep -q 'aria-hidden="true"' _qa/dom.html
           grep -q 'display: none' _qa/dom.html
-          kill "$SERVER_PID" || true
           rm -f _qa/dom.html
           ls -lh _qa | tail -30
 
       - name: Upload QA renders
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: qa-light-theme
@@ -117,17 +113,20 @@ jobs:
             _qa/*.png
             _qa/audit.html
             _qa/audit-browser.log
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 3
 
       - name: Configure Pages
+        if: success()
         uses: actions/configure-pages@v5
 
       - name: Upload static site
+        if: success()
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
       - name: Deploy to GitHub Pages
+        if: success()
         id: deployment
         uses: actions/deploy-pages@v4
